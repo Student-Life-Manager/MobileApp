@@ -1,7 +1,7 @@
-import { X } from "@tamagui/lucide-icons";
-import { Adapt, Button, Dialog, Sheet, Unspaced, YStack } from "tamagui";
+import { X } from '@tamagui/lucide-icons'
+import { Adapt, Button, Dialog, Sheet, Unspaced, YStack } from 'tamagui'
 
-import { InputDemo } from "./input";
+import { InputDemo } from './input'
 
 export function DialogDemo() {
 	return (
@@ -11,24 +11,24 @@ export function DialogDemo() {
 			</Dialog.Trigger>
 
 			<Adapt
-				when="sm"
-				platform="touch"
+				when='sm'
+				platform='touch'
 			>
 				<Sheet modal>
 					<Sheet.Frame
-						padding="$4"
+						padding='$4'
 						space
 					>
 						<Adapt.Contents />
 					</Sheet.Frame>
-					<Sheet.Overlay backgroundColor="$gray12Light" />
+					<Sheet.Overlay backgroundColor='$gray12Light' />
 				</Sheet>
 			</Adapt>
 
 			<Dialog.Portal>
 				<Dialog.Overlay
-					key="overlay"
-					animation="quick"
+					key='overlay'
+					animation='quick'
 					o={0.5}
 					enterStyle={{ o: 0 }}
 					exitStyle={{ o: 0 }}
@@ -36,14 +36,14 @@ export function DialogDemo() {
 
 				<Dialog.Content
 					bordered
-					key="content"
+					key='content'
 					animation={[
-						"quick",
+						'quick',
 						{
 							opacity: {
-								overshootClamping: true
-							}
-						}
+								overshootClamping: true,
+							},
+						},
 					]}
 					enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
 					exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
@@ -55,19 +55,19 @@ export function DialogDemo() {
 					</Dialog.Description>
 
 					<InputDemo
-						fieldId="usernamea"
-						label="Form Input"
-						placeholder="John Doe"
+						fieldId='usernamea'
+						label='Form Input'
+						placeholder='John Doe'
 					/>
 
-					<YStack mt="$2">
+					<YStack mt='$2'>
 						<Dialog.Close
 							displayWhenAdapted
 							asChild
 						>
 							<Button
-								theme="green_Button"
-								aria-label="Close"
+								theme='green_Button'
+								aria-label='Close'
 							>
 								Save changes
 							</Button>
@@ -77,10 +77,10 @@ export function DialogDemo() {
 					<Unspaced>
 						<Dialog.Close asChild>
 							<Button
-								pos="absolute"
-								t="$2"
-								r="$2"
-								size="$3"
+								pos='absolute'
+								t='$2'
+								r='$2'
+								size='$3'
 								circular
 								icon={X}
 							/>
@@ -89,5 +89,5 @@ export function DialogDemo() {
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog>
-	);
+	)
 }

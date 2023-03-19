@@ -1,28 +1,28 @@
-import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
-import { useState } from "react";
-import { Adapt, Fieldset, Label, Select, Sheet, YStack } from "tamagui";
-import { LinearGradient } from "tamagui/linear-gradient";
+import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { useState } from 'react'
+import { Adapt, Fieldset, Label, Select, Sheet, YStack } from 'tamagui'
+import { LinearGradient } from 'tamagui/linear-gradient'
 
 export function SelectDemo() {
-	const [val, setVal] = useState("apple");
+	const [val, setVal] = useState('apple')
 	return (
 		<Fieldset>
-			<Label htmlFor="food">Select Component</Label>
+			<Label htmlFor='food'>Select Component</Label>
 			<Select
-				id="food"
+				id='food'
 				value={val}
 				onValueChange={setVal}
 			>
 				<Select.Trigger
-					id="food"
+					id='food'
 					iconAfter={ChevronDown}
 				>
-					<Select.Value placeholder="Something" />
+					<Select.Value placeholder='Something' />
 				</Select.Trigger>
 
 				<Adapt
-					when="sm"
-					platform="touch"
+					when='sm'
+					platform='touch'
 				>
 					<Sheet
 						modal
@@ -39,11 +39,11 @@ export function SelectDemo() {
 
 				<Select.Content zIndex={200000}>
 					<Select.ScrollUpButton
-						ai="center"
-						jc="center"
-						pos="relative"
-						w="100%"
-						h="$3"
+						ai='center'
+						jc='center'
+						pos='relative'
+						w='100%'
+						h='$3'
 					>
 						<YStack zi={10}>
 							<ChevronUp size={20} />
@@ -52,13 +52,13 @@ export function SelectDemo() {
 							start={[0, 0]}
 							end={[0, 1]}
 							fullscreen
-							colors={["$background", "$backgroundTransparent"]}
-							br="$4"
+							colors={['$background', '$backgroundTransparent']}
+							br='$4'
 						/>
 					</Select.ScrollUpButton>
 
 					<Select.Viewport minWidth={200}>
-						<Select.Group space="$-0">
+						<Select.Group space='$-0'>
 							<Select.Label>Fruits</Select.Label>
 							{items.map((item, i) => {
 								return (
@@ -68,21 +68,21 @@ export function SelectDemo() {
 										value={item.name.toLowerCase()}
 									>
 										<Select.ItemText>{item.name}</Select.ItemText>
-										<Select.ItemIndicator ml="auto">
+										<Select.ItemIndicator ml='auto'>
 											<Check size={16} />
 										</Select.ItemIndicator>
 									</Select.Item>
-								);
+								)
 							})}
 						</Select.Group>
 					</Select.Viewport>
 
 					<Select.ScrollDownButton
-						ai="center"
-						jc="center"
-						pos="relative"
-						w="100%"
-						h="$3"
+						ai='center'
+						jc='center'
+						pos='relative'
+						w='100%'
+						h='$3'
 					>
 						<YStack zi={10}>
 							<ChevronDown size={20} />
@@ -91,37 +91,37 @@ export function SelectDemo() {
 							start={[0, 0]}
 							end={[0, 1]}
 							fullscreen
-							colors={["$backgroundTransparent", "$background"]}
-							br="$4"
+							colors={['$backgroundTransparent', '$background']}
+							br='$4'
 						/>
 					</Select.ScrollDownButton>
 				</Select.Content>
 			</Select>
 		</Fieldset>
-	);
+	)
 }
 
 const items = [
-	{ name: "Apple" },
-	{ name: "Pear" },
-	{ name: "Blackberry" },
-	{ name: "Peach" },
-	{ name: "Apricot" },
-	{ name: "Melon" },
-	{ name: "Honeydew" },
-	{ name: "Starfruit" },
-	{ name: "Blueberry" },
-	{ name: "Rasberry" },
-	{ name: "Strawberry" },
-	{ name: "Mango" },
-	{ name: "Pineapple" },
-	{ name: "Lime" },
-	{ name: "Lemon" },
-	{ name: "Coconut" },
-	{ name: "Guava" },
-	{ name: "Papaya" },
-	{ name: "Orange" },
-	{ name: "Grape" },
-	{ name: "Jackfruit" },
-	{ name: "Durian" }
-];
+	{ name: 'Apple' },
+	{ name: 'Pear' },
+	{ name: 'Blackberry' },
+	{ name: 'Peach' },
+	{ name: 'Apricot' },
+	{ name: 'Melon' },
+	{ name: 'Honeydew' },
+	{ name: 'Starfruit' },
+	{ name: 'Blueberry' },
+	{ name: 'Rasberry' },
+	{ name: 'Strawberry' },
+	{ name: 'Mango' },
+	{ name: 'Pineapple' },
+	{ name: 'Lime' },
+	{ name: 'Lemon' },
+	{ name: 'Coconut' },
+	{ name: 'Guava' },
+	{ name: 'Papaya' },
+	{ name: 'Orange' },
+	{ name: 'Grape' },
+	{ name: 'Jackfruit' },
+	{ name: 'Durian' },
+]

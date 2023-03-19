@@ -1,4 +1,4 @@
-import { AlertDialog, Button, XStack, YStack } from "tamagui";
+import { AlertDialog, Button, XStack, YStack } from 'tamagui'
 
 export const AlertDialogDemo = () => {
 	return (
@@ -9,8 +9,8 @@ export const AlertDialogDemo = () => {
 
 			<AlertDialog.Portal>
 				<AlertDialog.Overlay
-					key="overlay"
-					animation="quick"
+					key='overlay'
+					animation='quick'
 					o={0.5}
 					enterStyle={{ o: 0 }}
 					exitStyle={{ o: 0 }}
@@ -18,14 +18,14 @@ export const AlertDialogDemo = () => {
 				<AlertDialog.Content
 					bordered
 					elevate
-					key="content"
+					key='content'
 					animation={[
-						"quick",
+						'quick',
 						{
 							opacity: {
-								overshootClamping: true
-							}
-						}
+								overshootClamping: true,
+							},
+						},
 					]}
 					enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
 					exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
@@ -41,19 +41,19 @@ export const AlertDialogDemo = () => {
 						</AlertDialog.Description>
 
 						<XStack
-							space="$3"
-							jc="flex-end"
+							space='$3'
+							jc='flex-end'
 						>
 							<AlertDialog.Cancel asChild>
 								<Button>Cancel</Button>
 							</AlertDialog.Cancel>
 							<AlertDialog.Action asChild>
-								<Button theme="active">Accept</Button>
+								<Button theme='active'>Accept</Button>
 							</AlertDialog.Action>
 						</XStack>
 					</YStack>
 				</AlertDialog.Content>
 			</AlertDialog.Portal>
 		</AlertDialog>
-	);
-};
+	)
+}

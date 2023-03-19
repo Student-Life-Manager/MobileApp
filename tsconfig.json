@@ -1,4 +1,21 @@
 {
-  "extends": "expo/tsconfig.base.json",
-  "compilerOptions": {}
+	"extends": "expo/tsconfig.base.json",
+	"compilerOptions": {
+		// "module": "esnext",
+		// "target": "esnext",
+		"jsx": "react-native",
+		"strictNullChecks": true
+		// "noImplicitAny": true,
+		// "allowJs": true,
+		// "esModuleInterop": true,
+		// "isolatedModules": true,
+		// "moduleResolution": "node",
+		// "experimentalDecorators": true,
+		// "emitDecoratorMetadata": true,
+		// "sourceMap": true,
+		// "baseUrl": ".",
+		// "paths": {
+		// 	"*": ["src/*"]
+		// }
+	}
 }

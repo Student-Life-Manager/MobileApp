@@ -1,4 +1,5 @@
 # Tamagui Expo Template
+
 ###### This is a community template
 
 <p align="center">
@@ -12,31 +13,39 @@
 </div>
 
 ## Quick Start
+
 Just run the following, changing `youprojectname` to the name of your project.
+
 ```
 npx create-expo-app youprojectname -t tamagui-expo-template --no-install
 cd yourappname
 yarn install
 ```
+
 If you have [Expo Go](https://expo.dev/client) app installed, just start your new app with `yarn start`, if not, create your own [Development Client](https://docs.expo.dev/development/build/)
 
 ## What you get
+
 This is a starter template for [Expo](https://expo.dev) using [Tamagui](https://tamagui.dev).
 In this template you get out of the box:
+
 - Semantic Release already configured with everything you might want
 - EAS (Expo Application Services) profiles already configured
 - Different icons for different app types (Dev Client, Beta and Production)
 
 ## What you don't get
+
 - Expo Web support
 - i18n
 - Global State management
 
 ## If you want to...
+
 1. You can build your own dev client with `eas build -p android --profile development`
 1. Develop in WSL, use the `yarn wsl` command, else `yarn start` is your default choice.
 
 ## Troubleshooting
-### I'm on WSL but my app doesn't connect
-WSL2 runs inside it's own container, so it doesn't share the same IPv4 and port status as your host machine, you might need [this](https://gist.github.com/ivopr/64f974e632b7edcbe1f5e58b91e31598)
 
+### I'm on WSL but my app doesn't connect
+
+WSL2 runs inside it's own container, so it doesn't share the same IPv4 and port status as your host machine, you might need [this](https://gist.github.com/ivopr/64f974e632b7edcbe1f5e58b91e31598)
