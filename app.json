@@ -1,7 +1,7 @@
 {
 	"expo": {
-		"name": "hereistest",
-		"slug": "hereistest",
+		"name": "student-life-manager",
+		"slug": "student-life-manager",
 		"version": "2.2.5",
 		"assetBundlePatterns": ["**/*"],
 		"orientation": "portrait",

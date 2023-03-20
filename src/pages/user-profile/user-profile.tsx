@@ -1,17 +1,15 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { FC } from 'react'
+// import { NativeStackScreenProps } from '@react-navigation/native-stack'
+// import { FC } from 'react'
 import { Separator, YStack } from 'tamagui'
 
-import { AlertDialogDemo } from './alert-dialog'
-import { DialogDemo } from './dialog'
-import { InputDemo } from './input'
-import { SelectDemo } from './select'
-import { UserDetails } from './user-details'
+import { AlertDialogDemo } from './@components/alert-dialog'
+import { DialogDemo } from './@components/dialog'
+import { InputDemo } from './@components/input'
+import { SelectDemo } from './@components/select'
+import { UserDetails } from './@components/detail'
 import { MyStack } from '../../components/MyStack'
 
-export const UserDetailScreen: FC<NativeStackScreenProps<StackNavigatorParams, 'user-detail'>> = ({
-	route,
-}) => {
+export const UserProfile = ({ route }: any) => {
 	const { id } = route.params
 
 	return (

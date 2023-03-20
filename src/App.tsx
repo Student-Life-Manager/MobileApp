@@ -3,8 +3,8 @@ import 'expo-dev-client'
 import { useFonts } from 'expo-font'
 import { FC } from 'react'
 import { Keyboard, KeyboardAvoidingView } from 'react-native'
+import { NativeNavigator } from './navigator'
 
-import { NativeNavigation } from './navigation'
 import { Provider } from './provider'
 
 const App: FC = () => {
@@ -28,7 +28,7 @@ const App: FC = () => {
 			onStartShouldSetResponder={handleUnhandledTouches}
 		>
 			<Provider>
-				<NativeNavigation />
+				<NativeNavigator />
 			</Provider>
 		</KeyboardAvoidingView>
 	)

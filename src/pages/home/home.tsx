@@ -1,21 +1,17 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Github, Twitter } from '@tamagui/lucide-icons'
-import { FC } from 'react'
 import { Anchor, H1, ListItem, Paragraph, Separator, YGroup, YStack } from 'tamagui'
 
 import { LinkToUser } from './link-to-user'
 import { MyStack } from '../../components/MyStack'
 
-export const HomeScreen: FC<NativeStackScreenProps<StackNavigatorParams, 'home'>> = ({
-	navigation,
-}) => {
+export const Home = ({ navigation }) => {
 	return (
 		<MyStack>
 			<YStack
 				space='$4'
 				maxWidth={600}
 			>
-				<H1 textAlign='center'>Welcome to Tamagui.</H1>
+				<H1 textAlign='center'>Welcome to pulkiiiit.</H1>
 				<Paragraph textAlign='center'>
 					Here's a basic starter to show navigating from one screen to another.
 				</Paragraph>
