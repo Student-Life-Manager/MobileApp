@@ -3,6 +3,4 @@ expo
 .github
 .vscode
 .yarn
-.eslintrc.json
-.eslintignore
 .prettierignore

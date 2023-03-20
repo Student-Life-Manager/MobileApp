@@ -3,7 +3,7 @@ SCRIPTS_PATTERN = 'src/**/*.{js,ts,tsx}'
 
 .PHONY: run
 run: ## Run main app
-	expo start --tunnel
+	yarn expo start --tunnel
 
 .PHONY: install
 install: ## Install dependencies

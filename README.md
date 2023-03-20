@@ -45,3 +45,26 @@ make run
 ```
 
 Step 5: Open the [Expo Go](https://expo.dev/client) app in a mobile phone and scan the QR code in your terminal
+
+<br/><br/>
+
+## Contribution guidelines
+
+<br/>
+
+Every new react native component should have follow this this format for comments. Visit [TSDoc](https://tsdoc.org/) for more information.
+
+````javascript
+/**
+ * @remarks - general description of the component
+ * @param prop1 - description of the property
+ * @param prop1 - description of the property
+ * @example
+ * ```
+ * <CustomComponent
+ * 	prop1 = {value1}
+ * 	prop1 = {value2}
+ * />
+ * ```
+ */
+````
