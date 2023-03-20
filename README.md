@@ -1,51 +1,47 @@
 # Tamagui Expo Template
 
-###### This is a community template
-
-<p align="center">
-  <img src="./src/assets/icons/icon.png" alt="Tamagui Icon"/>
-</p>
-
-<div align="center">
-  <a target="_blank" href="https://expo.dev/%40ivopr/TET?serviceType=classic&distribution=expo-go&releaseChannel=default">
-      <img src="https://img.shields.io/badge/Open%20in%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000" alt="Open in Expo Go"/>
-    </a>
-</div>
-
 ## Quick Start
 
-Just run the following, changing `youprojectname` to the name of your project.
+### Prerequisite
+
+Make sure you install the following things before running the project
+
+<br/>
+Make:
 
 ```
-npx create-expo-app youprojectname -t tamagui-expo-template --no-install
-cd yourappname
-yarn install
+choco install make
 ```
 
-If you have [Expo Go](https://expo.dev/client) app installed, just start your new app with `yarn start`, if not, create your own [Development Client](https://docs.expo.dev/development/build/)
+<br/>
 
-## What you get
+## How to run
 
-This is a starter template for [Expo](https://expo.dev) using [Tamagui](https://tamagui.dev).
-In this template you get out of the box:
+<br/>
+Step 1: Install all dependencies
 
-- Semantic Release already configured with everything you might want
-- EAS (Expo Application Services) profiles already configured
-- Different icons for different app types (Dev Client, Beta and Production)
+```
+make install
+```
 
-## What you don't get
+<br/>
 
-- Expo Web support
-- i18n
-- Global State management
+Step 2: Duplicate the `.env.development` and rename it as `.env.local`
 
-## If you want to...
+```
+make start
+```
 
-1. You can build your own dev client with `eas build -p android --profile development`
-1. Develop in WSL, use the `yarn wsl` command, else `yarn start` is your default choice.
+<br/>
 
-## Troubleshooting
+Step 3: Add the enviroment variables that you got from one of the maintainers in `.env.development`
 
-### I'm on WSL but my app doesn't connect
+<br/>
 
-WSL2 runs inside it's own container, so it doesn't share the same IPv4 and port status as your host machine, you might need [this](https://gist.github.com/ivopr/64f974e632b7edcbe1f5e58b91e31598)
+Step 4: Run the project locally
+
+```
+make run
+```
+
+Step 5: Open the [Expo Go](https://expo.dev/client) app in a mobile phone and scan the QR code in your terminal
