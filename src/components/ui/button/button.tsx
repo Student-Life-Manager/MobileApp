@@ -14,7 +14,7 @@ interface CustomButtonProps extends ButtonProps {
 }
 
 export const Button = ({ children, ...props }: CustomButtonProps) => {
-	const { variant } = props
+	// const { variant } = props
 	return (
 		<StyledButton
 			size='$5'

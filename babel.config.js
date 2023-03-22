@@ -20,6 +20,14 @@ module.exports = function (api) {
 					include: 'TAMAGUI_TARGET',
 				},
 			],
+			[
+				'module-resolver',
+				{
+					alias: {
+						'@app': './src',
+					},
+				},
+			],
 			'react-native-reanimated/plugin',
 		],
 	}
