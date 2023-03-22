@@ -10,7 +10,7 @@
 	"plugins": ["@typescript-eslint", "react", "react-native", "prettier", "eslint-plugin-tsdoc"],
 	"rules": {
 		"react/prop-types": "off",
-		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-unused-vars": "warn",
 		"prettier/prettier": "warn",
 		"tsdoc/syntax": "error"
 	}

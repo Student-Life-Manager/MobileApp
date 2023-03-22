@@ -9,6 +9,7 @@ export const NativeNavigator = () => {
 			{routes.map((route) => {
 				return (
 					<Stack.Screen
+						key={route.name}
 						options={route.options}
 						name={route.name}
 						component={route.component}
