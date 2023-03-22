@@ -1,5 +1,4 @@
-# Tamagui Expo Template
-
+# Student life manager
 ## Quick Start
 
 ### Prerequisite
