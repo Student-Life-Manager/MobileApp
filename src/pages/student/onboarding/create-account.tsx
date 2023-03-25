@@ -1,7 +1,7 @@
 import { H3, YStack, Text } from 'tamagui'
-import CreateAccount from '../../assets/images/create-account.svg'
-import { Button } from '../../../components/ui/button'
-import { PageWrapper } from '../../../components/ui/page-wrapper'
+import CreateAccount from '@app/assets/images/create-account.svg'
+import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 
 export const CreateAccountPage = ({ navigation }) => {
 	return (

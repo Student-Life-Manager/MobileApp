@@ -1,9 +1,9 @@
 import { H3, YStack, Fieldset, XStack } from 'tamagui'
-import WardenPage from '../../assets/images/warden-page.svg'
-import { Button2 } from '../../../components/ui/button2'
-import { PageWrapper } from '../../../components/ui/page-wrapper'
-import ProfileIcon from '../../assets/images/profile-icon.svg'
-import { Button } from '../../../components/ui/button'
+import WardenPage from '@app/assets/images/warden-page.svg'
+import { Button2 } from '@app/components/ui/button2'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
+import ProfileIcon from '@app/assets/images/profile-icon.svg'
+import { Button } from '@app/components/ui/button'
 
 export const StudentHome = ({ navigation }) => {
 	return (

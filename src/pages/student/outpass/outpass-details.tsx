@@ -1,6 +1,6 @@
 import { H3, YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
-import { Button } from '../../../components/ui/button'
-import { PageWrapper } from '../../../components/ui/page-wrapper'
+import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { SelectDemo } from './reason-select'
 
 export const OutpassDetails = ({ navigation }) => {
