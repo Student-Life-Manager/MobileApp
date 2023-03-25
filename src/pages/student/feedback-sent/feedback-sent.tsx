@@ -1,7 +1,7 @@
 import { H3, YStack, Text } from 'tamagui'
 import SubmitSuccess from '../../assets/images/submit-success.svg'
 
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { PageWrapper } from '../../../components/ui/page-wrapper'
 
 export const FeedbackSent = ({ navigation }) => {
 	return (

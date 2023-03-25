@@ -1,7 +1,7 @@
 import { H3, YStack, Fieldset } from 'tamagui'
 import WardenPage from '../../assets/images/warden-page.svg'
-import { Button2 } from '../../components/ui/button2'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { Button2 } from '../../../components/ui/button2'
+import { PageWrapper } from '../../../components/ui/page-wrapper'
 import ProfileIcon from '../../assets/images/profile-icon.svg'
 
 export const WardenHome = ({ navigation }) => {

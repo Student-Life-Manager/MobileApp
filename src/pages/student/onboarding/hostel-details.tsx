@@ -1,6 +1,6 @@
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
-import { Button } from '../../components/ui/button'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { Button } from '../../../components/ui/button'
+import { PageWrapper } from '../../../components/ui/page-wrapper'
 
 export const HostelDetails = ({ navigation }) => {
 	return (

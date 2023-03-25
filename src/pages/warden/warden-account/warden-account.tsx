@@ -1,15 +1,15 @@
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
-import { Button } from '../../components/ui/button'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { Button } from '../../../components/ui/button'
+import { PageWrapper } from '../../../components/ui/page-wrapper'
 
-export const PersonalDetails = ({ navigation }) => {
+export const WardenAccount = ({ navigation }) => {
 	return (
 		<PageWrapper>
 			<YStack
 				space='$4'
 				maxWidth={600}
 			>
-				<H3>Personal details</H3>
+				<H3>Create warden account</H3>
 				<Fieldset>
 					<Label>First name</Label>
 					<Input
@@ -25,13 +25,6 @@ export const PersonalDetails = ({ navigation }) => {
 					/>
 				</Fieldset>
 				<Fieldset>
-					<Label>Roll number</Label>
-					<Input
-						id='rollno'
-						size='$5'
-					/>
-				</Fieldset>
-				<Fieldset>
 					<Label>Phone number</Label>
 					<Input
 						id='phonenumber'
@@ -40,14 +33,13 @@ export const PersonalDetails = ({ navigation }) => {
 					/>
 				</Fieldset>
 				<Fieldset>
-					<Label>Emergency phone number (optional)</Label>
+					<Label>Tower name</Label>
 					<Input
-						id='emergencyphonenumber'
+						id='towername'
 						size='$5'
-						keyboardType='numeric'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$6'>
+				<Fieldset paddingTop='$4'>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

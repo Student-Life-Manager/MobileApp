@@ -1,6 +1,6 @@
 import { YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
-import { Button2 } from '../../components/ui/button2'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { Button2 } from '../../../components/ui/button2'
+import { PageWrapper } from '../../../components/ui/page-wrapper'
 
 export const FeedbackForm = ({ navigation }) => {
 	return (

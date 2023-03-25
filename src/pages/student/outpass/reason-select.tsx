@@ -59,7 +59,7 @@ export function SelectDemo() {
 
 					<Select.Viewport minWidth={200}>
 						<Select.Group space='$-0'>
-							<Select.Label>Select reason</Select.Label>
+							<Select.Label>Purpose</Select.Label>
 							{items.map((item, i) => {
 								return (
 									<Select.Item
@@ -101,4 +101,10 @@ export function SelectDemo() {
 	)
 }
 
-const items = [{ reason: 'Leisure' }, { reason: 'Home' }, { reason: `Friend's home` }]
+const items = [
+	{ reason: 'Leisure' },
+	{ reason: 'Home' },
+	{ reason: 'Medical' },
+	{ reason: 'Academic' },
+	{ reason: 'Other' },
+]
