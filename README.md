@@ -1,4 +1,5 @@
 # Student life manager
+
 ## Quick Start
 
 ### Prerequisite

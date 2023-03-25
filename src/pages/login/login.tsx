@@ -15,22 +15,29 @@ export const Login = ({ navigation }) => {
 				space='$4'
 				maxWidth={600}
 			>
-				<LoginCover />
+				<YStack
+					padding='$3'
+					alignItems='center'
+				>
+					<LoginCover />
+				</YStack>
 				<H3>Sign in</H3>
 				<Fieldset>
 					<Label htmlFor='emaill'>Email</Label>
 					<Input
-						id='emailll'
+						id='email'
 						placeholder='student@srmap.edu.in'
 						size='$5'
 					/>
 				</Fieldset>
-				<Button
-					variant='primary'
-					onPress={goToUser}
-				>
-					Get verification code
-				</Button>
+				<Fieldset paddingTop='$6'>
+					<Button
+						variant='primary'
+						onPress={goToUser}
+					>
+						Get verification code
+					</Button>
+				</Fieldset>
 			</YStack>
 		</PageWrapper>
 	)
