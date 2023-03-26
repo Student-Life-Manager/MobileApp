@@ -39,7 +39,7 @@ export const WardenAccount = ({ navigation }) => {
 						size='$5'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$4'>
+				<Fieldset marginTop='$4'>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

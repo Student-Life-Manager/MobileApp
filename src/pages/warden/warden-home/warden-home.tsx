@@ -1,4 +1,4 @@
-import { H3, YStack, Fieldset } from 'tamagui'
+import { H3, YStack, Fieldset, XStack } from 'tamagui'
 import WardenPage from '@app/assets/images/warden-page.svg'
 import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
@@ -11,27 +11,28 @@ export const WardenHome = ({ navigation }) => {
 				space='$4'
 				maxWidth={600}
 			>
-				<Fieldset>
-					<Fieldset
-						justifyContent='flex-end'
-						alignContent='flex-end'
-						alignItems='flex-end'
+				<XStack>
+					<YStack>
+						<H3>Welcome,</H3>
+						<H3>Warden name</H3>
+					</YStack>
+					<YStack
+						alignSelf='flex-end'
+						paddingLeft={'45%'}
 					>
 						<ProfileIcon />
-					</Fieldset>
-					<H3>Welcome,</H3>
-					<H3>Warden name</H3>
-				</Fieldset>
+					</YStack>
+				</XStack>
 				<Fieldset
-					padding='$3'
+					paddingTop='$7'
 					alignItems='center'
 				>
 					<WardenPage />
 				</Fieldset>
-				<Fieldset paddingTop='$4'>
+				<Fieldset paddingTop='$8'>
 					<Button2 variant='primary'>View outpass list</Button2>
 				</Fieldset>
-				<Fieldset paddingTop='$1'>
+				<Fieldset>
 					<Button2 variant='primary'>Scan QR code</Button2>
 				</Fieldset>
 			</YStack>

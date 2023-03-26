@@ -18,25 +18,17 @@ export const FeedbackSent = ({ navigation }) => {
 				</YStack>
 				<YStack alignItems='center'>
 					<H3
-						paddingTop='$1'
-						paddingBottom='$1'
+						marginTop='$1'
+						marginBottom='$1'
 					>
 						Submitted Successfully
 					</H3>
 				</YStack>
-				<YStack
-					alignSelf='center'
-					alignItems='center'
-					alignContent='center'
-					padding='$2'
-				>
+				<YStack>
 					<Text
 						color='#6F6F6F'
-						alignItems='center'
 						display='flex'
 						textAlign='center'
-						position='absolute'
-						letterSpacing={'0.02'}
 					>
 						{' '}
 						Thank you for submitting the feedback. We will look into it as soon as possible.

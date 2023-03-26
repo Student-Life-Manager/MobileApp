@@ -26,7 +26,7 @@ export const ContactDetails = ({ navigation }) => {
 						keyboardType='numeric'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$4'>
+				<Fieldset marginTop='$4'>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

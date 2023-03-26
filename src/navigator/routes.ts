@@ -36,10 +36,10 @@ export const routes = [
 		},
 	},
 	{
-		name: 'student-login',
+		name: 'create-account',
 		component: CreateAccountPage,
 		options: {
-			title: 'Create Account Page',
+			title: 'Create Account',
 		},
 	},
 	{
@@ -95,7 +95,7 @@ export const routes = [
 		name: 'feedback-sent',
 		component: FeedbackSent,
 		options: {
-			title: 'Feedback Sent',
+			title: 'Feedback sent',
 		},
 	},
 	{

@@ -13,25 +13,19 @@ export const StudentHome = ({ navigation }) => {
 				maxWidth={600}
 			>
 				<XStack>
-					<YStack
-						justifyContent='flex-start'
-						alignContent='flex-start'
-						alignItems='flex-start'
-					>
+					<YStack>
 						<H3>Welcome,</H3>
 						<H3>Student name</H3>
 					</YStack>
 					<YStack
-						justifyContent='flex-end'
-						alignContent='flex-end'
-						alignItems='flex-end'
-						paddingLeft='$20'
+						alignSelf='flex-end'
+						paddingLeft={'45%'}
 					>
 						<ProfileIcon />
 					</YStack>
 				</XStack>
 				<Fieldset
-					paddingTop='$7'
+					marginTop='$8'
 					alignItems='center'
 				>
 					<WardenPage />
@@ -39,7 +33,7 @@ export const StudentHome = ({ navigation }) => {
 				<Fieldset paddingTop='$8'>
 					<Button variant='primary'>Get new outpass</Button>
 				</Fieldset>
-				<Fieldset paddingTop='$1'>
+				<Fieldset>
 					<Button2 variant='primary'>Send feedback</Button2>
 				</Fieldset>
 			</YStack>

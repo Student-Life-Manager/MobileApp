@@ -16,7 +16,6 @@ export const AcademicDetails = ({ navigation }) => {
 						id='year'
 						size='$5'
 						keyboardType='numeric'
-						paddingTop='$2'
 					/>
 				</Fieldset>
 				<Fieldset>
@@ -40,7 +39,10 @@ export const AcademicDetails = ({ navigation }) => {
 						size='$5'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$6'>
+				<Fieldset
+					marginTop='$4'
+					marginBottom='$4'
+				>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

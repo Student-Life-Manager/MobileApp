@@ -42,14 +42,17 @@ export const OutpassDetails = ({ navigation }) => {
 				<Fieldset>
 					<SelectDemo />
 				</Fieldset>
-				<Fieldset paddingTop='$2'>
+				<Fieldset>
 					<Label>Other</Label>
 					<TextArea
-						minHeight={240}
+						minHeight={175}
 						numberOfLines={4}
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$6'>
+				<Fieldset
+					marginTop='$4'
+					marginBottom='$4'
+				>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

@@ -9,21 +9,21 @@ export const FeedbackForm = ({ navigation }) => {
 				space='$4'
 				maxWidth={600}
 			>
-				<Fieldset paddingTop='$2'>
+				<Fieldset>
 					<Label>Type of message</Label>
 					<Input
 						id='type'
 						size='$5'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$2'>
+				<Fieldset>
 					<Label>Message</Label>
 					<TextArea
 						minHeight={240}
 						numberOfLines={4}
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$20'>
+				<Fieldset marginTop='$20'>
 					<Button2 variant='primary'>Submit</Button2>
 				</Fieldset>
 			</YStack>

@@ -47,7 +47,7 @@ export const PersonalDetails = ({ navigation }) => {
 						keyboardType='numeric'
 					/>
 				</Fieldset>
-				<Fieldset paddingTop='$6'>
+				<Fieldset marginTop='$4'>
 					<Button variant='primary'>Continue</Button>
 				</Fieldset>
 			</YStack>

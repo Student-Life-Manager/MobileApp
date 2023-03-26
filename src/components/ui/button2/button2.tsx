@@ -6,7 +6,7 @@ const StyledButton = styled(CustomButton, {
 	borderColor: '#313FDD',
 
 	pressStyle: {
-		backgroundColor: '#C7D2FF', // BDC9FA
+		backgroundColor: '#C7D2FF',
 	},
 })
 
@@ -15,7 +15,6 @@ interface CustomButtonProps extends ButtonProps {
 }
 
 export const Button2 = ({ children, ...props }: CustomButtonProps) => {
-	// const { variant } = props
 	return (
 		<StyledButton
 			size='$5'
