@@ -13,8 +13,7 @@ export const WardenHome = ({ navigation }) => {
 			>
 				<XStack>
 					<YStack>
-						<H3>Welcome,</H3>
-						<H3>Warden name</H3>
+						<H3>Welcome, {'\n'} Warden name</H3>
 					</YStack>
 					<YStack
 						alignSelf='flex-end'

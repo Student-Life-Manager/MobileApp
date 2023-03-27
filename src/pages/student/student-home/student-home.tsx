@@ -14,8 +14,7 @@ export const StudentHome = ({ navigation }) => {
 			>
 				<XStack>
 					<YStack>
-						<H3>Welcome,</H3>
-						<H3>Student name</H3>
+						<H3>Welcome, {'\n'} Student name</H3>
 					</YStack>
 					<YStack
 						alignSelf='flex-end'
