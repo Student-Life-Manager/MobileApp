@@ -12,22 +12,18 @@ export const CreateAccountPage = ({ navigation }) => {
 			>
 				<YStack alignItems='center'>
 					<H3
-						paddingTop='$15'
+						paddingTop='$16'
 						paddingBottom='$4'
 					>
 						Create Account
 					</H3>
 				</YStack>
-				<YStack
-					paddingTop='$1'
-					alignItems='center'
-				>
+				<YStack alignItems='center'>
 					<CreateAccount />
 				</YStack>
 				<YStack>
 					<Text
 						color='#6F6F6F'
-						display='flex'
 						textAlign='center'
 					>
 						An account with this email does not exist, please fill the following form to create an
