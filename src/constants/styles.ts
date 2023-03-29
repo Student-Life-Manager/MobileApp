@@ -1,0 +1,7 @@
+export const GLOBAL_STYLES = {
+	COLOR: {
+		PRIMARY: '#313FDD',
+		SECONDARY: '#E6EBFF',
+		PRIMARY_DARK: '#000FB8',
+	},
+}

@@ -1,6 +1,6 @@
 import { Login } from '@app/pages/login'
+import { Outpass } from '@app/pages/outpass'
 import { PageIndex } from '@app/pages/page-index'
-import { GetOutpass } from '@app/pages/student/get-outpass/get-outpass'
 import { UserProfile } from '@app/pages/user-profile'
 
 export const routes = [
@@ -23,6 +23,13 @@ export const routes = [
 		component: UserProfile,
 		options: {
 			title: 'Profile',
+		},
+	},
+	{
+		name: 'outpass',
+		component: Outpass,
+		options: {
+			title: 'Outpass status',
 		},
 	},
 ]

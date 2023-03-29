@@ -1,13 +1,11 @@
-// import { NativeStackScreenProps } from '@react-navigation/native-stack'
 // import { FC } from 'react'
 import { Separator, YStack } from 'tamagui'
 
-import { AlertDialogDemo } from './@components/alert-dialog'
 import { DialogDemo } from './@components/dialog'
 import { InputDemo } from './@components/input'
 import { SelectDemo } from './@components/select'
 import { UserDetails } from './@components/detail'
-import { MyStack } from '../../components/MyStack'
+import { MyStack } from '@app/components/MyStack'
 
 export const UserProfile = ({ route }: any) => {
 	const { id } = route.params
@@ -25,7 +23,6 @@ export const UserProfile = ({ route }: any) => {
 					label='Form Input'
 					placeholder='John Doe'
 				/>
-				<AlertDialogDemo />
 				<DialogDemo />
 				<SelectDemo />
 			</YStack>

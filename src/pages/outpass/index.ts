@@ -1,0 +1,1 @@
+export { Outpass } from './outpass'
