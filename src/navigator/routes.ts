@@ -8,6 +8,8 @@ import { AcademicDetails } from '@app/pages/student/onboarding'
 import { CreateAccountPage } from '@app/pages/student/onboarding'
 import { OutpassDetails } from '@app/pages/student/outpass'
 import { ContactDetails } from '@app/pages/student/outpass'
+import { OutpassWaiting } from '@app/pages/student/outpass-waiting'
+import { OutpassCancelled } from '@app/pages/student/outpass-cancelled'
 import { WardenAccount } from '@app/pages/warden/warden-account'
 import { WardenHome } from '@app/pages/warden/warden-home'
 import { StudentHome } from '@app/pages/student/student-home'
@@ -76,6 +78,20 @@ export const routes = [
 		component: ContactDetails,
 		options: {
 			title: 'Contact details',
+		},
+	},
+	{
+		name: 'outpass-waiting',
+		component: OutpassWaiting,
+		options: {
+			title: 'Oupass waiting',
+		},
+	},
+	{
+		name: 'outpass-cancelled',
+		component: OutpassCancelled,
+		options: {
+			title: 'Oupass cancelled',
 		},
 	},
 	{
