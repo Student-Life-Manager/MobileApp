@@ -1,8 +1,12 @@
 PRETTIER_FILES_PATTERN = '{src,scripts}/**/*.{js,ts,tsx,css,scss,json}' '**/*.md'
 SCRIPTS_PATTERN = 'src/**/*.{js,ts,tsx}'
 
-.PHONY: run
+PHONY: run
 run: ## Run main app
+	yarn expo start
+
+.PHONY: tunnel
+tunnel: ## Run main app using ngrok tunnel
 	yarn expo start --tunnel
 
 .PHONY: install

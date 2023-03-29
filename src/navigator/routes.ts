@@ -1,4 +1,5 @@
 import { Login } from '@app/pages/login'
+import { Outpass } from '@app/pages/outpass'
 import { PageIndex } from '@app/pages/page-index'
 import { UserProfile } from '@app/pages/user-profile'
 import { PersonalDetails } from '@app/pages/student/onboarding'
@@ -110,6 +111,13 @@ export const routes = [
 		component: WardenHome,
 		options: {
 			title: 'Warden home',
+		},
+	},
+	{
+		name: 'outpass',
+		component: Outpass,
+		options: {
+			title: 'Outpass status',
 		},
 	},
 ]
