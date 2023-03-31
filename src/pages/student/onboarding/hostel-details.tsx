@@ -15,20 +15,20 @@ const styles = StyleSheet.create({
 })
 
 type FormValues = {
-	towername: string
-	roomnumber: string
+	towerName: string
+	roomNumber: string
 }
 
 export const HostelDetails = ({ navigation }) => {
 	const initialValues: FormValues = {
-		towername: '',
-		roomnumber: '',
+		towerName: '',
+		roomNumber: '',
 	}
 
 	const validationSchema = Yup.object().shape({
-		towername: Yup.string().required('Tower name is required'),
+		towerName: Yup.string().required('Tower name is required'),
 
-		roomnumber: Yup.string()
+		roomNumber: Yup.string()
 			.required('Room number is required')
 			.length(3, 'Room number should be 3 digits long'),
 	})
@@ -56,8 +56,8 @@ export const HostelDetails = ({ navigation }) => {
 								<Select
 									id='towerName'
 									name='Tower name'
-									value={values.towername}
-									onValueChange={handleChange('towername')}
+									value={values.towerName}
+									onValueChange={handleChange('towerName')}
 									data={[
 										{ label: 'Tower A', id: 'towerA' },
 										{ label: 'Tower B', id: 'towerB' },
@@ -69,23 +69,23 @@ export const HostelDetails = ({ navigation }) => {
 										{ label: 'Tower H', id: 'towerH' },
 									]}
 								/>
-								{errors.towername && touched.towername && (
-									<Text style={styles.errorText}>{errors.towername}</Text>
+								{errors.towerName && touched.towerName && (
+									<Text style={styles.errorText}>{errors.towerName}</Text>
 								)}
 							</Fieldset>
 							<Fieldset>
 								<Label>Room number</Label>
 								<Input
-									id='roomnumber'
+									id='roomNumber'
 									fontSize={16}
 									height={50}
 									keyboardType='numeric'
-									value={values.roomnumber}
-									onChangeText={handleChange('roomnumber')}
-									onBlur={handleBlur('roomnumber')}
+									value={values.roomNumber}
+									onChangeText={handleChange('roomNumber')}
+									onBlur={handleBlur('roomNumber')}
 								/>
-								{errors.roomnumber && touched.roomnumber && (
-									<Text style={styles.errorText}>{errors.roomnumber}</Text>
+								{errors.roomNumber && touched.roomNumber && (
+									<Text style={styles.errorText}>{errors.roomNumber}</Text>
 								)}
 							</Fieldset>
 							<Fieldset marginTop='$4'>
