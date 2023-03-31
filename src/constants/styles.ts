@@ -3,5 +3,6 @@ export const GLOBAL_STYLES = {
 		PRIMARY: '#313FDD',
 		SECONDARY: '#E6EBFF',
 		PRIMARY_DARK: '#000FB8',
+		RED: '#E65252',
 	},
 }

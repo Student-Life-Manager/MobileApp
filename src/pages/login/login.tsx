@@ -1,13 +1,41 @@
+import { Formik } from 'formik'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
 import LoginCover from '../../assets/images/login-cover.svg'
 import { Button } from '../../components/ui/button'
 import { PageWrapper } from '../../components/ui/page-wrapper'
+import * as Yup from 'yup'
+import { Text, StyleSheet } from 'react-native'
+import { GLOBAL_STYLES } from '../../constants/styles'
+
+const styles = StyleSheet.create({
+	errorText: {
+		color: GLOBAL_STYLES.COLOR.RED,
+		marginTop: 4,
+	},
+})
+
+type FormValues = {
+	email: string
+}
 
 export const Login = ({ navigation }) => {
-	const goToUser = () =>
-		navigation.navigate('user-profile', {
-			id: 'Pulkit Jasti',
-		})
+	const initialValues: FormValues = {
+		email: '',
+	}
+
+	const validationSchema = Yup.object({
+		email: Yup.string()
+			.required('Email is required')
+			.email('Invalid email address')
+			.matches(
+				/^[a-zA-Z0-9._%+-]+@srmap\.edu\.in$/,
+				'You can only use the official SRM AP email address',
+			),
+	})
+
+	const onSubmit = (values: FormValues) => {
+		console.log(values)
+	}
 
 	return (
 		<PageWrapper>
@@ -22,22 +50,41 @@ export const Login = ({ navigation }) => {
 					<LoginCover />
 				</YStack>
 				<H3>Sign in</H3>
-				<Fieldset>
-					<Label htmlFor='emaill'>Email</Label>
-					<Input
-						id='email'
-						placeholder='student@srmap.edu.in'
-						size='$5'
-					/>
-				</Fieldset>
-				<Fieldset paddingTop='$6'>
-					<Button
-						variant='primary'
-						onPress={goToUser}
-					>
-						Get verification code
-					</Button>
-				</Fieldset>
+				<Formik
+					initialValues={initialValues}
+					validationSchema={validationSchema}
+					onSubmit={onSubmit}
+				>
+					{({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
+						<YStack space='$4'>
+							<Fieldset>
+								<Label htmlFor='emaill'>Email</Label>
+								<Input
+									id='email'
+									placeholder='student@srmap.edu.in'
+									size='$5'
+									onChangeText={handleChange('email')}
+									onBlur={handleBlur('email')}
+									value={values.email}
+								/>
+								{errors.email && touched.email ? (
+									<Text style={styles.errorText}>{errors.email}</Text>
+								) : null}
+							</Fieldset>
+							<Fieldset paddingTop='$6'>
+								<Button
+									variant='primary'
+									size='$5'
+									onPress={() => {
+										handleSubmit()
+									}}
+								>
+									Get verification code
+								</Button>
+							</Fieldset>
+						</YStack>
+					)}
+				</Formik>
 			</YStack>
 		</PageWrapper>
 	)
