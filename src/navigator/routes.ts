@@ -15,6 +15,7 @@ import { FeedbackSent } from '@app/pages/student/feedback-sent'
 import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
 import { OutpassWaiting } from '@app/pages/student/outpass/outpass-waiting'
 import { Outpass } from '@app/pages/student/outpass/outpass-approved'
+import { VerifyOTP } from '@app/pages/verify-otp'
 
 export const routes = [
 	{
@@ -22,6 +23,13 @@ export const routes = [
 		component: PageIndex,
 		options: {
 			title: 'Page index',
+		},
+	},
+	{
+		name: 'verifyOtp',
+		component: VerifyOTP,
+		options: {
+			title: 'Verify OTP',
 		},
 	},
 	{

@@ -4,5 +4,7 @@ export const GLOBAL_STYLES = {
 		SECONDARY: '#E6EBFF',
 		PRIMARY_DARK: '#000FB8',
 		RED: '#E65252',
+		BORDER_COLOR: '#C1C4D2',
+		DARK_TEXT: '#5B5B5B',
 	},
 }

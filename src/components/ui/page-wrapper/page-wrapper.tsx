@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#F7F9FF',
 	},
 	innerView: {
-		paddingVertical: 10,
+		paddingVertical: 20,
 	},
 })
 
