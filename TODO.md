@@ -4,9 +4,7 @@
 
 ### Pulkit
 
-- [ ] Create the OTP input component
 - [ ] Fix the require cycle warning
-- [ ] Scan QR code screen
 
 ### Nikita
 
@@ -29,6 +27,8 @@
 - [x] Set up form validation
 - [x] Create outpass approved page with functioning UI
 - [x] Create common select component
+- [x] Create the OTP input component
+- [x] Scan QR code screen
 
 ### Nikita
 

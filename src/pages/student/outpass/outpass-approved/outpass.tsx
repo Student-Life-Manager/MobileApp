@@ -2,7 +2,7 @@ import { YStack } from 'tamagui'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import QRCode from 'react-native-qrcode-svg'
-import { outpass } from './constants'
+import { outpassList } from '@app/constants/outpass'
 import MD5 from 'crypto-js/md5'
 import { GLOBAL_STYLES } from '@app/constants/styles'
 import { View, Alert, Vibration } from 'react-native'
@@ -23,12 +23,11 @@ export const Outpass = ({ navigation }) => {
 		return JSON.stringify(outpassHash)
 	}
 
-	const [qrCodeValue, setQrCodeValue] = useState(generateQrValue(outpass))
+	const [qrCodeValue, setQrCodeValue] = useState(generateQrValue(outpassList[0]))
 
 	const qrCodeRefresh = () => {
-		// console.log(hashValue)
 		Vibration.vibrate([500])
-		const hashValue = generateQrValue(outpass)
+		const hashValue = generateQrValue(outpassList[0])
 		setQrCodeValue(hashValue)
 	}
 

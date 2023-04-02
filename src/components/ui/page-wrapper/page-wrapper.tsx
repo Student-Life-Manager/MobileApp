@@ -10,26 +10,36 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#F7F9FF',
 	},
-	pageWrapper: {
+	pageWrapperWithPadding: {
 		paddingHorizontal: 20,
+	},
+	innerViewWithPadding: {
+		paddingVertical: 20,
+		minHeight: '100%',
+	},
+	pageWrapper: {
 		backgroundColor: '#F7F9FF',
 	},
 	innerView: {
-		paddingVertical: 20,
+		minHeight: '100%',
 	},
 })
 
-export const PageWrapper = (props: KeyboardAwareScrollViewProps) => {
-	const { children } = props
+interface PageWrapperProps extends KeyboardAwareScrollViewProps {
+	noPadding?: boolean
+}
+
+export const PageWrapper = (props: PageWrapperProps) => {
+	const { children, noPadding } = props
 
 	return (
 		<SafeAreaView style={styles.safeAreaView}>
 			<KeyboardAwareScrollView
-				style={styles.pageWrapper}
+				style={noPadding ? styles.pageWrapper : styles.pageWrapperWithPadding}
 				extraScrollHeight={60}
 				{...props}
 			>
-				<View style={styles.innerView}>{children}</View>
+				<View style={noPadding ? styles.innerView : styles.innerViewWithPadding}>{children}</View>
 			</KeyboardAwareScrollView>
 		</SafeAreaView>
 	)

@@ -26,6 +26,14 @@
 			"backgroundColor": "#ddffe2",
 			"barStyle": "dark-content"
 		},
-		"plugins": ["expo-dev-client"]
+		"plugins": [
+			"expo-dev-client",
+			[
+				"expo-barcode-scanner",
+				{
+					"cameraPermission": "Allow Student Life Manager to access camera."
+				}
+			]
+		]
 	}
 }

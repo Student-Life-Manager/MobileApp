@@ -16,6 +16,8 @@ import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
 import { OutpassWaiting } from '@app/pages/student/outpass/outpass-waiting'
 import { Outpass } from '@app/pages/student/outpass/outpass-approved'
 import { VerifyOTP } from '@app/pages/verify-otp'
+import { PageTemplate } from '@app/pages/page-template'
+import { ScanQRCode } from '@app/pages/scan-qrcode'
 
 export const routes = [
 	{
@@ -23,6 +25,20 @@ export const routes = [
 		component: PageIndex,
 		options: {
 			title: 'Page index',
+		},
+	},
+	{
+		name: 'scanQrCode',
+		component: ScanQRCode,
+		options: {
+			title: 'Scan QR code',
+		},
+	},
+	{
+		name: 'outpass',
+		component: Outpass,
+		options: {
+			title: 'Outpass status',
 		},
 	},
 	{
@@ -138,10 +154,10 @@ export const routes = [
 		},
 	},
 	{
-		name: 'outpass',
-		component: Outpass,
+		name: 'pageTemplate',
+		component: PageTemplate,
 		options: {
-			title: 'Outpass status',
+			title: 'Page template',
 		},
 	},
 ]

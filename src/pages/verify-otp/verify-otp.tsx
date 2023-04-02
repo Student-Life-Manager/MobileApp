@@ -1,6 +1,6 @@
 import { H3, YStack } from 'tamagui'
-import { Button } from '../../components/ui/button'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { InputOTP } from '@app/components/ui/input-otp'
 import { Text, StyleSheet } from 'react-native'
 import { useState, useEffect } from 'react'

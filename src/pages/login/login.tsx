@@ -1,11 +1,11 @@
 import { Formik } from 'formik'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
-import LoginCover from '../../assets/images/login-cover.svg'
-import { Button } from '../../components/ui/button'
-import { PageWrapper } from '../../components/ui/page-wrapper'
+import LoginCover from '@app/assets/images/login-cover.svg'
+import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 import * as Yup from 'yup'
 import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '../../constants/styles'
+import { GLOBAL_STYLES } from '@app/constants/styles'
 
 const styles = StyleSheet.create({
 	errorText: {
