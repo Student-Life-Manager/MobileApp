@@ -77,7 +77,8 @@ export const PersonalDetails = ({ navigation }) => {
 								<Label>First name</Label>
 								<Input
 									id='firstName'
-									size='$5'
+									fontSize={16}
+									height={50}
 									onChangeText={handleChange('firstName')}
 									onBlur={handleBlur('firstName')}
 									value={values.firstName}
@@ -90,7 +91,8 @@ export const PersonalDetails = ({ navigation }) => {
 								<Label>Last name</Label>
 								<Input
 									id='lastName'
-									size='$5'
+									fontSize={16}
+									height={50}
 									onChangeText={handleChange('lastName')}
 									onBlur={handleBlur('lastName')}
 									value={values.lastName}
@@ -103,7 +105,8 @@ export const PersonalDetails = ({ navigation }) => {
 								<Label>Roll number</Label>
 								<Input
 									id='rollNo'
-									size='$5'
+									fontSize={16}
+									height={50}
 									onChangeText={handleChange('rollNo')}
 									onBlur={handleBlur('rollNo')}
 									value={values.rollNo}
@@ -116,7 +119,8 @@ export const PersonalDetails = ({ navigation }) => {
 								<Label>Phone number</Label>
 								<Input
 									id='phoneNumber'
-									size='$5'
+									fontSize={16}
+									height={50}
 									keyboardType='numeric'
 									onChangeText={handleChange('phoneNumber')}
 									onBlur={handleBlur('phoneNumber')}
@@ -130,7 +134,8 @@ export const PersonalDetails = ({ navigation }) => {
 								<Label>Emergency phone number (optional)</Label>
 								<Input
 									id='emergencyPhoneNumber'
-									size='$5'
+									fontSize={16}
+									height={50}
 									keyboardType='numeric'
 									onChangeText={handleChange('emergencyPhoneNumber')}
 									onBlur={handleBlur('emergencyPhoneNumber')}

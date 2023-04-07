@@ -88,16 +88,15 @@ export const HostelDetails = ({ navigation }) => {
 									<Text style={styles.errorText}>{errors.roomNumber}</Text>
 								)}
 							</Fieldset>
-							<Fieldset marginTop='$4'>
-								<Button
-									variant='primary'
-									onPress={() => {
-										handleSubmit()
-									}}
-								>
-									Continue
-								</Button>
-							</Fieldset>
+							<Button
+								style={{ marginTop: 24 }}
+								variant='primary'
+								onPress={() => {
+									handleSubmit()
+								}}
+							>
+								Continue
+							</Button>
 						</YStack>
 					)}
 				</Formik>
