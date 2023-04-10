@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 	},
 	innerViewWithPadding: {
-		paddingVertical: 20,
+		paddingTop: 20,
 		minHeight: '100%',
 	},
 	pageWrapper: {

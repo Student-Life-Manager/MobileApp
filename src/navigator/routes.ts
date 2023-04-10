@@ -28,6 +28,13 @@ export const routes = [
 		},
 	},
 	{
+		name: 'student-home',
+		component: StudentHome,
+		options: {
+			title: 'Student home',
+		},
+	},
+	{
 		name: 'scanQrCode',
 		component: ScanQRCode,
 		options: {
@@ -116,13 +123,6 @@ export const routes = [
 		component: OutpassCancelled,
 		options: {
 			title: 'Oupass cancelled',
-		},
-	},
-	{
-		name: 'student-home',
-		component: StudentHome,
-		options: {
-			title: 'Student home',
 		},
 	},
 	{
