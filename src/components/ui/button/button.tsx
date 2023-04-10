@@ -1,27 +1,22 @@
 import { Button as CustomButton, ButtonProps, styled } from 'tamagui'
 
-const StyledButton = styled(CustomButton, {
-	variants: {
-		variant: {
-			primary: {
-				backgroundColor: '#313FDD',
-				color: '#fff',
+const ButtonPrimary = styled(CustomButton, {
+	backgroundColor: '#313FDD',
+	color: '#fff',
 
-				pressStyle: {
-					backgroundColor: '#000FB8',
-				},
-			},
-			secondary: {
-				backgroundColor: '#E6EBFF',
-				color: '#313FDD',
-				borderColor: '#313FDD',
+	pressStyle: {
+		backgroundColor: '#000FB8',
+	},
+})
 
-				pressStyle: {
-					backgroundColor: '#C7D2FF',
-				},
-			},
-		},
-	} as const,
+const ButtonSecondary = styled(CustomButton, {
+	backgroundColor: '#E6EBFF',
+	color: '#313FDD',
+	borderColor: '#313FDD',
+
+	pressStyle: {
+		backgroundColor: '#C7D2FF',
+	},
 })
 
 interface CustomButtonProps extends ButtonProps {
@@ -29,13 +24,27 @@ interface CustomButtonProps extends ButtonProps {
 }
 
 export const Button = ({ children, ...props }: CustomButtonProps) => {
-	// const { variant } = props
-	return (
-		<StyledButton
-			size='$5'
-			{...props}
-		>
-			{children}
-		</StyledButton>
-	)
+	const { variant } = props
+
+	if (variant === 'primary')
+		return (
+			<ButtonPrimary
+				size='$5'
+				{...props}
+			>
+				{children}
+			</ButtonPrimary>
+		)
+
+	if (variant === 'secondary')
+		return (
+			<ButtonSecondary
+				size='$5'
+				{...props}
+			>
+				{children}
+			</ButtonSecondary>
+		)
+
+	return null
 }

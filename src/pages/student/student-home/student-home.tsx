@@ -1,6 +1,5 @@
-import { H3, YStack, Fieldset, XStack } from 'tamagui'
+import { H3 } from 'tamagui'
 import WardenPage from '@app/assets/images/warden-page.svg'
-import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import { Button } from '@app/components/ui/button'
@@ -32,14 +31,14 @@ const outpassList: studentOutpassListItem[] = [
 
 export const StudentHome = ({ navigation }) => {
 	return (
-		<PageWrapper>
+		<PageWrapper bounces={false}>
 			<View style={styles.pageContainer}>
 				<View>
 					<View style={styles.headerContainer}>
 						<H3>Welcome, {'\n'} Student name</H3>
 						<ProfileIcon />
 					</View>
-					<View>
+					<View style={styles.listContainer}>
 						{outpassList.length > 0 ? (
 							outpassList.map((item) => {
 								return <ListItem {...item} />
@@ -49,10 +48,15 @@ export const StudentHome = ({ navigation }) => {
 						)}
 					</View>
 				</View>
-				<YStack space='$4'>
-					<Button variant='primary'>Get new outpass</Button>
-					<Button2 variant='primary'>Send feedback</Button2>
-				</YStack>
+				<View>
+					<Button
+						style={styles.primaryButton}
+						variant='primary'
+					>
+						Get new outpass
+					</Button>
+					<Button variant='secondary'>Send feedback</Button>
+				</View>
 			</View>
 		</PageWrapper>
 	)
@@ -70,5 +74,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		marginBottom: 16,
+	},
+	listContainer: {
+		alignItems: 'center',
+	},
+	primaryButton: {
+		marginBottom: 12,
 	},
 })

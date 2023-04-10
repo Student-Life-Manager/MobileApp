@@ -2,26 +2,16 @@ import {
 	KeyboardAwareScrollView,
 	KeyboardAwareScrollViewProps,
 } from 'react-native-keyboard-aware-scroll-view'
-import { StyleSheet } from 'react-native'
-import { View, SafeAreaView } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import { GLOBAL_STYLES } from '@app/constants/styles'
+import { useHeaderHeight } from '@react-navigation/elements'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
 	safeAreaView: {
 		flex: 1,
-		backgroundColor: '#F7F9FF',
-	},
-	pageWrapperWithPadding: {
-		paddingHorizontal: 20,
-	},
-	innerViewWithPadding: {
-		paddingTop: 20,
-		minHeight: '100%',
-	},
-	pageWrapper: {
-		backgroundColor: '#F7F9FF',
-	},
-	innerView: {
-		minHeight: '100%',
+		backgroundColor: GLOBAL_STYLES.COLOR.ACCENT,
 	},
 })
 
@@ -31,15 +21,20 @@ interface PageWrapperProps extends KeyboardAwareScrollViewProps {
 
 export const PageWrapper = (props: PageWrapperProps) => {
 	const { children, noPadding } = props
+	const headerHeight = useHeaderHeight()
+	const insets = useSafeAreaInsets()
 
 	return (
 		<SafeAreaView style={styles.safeAreaView}>
 			<KeyboardAwareScrollView
-				style={noPadding ? styles.pageWrapper : styles.pageWrapperWithPadding}
-				extraScrollHeight={60}
+				contentContainerStyle={{
+					minHeight: Dimensions.get('window').height - headerHeight - insets.bottom,
+					paddingHorizontal: noPadding ? 0 : 20,
+					paddingTop: noPadding ? 0 : 20,
+				}}
 				{...props}
 			>
-				<View style={noPadding ? styles.innerView : styles.innerViewWithPadding}>{children}</View>
+				{children}
 			</KeyboardAwareScrollView>
 		</SafeAreaView>
 	)
