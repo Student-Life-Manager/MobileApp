@@ -18,6 +18,7 @@ import { Outpass } from '@app/pages/student/outpass/outpass-approved'
 import { VerifyOTP } from '@app/pages/verify-otp'
 import { PageTemplate } from '@app/pages/page-template'
 import { ScanQRCode } from '@app/pages/scan-qrcode'
+import { StudentProfile } from '@app/pages/student/student-profile'
 
 export const routes = [
 	{
@@ -25,6 +26,13 @@ export const routes = [
 		component: PageIndex,
 		options: {
 			title: 'Page index',
+		},
+	},
+	{
+		name: 'student-profile',
+		component: StudentProfile,
+		options: {
+			title: 'Student Profile',
 		},
 	},
 	{

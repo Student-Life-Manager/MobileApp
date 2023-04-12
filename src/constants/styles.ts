@@ -10,5 +10,6 @@ export const GLOBAL_STYLES = {
 		DARK_TEXT: '#5B5B5B',
 		LIGHT_TEXT: '#9A9A9A',
 		SHADOW: '#DBCFE7',
+		HORIZONTAL_LINE: '#efefef',
 	},
 }
