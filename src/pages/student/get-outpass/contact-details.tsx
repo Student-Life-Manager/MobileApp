@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 	},
 })
 
-type FormValues = {
+interface FormValues {
 	guardian: string
 	warden: string
 	alternatePhone: string
@@ -36,6 +36,7 @@ export const ContactDetails = ({ navigation }) => {
 	const onSubmit = (values: FormValues) => {
 		console.log(values)
 	}
+
 	return (
 		<PageWrapper>
 			<YStack

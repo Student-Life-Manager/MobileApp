@@ -3,8 +3,8 @@ import { Modal } from './modal'
 
 interface renderModal {
 	modalContent: JSX.Element
-	payload: object
-	defaultHeight: string // in #%
+	payload?: object
+	defaultHeight?: string // in #%
 }
 
 export interface globalModal {
@@ -33,8 +33,8 @@ export const GlobalModalProvider = (props) => {
 	const renderModal = (props: renderModal) => {
 		setModalState(true)
 		setModalContent(props.modalContent)
-		setPayload(props.payload)
-		setDefaultHeight(props.defaultHeight)
+		setPayload(props.payload || {})
+		setDefaultHeight(props.defaultHeight || '50%')
 	}
 
 	const closeModal = () => {

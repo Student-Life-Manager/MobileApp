@@ -21,7 +21,7 @@ export const Modal = (props: ModalProps) => {
 	const topInset = inset.top > topInsetFallback ? inset.top : topInsetFallback
 
 	// This is for passing height through renderModal function but this isn't working at the moment because the modal component isn't re-rendering when the value is updated. Try ot get this working in future
-	const [initialHeight, setInitialHeight] = useState('50%')
+	const [initialHeight, setInitialHeight] = useState('57%')
 	const snapPoints = useMemo(() => [initialHeight, '100%'], [])
 	useEffect(() => {
 		// setInitialHeight(defaultHeight)
@@ -48,6 +48,7 @@ export const Modal = (props: ModalProps) => {
 				if (index === -1) onClose()
 			}}
 			style={styles.sheetContainer}
+			contentHeight={200}
 		>
 			<View style={styles.contentContainer}>{modalContent}</View>
 		</BottomSheet>

@@ -41,14 +41,9 @@ const guardianDetailsData = [
 export const StudentProfile = ({ navigation }) => {
 	const { renderModal } = useGlobalModal()
 
-	const handleButtonClick = () => {
+	const handleEditInfo = () => {
 		renderModal({
 			modalContent: <EditInfoModal />,
-			defaultHeight: '20%',
-			payload: {
-				test1: '11111',
-				test2: '22222',
-			},
 		})
 	}
 
@@ -60,7 +55,7 @@ export const StudentProfile = ({ navigation }) => {
 			</View>
 			<Button
 				variant='primary'
-				onTouchEnd={handleButtonClick}
+				onTouchEnd={handleEditInfo}
 			>
 				Modal test
 			</Button>
@@ -71,6 +66,7 @@ export const StudentProfile = ({ navigation }) => {
 					listIconDirection='right'
 					itemAdornment={InfoVerified}
 					listIconCommon={EditPencil}
+					listIconOnClick={handleEditInfo}
 				/>
 				<InfoList
 					heading='Guardian details'
