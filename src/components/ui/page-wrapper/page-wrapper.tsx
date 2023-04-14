@@ -7,14 +7,6 @@ import { SafeAreaView } from 'react-native'
 import { GLOBAL_STYLES } from '@app/constants/styles'
 import { useHeaderHeight } from '@react-navigation/elements'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
-const styles = StyleSheet.create({
-	safeAreaView: {
-		flex: 1,
-		backgroundColor: GLOBAL_STYLES.COLOR.ACCENT,
-	},
-})
-
 interface PageWrapperProps extends KeyboardAwareScrollViewProps {
 	noPadding?: boolean
 }
@@ -39,3 +31,10 @@ export const PageWrapper = (props: PageWrapperProps) => {
 		</SafeAreaView>
 	)
 }
+
+const styles = StyleSheet.create({
+	safeAreaView: {
+		flex: 1,
+		backgroundColor: GLOBAL_STYLES.COLOR.ACCENT,
+	},
+})

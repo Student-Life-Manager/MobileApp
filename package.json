@@ -13,6 +13,7 @@
 		"upgrade:tamagui": "manypkg upgrade tamagui && manypkg upgrade @tamagui && manypkg upgrade tamagui-loader"
 	},
 	"dependencies": {
+		"@gorhom/bottom-sheet": "^4.4.5",
 		"@react-navigation/native": "6.1.1",
 		"@react-navigation/native-stack": "6.9.7",
 		"@tamagui/animations-reanimated": "1.7.7",
