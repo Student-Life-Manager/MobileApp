@@ -1,7 +1,7 @@
 import { H3 } from 'tamagui'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
-import { Text, StyleSheet, View, Alert } from 'react-native'
+import { Text, View, Alert } from 'react-native'
 import { InfoList } from '@app/components/ui/info-list'
 import AddPhone from '@app/assets/icons/add-phone.svg'
 import InfoVerified from '@app/assets/icons/info-verified.svg'
@@ -12,6 +12,7 @@ import { useGlobalModal } from '@app/components/hooks/global-modal'
 import { AddGuardianModal } from './@components/add-guardian-modal'
 import { InfoListItemProps } from '@app/components/ui/info-list/info-list'
 import { KeyboardType } from '@app/constants/enums'
+import { styles } from './styles'
 
 // TODO: Add new select component inside the edit info form
 // TODO: Refactor otp input component to include the resend functionality and then add it in modal
@@ -173,35 +174,3 @@ export const StudentProfile = ({ navigation }) => {
 		</PageWrapper>
 	)
 }
-
-const styles = StyleSheet.create({
-	studentName: {
-		fontSize: 20,
-		marginBottom: 8,
-	},
-	rollNumber: {
-		fontSize: 16,
-	},
-	editIconWrapper: {
-		height: 40,
-		width: 40,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	headerIconWrapper: {
-		height: 50,
-		width: 40,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	deleteIconWrapper: {
-		height: 50,
-		width: 50,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		transform: [{ scale: 0.9 }],
-	},
-})

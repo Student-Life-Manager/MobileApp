@@ -1,7 +1,7 @@
 import { YStack, Text } from 'tamagui'
 import CancelledIcon from '@app/assets/images/cancelled-icon.svg'
-import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
+import { Button } from '@app/components/ui/button'
 
 export const OutpassCancelled = ({ navigation }) => {
 	return (
@@ -48,7 +48,7 @@ export const OutpassCancelled = ({ navigation }) => {
 					marginTop={'$4'}
 					marginBottom={'$4'}
 				>
-					<Button2 variant='primary'>Get new outpass</Button2>
+					<Button variant='secondary'>Get new outpass</Button>
 				</YStack>
 			</YStack>
 		</PageWrapper>

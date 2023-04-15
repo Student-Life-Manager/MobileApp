@@ -1,23 +1,5 @@
-import { Button as CustomButton, ButtonProps, styled } from 'tamagui'
-
-const ButtonPrimary = styled(CustomButton, {
-	backgroundColor: '#313FDD',
-	color: '#fff',
-
-	pressStyle: {
-		backgroundColor: '#000FB8',
-	},
-})
-
-const ButtonSecondary = styled(CustomButton, {
-	backgroundColor: '#E6EBFF',
-	color: '#313FDD',
-	borderColor: '#313FDD',
-
-	pressStyle: {
-		backgroundColor: '#C7D2FF',
-	},
-})
+import { ButtonProps } from 'tamagui'
+import { ButtonPrimary, ButtonSecondary } from './styles'
 
 interface CustomButtonProps extends ButtonProps {
 	variant: 'primary' | 'secondary'

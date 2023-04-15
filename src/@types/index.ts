@@ -1,4 +1,4 @@
-import { Status } from '@app/constants/enums'
+import { OutpassStatus } from '@app/constants/enums'
 
 export type outpassType = {
 	outpassId: string
@@ -15,5 +15,5 @@ export type studentOutpassListItem = {
 	outpassId: string
 	outTime: string
 	date: string
-	status: Status
+	status: OutpassStatus
 }

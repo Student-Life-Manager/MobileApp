@@ -1,11 +1,12 @@
 import { useGlobalModal } from '@app/components/hooks/global-modal'
 import { Button } from '@app/components/ui/button'
-import { GLOBAL_STYLES } from '@app/constants/styles'
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { Fieldset, H4, Label } from 'tamagui'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { styles } from './styles'
+import { globalStyles } from '@app/constants/styles'
 
 interface FormValues {
 	dataType: string
@@ -62,7 +63,7 @@ export const EditInfoModal = () => {
 								keyboardType={payload.keyboardType}
 							/>
 							{errors.userData && touched.userData && (
-								<Text style={styles.errorText}>{errors.userData}</Text>
+								<Text style={globalStyles.errorText}>{errors.userData}</Text>
 							)}
 						</Fieldset>
 						<View style={styles.buttonsContainer}>
@@ -89,26 +90,3 @@ export const EditInfoModal = () => {
 		</View>
 	)
 }
-
-const styles = StyleSheet.create({
-	heading: {
-		marginBottom: 12,
-	},
-	textInput: {
-		padding: 16,
-		borderRadius: 10,
-		borderColor: GLOBAL_STYLES.COLOR.BORDER_COLOR,
-		borderWidth: 1,
-		fontSize: 16,
-	},
-	buttonsContainer: {
-		marginTop: 24,
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-	},
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})

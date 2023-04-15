@@ -3,16 +3,8 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
-GLOBAL_STYLES
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 
 type FormValues = {
 	firstName: string
@@ -84,7 +76,7 @@ export const PersonalDetails = ({ navigation }) => {
 									value={values.firstName}
 								/>
 								{errors.firstName && touched.firstName ? (
-									<Text style={styles.errorText}>{errors.firstName}</Text>
+									<Text style={globalStyles.errorText}>{errors.firstName}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -98,7 +90,7 @@ export const PersonalDetails = ({ navigation }) => {
 									value={values.lastName}
 								/>
 								{errors.lastName && touched.lastName ? (
-									<Text style={styles.errorText}>{errors.lastName}</Text>
+									<Text style={globalStyles.errorText}>{errors.lastName}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -112,7 +104,7 @@ export const PersonalDetails = ({ navigation }) => {
 									value={values.rollNo}
 								/>
 								{errors.rollNo && touched.rollNo ? (
-									<Text style={styles.errorText}>{errors.rollNo}</Text>
+									<Text style={globalStyles.errorText}>{errors.rollNo}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -127,7 +119,7 @@ export const PersonalDetails = ({ navigation }) => {
 									value={values.phoneNumber}
 								/>
 								{errors.phoneNumber && touched.phoneNumber ? (
-									<Text style={styles.errorText}>{errors.phoneNumber}</Text>
+									<Text style={globalStyles.errorText}>{errors.phoneNumber}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -142,7 +134,7 @@ export const PersonalDetails = ({ navigation }) => {
 									value={values.emergencyPhoneNumber}
 								/>
 								{errors.emergencyPhoneNumber && touched.emergencyPhoneNumber ? (
-									<Text style={styles.errorText}>{errors.emergencyPhoneNumber}</Text>
+									<Text style={globalStyles.errorText}>{errors.emergencyPhoneNumber}</Text>
 								) : null}
 							</Fieldset>
 							<Button

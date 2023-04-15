@@ -3,16 +3,9 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 import { Select } from '@app/components/ui/select'
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
 
 interface FormValues {
 	guardian: string
@@ -66,7 +59,7 @@ export const ContactDetails = ({ navigation }) => {
 									]}
 								/>
 								{errors.guardian && touched.guardian && (
-									<Text style={styles.errorText}>{errors.guardian}</Text>
+									<Text style={globalStyles.errorText}>{errors.guardian}</Text>
 								)}
 							</Fieldset>
 							<Fieldset>
@@ -84,7 +77,7 @@ export const ContactDetails = ({ navigation }) => {
 									]}
 								/>
 								{errors.warden && touched.warden && (
-									<Text style={styles.errorText}>{errors.warden}</Text>
+									<Text style={globalStyles.errorText}>{errors.warden}</Text>
 								)}
 							</Fieldset>
 							<Fieldset>
@@ -99,7 +92,7 @@ export const ContactDetails = ({ navigation }) => {
 									value={values.alternatePhone}
 								/>
 								{errors.alternatePhone && touched.alternatePhone ? (
-									<Text style={styles.errorText}>{errors.alternatePhone}</Text>
+									<Text style={globalStyles.errorText}>{errors.alternatePhone}</Text>
 								) : null}
 							</Fieldset>
 							<Button

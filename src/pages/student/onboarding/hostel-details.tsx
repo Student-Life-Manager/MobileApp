@@ -3,16 +3,9 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 import { Select } from '@app/components/ui/select'
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
 
 type FormValues = {
 	towerName: string
@@ -70,7 +63,7 @@ export const HostelDetails = ({ navigation }) => {
 									]}
 								/>
 								{errors.towerName && touched.towerName && (
-									<Text style={styles.errorText}>{errors.towerName}</Text>
+									<Text style={globalStyles.errorText}>{errors.towerName}</Text>
 								)}
 							</Fieldset>
 							<Fieldset>
@@ -85,7 +78,7 @@ export const HostelDetails = ({ navigation }) => {
 									onBlur={handleBlur('roomNumber')}
 								/>
 								{errors.roomNumber && touched.roomNumber && (
-									<Text style={styles.errorText}>{errors.roomNumber}</Text>
+									<Text style={globalStyles.errorText}>{errors.roomNumber}</Text>
 								)}
 							</Fieldset>
 							<Button

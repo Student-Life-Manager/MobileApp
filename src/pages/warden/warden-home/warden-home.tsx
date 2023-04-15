@@ -1,8 +1,8 @@
 import { H3, YStack, Fieldset, XStack } from 'tamagui'
 import WardenPage from '@app/assets/images/warden-page.svg'
-import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
+import { Button } from '@app/components/ui/button'
 
 export const WardenHome = ({ navigation }) => {
 	return (
@@ -29,10 +29,10 @@ export const WardenHome = ({ navigation }) => {
 					<WardenPage />
 				</Fieldset>
 				<Fieldset paddingTop='$8'>
-					<Button2 variant='primary'>View outpass list</Button2>
+					<Button variant='secondary'>View outpass list</Button>
 				</Fieldset>
 				<Fieldset>
-					<Button2 variant='primary'>Scan QR code</Button2>
+					<Button variant='secondary'>Scan QR code</Button>
 				</Fieldset>
 			</YStack>
 		</PageWrapper>

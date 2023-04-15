@@ -1,4 +1,4 @@
-import { GLOBAL_STYLES } from '@app/constants/styles'
+import { TOKEN } from '@app/constants/styles'
 import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator'
 import { useRef } from 'react'
 
@@ -22,11 +22,11 @@ export const Timer = ({ onRefresh }: timerProps) => {
 			value={timerLimit}
 			radius={30}
 			duration={timerLimit * 1000}
-			progressValueColor={GLOBAL_STYLES.COLOR.PRIMARY}
+			progressValueColor={TOKEN.COLOR.PRIMARY}
 			maxValue={timerLimit}
-			circleBackgroundColor={GLOBAL_STYLES.COLOR.SECONDARY}
-			activeStrokeColor={GLOBAL_STYLES.COLOR.PRIMARY}
-			inActiveStrokeColor={GLOBAL_STYLES.COLOR.SECONDARY}
+			circleBackgroundColor={TOKEN.COLOR.SECONDARY}
+			activeStrokeColor={TOKEN.COLOR.PRIMARY}
+			inActiveStrokeColor={TOKEN.COLOR.SECONDARY}
 			activeStrokeWidth={4}
 			onAnimationComplete={onAnimationComplete}
 		/>

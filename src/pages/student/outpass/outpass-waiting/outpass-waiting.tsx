@@ -1,7 +1,7 @@
 import { YStack, Text } from 'tamagui'
 import WaitingIcon from '@app/assets/images/waiting-icon.svg'
-import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
+import { Button } from '@app/components/ui/button'
 
 export const OutpassWaiting = ({ navigation }) => {
 	return (
@@ -26,7 +26,7 @@ export const OutpassWaiting = ({ navigation }) => {
 					</Text>
 				</YStack>
 				<YStack marginTop='$20'>
-					<Button2 variant='primary'>Get new outpass</Button2>
+					<Button variant='secondary'>Get new outpass</Button>
 				</YStack>
 			</YStack>
 		</PageWrapper>

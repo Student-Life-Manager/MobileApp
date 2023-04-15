@@ -1,18 +1,10 @@
 import { YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
-import { Button2 } from '@app/components/ui/button2'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
-GLOBAL_STYLES
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
+import { Button } from '@app/components/ui/button'
 
 type FormValues = {
 	type: string
@@ -66,7 +58,7 @@ export const FeedbackForm = ({ navigation }) => {
 									value={values.type}
 								/>
 								{errors.type && touched.type ? (
-									<Text style={styles.errorText}>{errors.type}</Text>
+									<Text style={globalStyles.errorText}>{errors.type}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -80,18 +72,18 @@ export const FeedbackForm = ({ navigation }) => {
 									value={values.message}
 								/>
 								{errors.message && touched.message ? (
-									<Text style={styles.errorText}>{errors.message}</Text>
+									<Text style={globalStyles.errorText}>{errors.message}</Text>
 								) : null}
 							</Fieldset>
-							<Button2
+							<Button
 								style={{ marginTop: 24 }}
-								variant='primary'
+								variant='secondary'
 								onPress={() => {
 									handleSubmit()
 								}}
 							>
 								Submit
-							</Button2>
+							</Button>
 						</YStack>
 					)}
 				</Formik>

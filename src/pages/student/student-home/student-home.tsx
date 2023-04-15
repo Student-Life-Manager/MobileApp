@@ -4,28 +4,29 @@ import { PageWrapper } from '@app/components/ui/page-wrapper'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { ListItem } from './@components/list-item'
-import { Status } from '@app/constants/enums'
+import { OutpassStatus } from '@app/constants/enums'
 import { studentOutpassListItem } from '@app/@types'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
+import { styles } from './styles'
 
 const outpassList: studentOutpassListItem[] = [
 	{
 		date: '2021-09-01',
 		outTime: '12:30 PM',
 		outpassId: '123',
-		status: Status.PENDING,
+		status: OutpassStatus.Pending,
 	},
 	{
 		date: '2021-09-01',
 		outTime: '8:20 AM',
 		outpassId: '123',
-		status: Status.APPROVED,
+		status: OutpassStatus.Approved,
 	},
 	{
 		date: '2021-09-01',
 		outTime: '2:00 PM',
 		outpassId: '123',
-		status: Status.REJECTED,
+		status: OutpassStatus.Rejected,
 	},
 ]
 
@@ -61,24 +62,3 @@ export const StudentHome = ({ navigation }) => {
 		</PageWrapper>
 	)
 }
-
-const styles = StyleSheet.create({
-	pageContainer: {
-		flex: 1,
-		display: 'flex',
-		justifyContent: 'space-between',
-	},
-	headerContainer: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		marginBottom: 16,
-	},
-	listContainer: {
-		alignItems: 'center',
-	},
-	primaryButton: {
-		marginBottom: 12,
-	},
-})

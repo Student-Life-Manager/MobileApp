@@ -1,7 +1,8 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Keyboard, StyleSheet, View } from 'react-native'
+import { Keyboard, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { styles } from './styles'
 
 interface ModalProps {
 	modalContent: JSX.Element
@@ -54,19 +55,3 @@ export const Modal = (props: ModalProps) => {
 		</BottomSheet>
 	)
 }
-
-const styles = StyleSheet.create({
-	sheetContainer: {
-		shadowColor: '#808080a5',
-		shadowOpacity: 0.1,
-		shadowOffset: {
-			height: -7,
-			width: 0,
-		},
-	},
-	contentContainer: {
-		flex: 1,
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-	},
-})

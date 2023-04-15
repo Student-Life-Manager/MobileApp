@@ -3,16 +3,8 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
-GLOBAL_STYLES
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 
 type FormValues = {
 	year: string
@@ -73,7 +65,7 @@ export const AcademicDetails = ({ navigation }) => {
 									value={values.year}
 								/>
 								{errors.year && touched.year ? (
-									<Text style={styles.errorText}>{errors.year}</Text>
+									<Text style={globalStyles.errorText}>{errors.year}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -87,7 +79,7 @@ export const AcademicDetails = ({ navigation }) => {
 									value={values.course}
 								/>
 								{errors.course && touched.course ? (
-									<Text style={styles.errorText}>{errors.course}</Text>
+									<Text style={globalStyles.errorText}>{errors.course}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -101,7 +93,7 @@ export const AcademicDetails = ({ navigation }) => {
 									value={values.branch}
 								/>
 								{errors.branch && touched.branch ? (
-									<Text style={styles.errorText}>{errors.branch}</Text>
+									<Text style={globalStyles.errorText}>{errors.branch}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -115,7 +107,7 @@ export const AcademicDetails = ({ navigation }) => {
 									value={values.section}
 								/>
 								{errors.section && touched.section ? (
-									<Text style={styles.errorText}>{errors.section}</Text>
+									<Text style={globalStyles.errorText}>{errors.section}</Text>
 								) : null}
 							</Fieldset>
 							<Button

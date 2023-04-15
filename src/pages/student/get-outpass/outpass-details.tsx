@@ -3,18 +3,9 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 import { Select } from '@app/components/ui/select'
-
-GLOBAL_STYLES
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
 
 type FormValues = {
 	outDate: string
@@ -86,7 +77,7 @@ export const OutpassDetails = ({ navigation }) => {
 									value={values.outDate}
 								/>
 								{errors.outDate && touched.outDate ? (
-									<Text style={styles.errorText}>{errors.outDate}</Text>
+									<Text style={globalStyles.errorText}>{errors.outDate}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -101,7 +92,7 @@ export const OutpassDetails = ({ navigation }) => {
 									value={values.returnDate}
 								/>
 								{errors.returnDate && touched.returnDate ? (
-									<Text style={styles.errorText}>{errors.returnDate}</Text>
+									<Text style={globalStyles.errorText}>{errors.returnDate}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -116,7 +107,7 @@ export const OutpassDetails = ({ navigation }) => {
 									value={values.outTime}
 								/>
 								{errors.outTime && touched.outTime ? (
-									<Text style={styles.errorText}>{errors.outTime}</Text>
+									<Text style={globalStyles.errorText}>{errors.outTime}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -130,7 +121,7 @@ export const OutpassDetails = ({ navigation }) => {
 									value={values.location}
 								/>
 								{errors.location && touched.location ? (
-									<Text style={styles.errorText}>{errors.location}</Text>
+									<Text style={globalStyles.errorText}>{errors.location}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset>
@@ -148,7 +139,7 @@ export const OutpassDetails = ({ navigation }) => {
 									]}
 								/>
 								{errors.reason && touched.reason && (
-									<Text style={styles.errorText}>{errors.reason}</Text>
+									<Text style={globalStyles.errorText}>{errors.reason}</Text>
 								)}
 							</Fieldset>
 							<Fieldset>

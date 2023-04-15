@@ -1,19 +1,20 @@
 import { PageWrapper } from '@app/components/ui/page-wrapper'
-import { Text, StyleSheet, View } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
+import { Text, View } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect } from 'react'
 import { outpassList } from '@app/constants/outpass'
-import { generatedOutpassType, outpassType } from '@app/@types'
+import { outpassType } from '@app/@types'
 import { MD5 } from 'crypto-js'
 import { outpassScanMessages } from '@app/constants/messages'
+import { styles } from './styles'
+import { OutpassStatus } from '@app/constants/enums'
 
 export const ScanQRCode = ({ navigation }) => {
 	const [hasPermission, setHasPermission] = useState<boolean>(false)
 	const [scanned, setScanned] = useState<boolean>(false)
-	const [outpassApprovalStatus, setOutpassApprovalStatus] = useState<
-		'approved' | 'rejected' | 'waiting'
-	>('waiting')
+	const [outpassApprovalStatus, setOutpassApprovalStatus] = useState<OutpassStatus>(
+		OutpassStatus.Pending,
+	)
 	const [outpassMessage, setOutpassMessage] = useState<string | null>(null)
 
 	const getBarCodeScannerPermissions = async () => {
@@ -34,23 +35,22 @@ export const ScanQRCode = ({ navigation }) => {
 			})
 			console.log('final outpass', finalOutpass)
 
-			setOutpassApprovalStatus('approved')
+			setOutpassApprovalStatus(OutpassStatus.Approved)
 
 			setTimeout(() => {
-				setOutpassApprovalStatus('waiting')
+				setOutpassApprovalStatus(OutpassStatus.Pending)
 				setOutpassMessage(null)
 				setScanned(false)
 			}, 3000)
 		} else {
-			setOutpassApprovalStatus('rejected')
+			setOutpassApprovalStatus(OutpassStatus.Rejected)
 			setOutpassMessage(outpassScanMessages.invalidQRCode)
 
 			setTimeout(() => {
-				setOutpassApprovalStatus('waiting')
+				setOutpassApprovalStatus(OutpassStatus.Pending)
 				setOutpassMessage(null)
 				setScanned(false)
 			}, 3000)
-
 			// alert(outpassScanMessages.invalidQRCode)
 		}
 	}
@@ -83,22 +83,23 @@ export const ScanQRCode = ({ navigation }) => {
 				<View style={styles.infoContainer}>
 					{outpassApprovalStatus && (
 						<View
-							style={
-								outpassApprovalStatus === 'waiting'
+							style={[
+								styles.approvalStatusTag,
+								outpassApprovalStatus === OutpassStatus.Pending
 									? styles.approvalStatusTagBlue
-									: outpassApprovalStatus === 'approved'
+									: outpassApprovalStatus === OutpassStatus.Approved
 									? styles.approvalStatusTagGreen
-									: outpassApprovalStatus === 'rejected'
+									: outpassApprovalStatus === OutpassStatus.Rejected
 									? styles.approvalStatusTagRed
-									: null
-							}
+									: null,
+							]}
 						>
 							<Text style={styles.statusText}>
-								{outpassApprovalStatus === 'waiting'
+								{outpassApprovalStatus === OutpassStatus.Pending
 									? 'Waiting to scan QR code'
-									: outpassApprovalStatus === 'approved'
+									: outpassApprovalStatus === OutpassStatus.Approved
 									? 'Exit approved'
-									: outpassApprovalStatus === 'rejected'
+									: outpassApprovalStatus === OutpassStatus.Rejected
 									? 'Exit rejected'
 									: null}
 							</Text>
@@ -107,7 +108,7 @@ export const ScanQRCode = ({ navigation }) => {
 
 					{outpassMessage && (
 						<View style={styles.messageWrapper}>
-							<Text style={{ color: GLOBAL_STYLES.COLOR.DARK_TEXT }}>{outpassMessage}</Text>
+							<Text style={styles.messageText}>{outpassMessage}</Text>
 						</View>
 					)}
 				</View>
@@ -115,68 +116,3 @@ export const ScanQRCode = ({ navigation }) => {
 		</PageWrapper>
 	)
 }
-
-const styles = StyleSheet.create({
-	pageContainer: {
-		flex: 1,
-	},
-	cameraOverlay: {
-		height: '100%',
-		width: '100%',
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	cameraQRBorder: {
-		height: '65%',
-		width: '65%',
-		borderColor: GLOBAL_STYLES.COLOR.PRIMARY,
-		borderWidth: 4,
-		borderStyle: 'dashed',
-		borderRadius: 20,
-	},
-	cameraComponent: {
-		height: 400,
-	},
-	infoContainer: {
-		marginTop: 40,
-		display: 'flex',
-		alignItems: 'center',
-	},
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-	},
-	approvalStatusTagBlue: {
-		backgroundColor: GLOBAL_STYLES.COLOR.PRIMARY,
-		paddingVertical: 10,
-		paddingHorizontal: 20,
-		borderRadius: 100,
-	},
-	approvalStatusTagGreen: {
-		backgroundColor: GLOBAL_STYLES.COLOR.GREEN,
-		paddingVertical: 10,
-		paddingHorizontal: 20,
-		borderRadius: 100,
-	},
-	approvalStatusTagRed: {
-		backgroundColor: GLOBAL_STYLES.COLOR.RED,
-		paddingVertical: 10,
-		paddingHorizontal: 20,
-		borderRadius: 100,
-	},
-	statusText: { color: '#fff', fontWeight: '600', textAlign: 'center' },
-	messageWrapper: {
-		marginTop: 20,
-		borderColor: GLOBAL_STYLES.COLOR.BORDER_COLOR,
-		borderWidth: 1,
-		borderRadius: 10,
-		paddingVertical: 12,
-		paddingHorizontal: 20,
-	},
-	buttonWrapper: {
-		paddingHorizontal: 20,
-	},
-})

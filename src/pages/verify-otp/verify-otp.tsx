@@ -2,37 +2,10 @@ import { H3, YStack } from 'tamagui'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { InputOTP } from '@app/components/ui/input-otp'
-import { Text, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
 import { useState, useEffect } from 'react'
-import { GLOBAL_STYLES } from '@app/constants/styles'
 import { useTimer } from 'react-timer-hook'
-
-const styles = StyleSheet.create({
-	container: {
-		marginVertical: 30,
-		alignItems: 'center',
-	},
-	resendAllowed: {
-		color: GLOBAL_STYLES.COLOR.PRIMARY,
-		borderBottomColor: GLOBAL_STYLES.COLOR.PRIMARY,
-		textDecorationLine: 'underline',
-	},
-	resendNotAllowed: {
-		textDecorationLine: 'underline',
-	},
-	wrongCode: {
-		color: GLOBAL_STYLES.COLOR.RED,
-	},
-	newCodeSent: {
-		color: GLOBAL_STYLES.COLOR.PRIMARY,
-	},
-	infoText: {
-		color: GLOBAL_STYLES.COLOR.DARK_TEXT,
-		lineHeight: 24,
-		marginTop: 0,
-		marginBottom: 20,
-	},
-})
+import { styles } from './styles'
 
 export const VerifyOTP = ({ navigation }) => {
 	const TIMER_LIMIT = 10

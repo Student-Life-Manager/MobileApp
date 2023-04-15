@@ -1,7 +1,7 @@
-export enum Status {
-	APPROVED = 'APPROVED',
-	PENDING = 'PENDING',
-	REJECTED = 'REJECTED',
+export enum OutpassStatus {
+	Approved = 'approved',
+	Pending = 'pending',
+	Rejected = 'rejected',
 }
 
 export enum KeyboardType {

@@ -4,15 +4,8 @@ import LoginCover from '@app/assets/images/login-cover.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import * as Yup from 'yup'
-import { Text, StyleSheet } from 'react-native'
-import { GLOBAL_STYLES } from '@app/constants/styles'
-
-const styles = StyleSheet.create({
-	errorText: {
-		color: GLOBAL_STYLES.COLOR.RED,
-		marginTop: 4,
-	},
-})
+import { Text } from 'react-native'
+import { globalStyles } from '@app/constants/styles'
 
 type FormValues = {
 	email: string
@@ -68,7 +61,7 @@ export const Login = ({ navigation }) => {
 									value={values.email}
 								/>
 								{errors.email && touched.email ? (
-									<Text style={styles.errorText}>{errors.email}</Text>
+									<Text style={globalStyles.errorText}>{errors.email}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset paddingTop='$6'>

@@ -1,4 +1,6 @@
-export const GLOBAL_STYLES = {
+import { StyleSheet } from 'react-native'
+
+export const TOKEN = {
 	COLOR: {
 		PRIMARY: '#313FDD',
 		SECONDARY: '#E6EBFF',
@@ -13,3 +15,10 @@ export const GLOBAL_STYLES = {
 		HORIZONTAL_LINE: '#efefef',
 	},
 }
+
+export const globalStyles = StyleSheet.create({
+	errorText: {
+		color: TOKEN.COLOR.RED,
+		marginTop: 4,
+	},
+})

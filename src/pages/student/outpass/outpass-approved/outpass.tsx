@@ -4,14 +4,14 @@ import { PageWrapper } from '@app/components/ui/page-wrapper'
 import QRCode from 'react-native-qrcode-svg'
 import { outpassList } from '@app/constants/outpass'
 import MD5 from 'crypto-js/md5'
-import { GLOBAL_STYLES } from '@app/constants/styles'
 import { View, Alert, Vibration } from 'react-native'
 import { InfoList } from '@app/components/ui/info-list'
 import LocationIcon from '@app/assets/icons/location.svg'
 import CalendarIcon from '@app/assets/icons/calendar.svg'
-import { Timer } from './@components'
 import { useState } from 'react'
 import { StatusLabel } from './@components/status-label'
+import { styles } from './styles'
+import { Timer } from './@components/timer'
 
 export const Outpass = ({ navigation }) => {
 	const generateQrValue = (outpass) => {
@@ -49,19 +49,7 @@ export const Outpass = ({ navigation }) => {
 				paddingTop='$8'
 			>
 				<StatusLabel status='returnedCampus' />
-				<View
-					style={{
-						backgroundColor: GLOBAL_STYLES.COLOR.SECONDARY,
-						borderWidth: 2,
-						borderColor: GLOBAL_STYLES.COLOR.PRIMARY,
-						borderStyle: 'dashed',
-						borderRadius: 20,
-						height: 270,
-						width: 270,
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
+				<View style={styles.QRWrapper}>
 					<QRCode
 						value={qrCodeValue}
 						size={220}
@@ -71,6 +59,7 @@ export const Outpass = ({ navigation }) => {
 				<Timer onRefresh={qrCodeRefresh} />
 			</YStack>
 			<InfoList
+				listIconDirection='left'
 				listData={[
 					{
 						title: 'Location',
