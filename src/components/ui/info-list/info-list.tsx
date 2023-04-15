@@ -1,42 +1,63 @@
 import { GLOBAL_STYLES } from '@app/constants/styles'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ViewStyle } from 'react-native'
 import { SvgProps } from 'react-native-svg'
 
 export interface InfoListItemProps {
 	title: string
 	value: string
 	icon?: React.ComponentType<SvgProps>
-	adornmentVisible?: boolean
+	isAdornmentVisible?: boolean
+	isListIconVisible?: boolean
+	onClick?: () => void
 }
 export interface InfoListProps {
 	listData: InfoListItemProps[]
 	listIconCommon?: React.ComponentType<SvgProps>
-	listIconDirection?: 'left' | 'right'
-	listIconOnClick?: () => void
+	listIconDirection: 'left' | 'right'
+	listIconWrapperStyle?: ViewStyle
 	heading?: string
 	headerIcon?: React.ComponentType<SvgProps>
+	headerIconWrapperStyle?: ViewStyle
 	headerIconOnClick?: () => void
-	itemAdornment?: React.ComponentType<SvgProps>
+	itemAdornmentIcon?: React.ComponentType<SvgProps>
 	emptyStateText?: string
 }
 
 const renderListIcon = (
 	Icon: React.ComponentType<SvgProps>,
+	iconDirection: 'left' | 'right',
+	item: InfoListItemProps,
+	listIconWrapperStyle?: ViewStyle,
+) => {
+	return (
+		<View
+			style={[
+				iconDirection === 'left' ? { marginRight: 16 } : null,
+				listIconWrapperStyle ? listIconWrapperStyle : null,
+			]}
+			onTouchEnd={() => {
+				if (item.onClick && item.isListIconVisible) item.onClick()
+			}}
+		>
+			{item.isListIconVisible ? <Icon {...listIconStyles} /> : null}
+		</View>
+	)
+}
+const renderHeaderIcon = (
+	Icon: React.ComponentType<SvgProps>,
 	onClick: () => void,
-	iconDirection,
-) => (
-	<Icon
-		{...listIconStyles}
-		style={iconDirection === 'left' ? { marginRight: 16 } : null}
-		onTouchStart={onClick}
-	/>
-)
-const renderHeaderIcon = (Icon: React.ComponentType<SvgProps>, onClick: () => void) => (
-	<Icon
-		{...headerIconStyles}
-		onTouchStart={onClick}
-	/>
-)
+	headerIconWrapperStyle?: ViewStyle,
+) => {
+	return (
+		<View style={headerIconWrapperStyle ? headerIconWrapperStyle : null}>
+			<Icon
+				{...headerIconStyles}
+				onTouchEnd={onClick}
+			/>
+		</View>
+	)
+}
+
 const renderAdornmentIcon = (Icon: React.ComponentType<SvgProps>) => (
 	<Icon {...adornmentIconStyles} />
 )
@@ -46,11 +67,12 @@ export const InfoList = (props: InfoListProps) => {
 		listData,
 		listIconCommon,
 		listIconDirection,
-		listIconOnClick = () => 0,
+		listIconWrapperStyle,
 		heading,
 		headerIcon,
+		headerIconWrapperStyle,
 		headerIconOnClick = () => 0,
-		itemAdornment,
+		itemAdornmentIcon,
 		emptyStateText,
 	} = props
 
@@ -60,7 +82,9 @@ export const InfoList = (props: InfoListProps) => {
 				<View style={styles.headingContainer}>
 					<View style={styles.headingWrapper}>
 						<Text style={styles.headingText}>{heading}</Text>
-						{headerIcon ? renderHeaderIcon(headerIcon, headerIconOnClick) : null}
+						{headerIcon
+							? renderHeaderIcon(headerIcon, headerIconOnClick, headerIconWrapperStyle)
+							: null}
 					</View>
 					<View style={styles.line}></View>
 				</View>
@@ -76,15 +100,17 @@ export const InfoList = (props: InfoListProps) => {
 								: styles.listContainerIconRight,
 						]}
 					>
-						{listIconCommon
-							? renderListIcon(listIconCommon, listIconOnClick, listIconDirection)
-							: item.icon
-							? renderListIcon(item.icon, listIconOnClick, listIconDirection)
+						{item.icon
+							? renderListIcon(item.icon, listIconDirection, item, listIconWrapperStyle)
+							: listIconCommon
+							? renderListIcon(listIconCommon, listIconDirection, item, listIconWrapperStyle)
 							: null}
 						<View>
 							<View style={[styles.listItemHeadingWrapper]}>
 								<Text style={styles.listItemHeading}>{item.title}</Text>
-								{item.adornmentVisible && itemAdornment ? renderAdornmentIcon(itemAdornment) : null}
+								{item.isAdornmentVisible && itemAdornmentIcon
+									? renderAdornmentIcon(itemAdornmentIcon)
+									: null}
 							</View>
 							<Text style={styles.listItemText}>{item.value}</Text>
 						</View>
@@ -108,7 +134,7 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		borderRadius: 16,
 		paddingHorizontal: 20,
-		paddingVertical: 12,
+		paddingBottom: 16,
 	},
 	headingContainer: {
 		marginVertical: 4,
@@ -117,7 +143,8 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginBottom: 12,
+		alignItems: 'center',
+		height: 50,
 	},
 	headingText: {
 		fontSize: 18,

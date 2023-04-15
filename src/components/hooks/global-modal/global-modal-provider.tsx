@@ -11,7 +11,7 @@ export interface globalModal {
 	modalState: boolean
 	renderModal: (props: renderModal) => void
 	closeModal: () => void
-	payload: object
+	payload: { [key: string]: any }
 }
 
 const modalInitialState = {
@@ -38,7 +38,9 @@ export const GlobalModalProvider = (props) => {
 	}
 
 	const closeModal = () => {
-		setModalState(false)
+		setModalState(modalInitialState.modalState)
+		setModalContent(modalInitialState.modalContent)
+		setPayload(modalInitialState.payload)
 	}
 
 	return (

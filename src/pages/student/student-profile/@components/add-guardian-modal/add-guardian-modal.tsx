@@ -8,43 +8,32 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 interface FormValues {
-	dataType: string
-	userData: string
+	phoneNumber: string
+	relation: string
 }
 
-export const EditInfoModal = () => {
-	const { closeModal, payload } = useGlobalModal()
+export const AddGuardianModal = () => {
+	const { closeModal } = useGlobalModal()
 
 	const initialValues: FormValues = {
-		dataType: payload.dataType,
-		userData: '',
+		phoneNumber: '',
+		relation: '',
 	}
 
 	const validationSchema = Yup.object().shape({
-		dataType: Yup.string().oneOf(['roomNumber', 'phoneNumber', 'select']),
-		userData: Yup.string()
+		relation: Yup.string().required('This field can not be empty'),
+		phoneNumber: Yup.string()
 			.required('This field can not be empty')
-			.when('dataType', {
-				is: 'roomNumber',
-				then: (schema) => schema.length(3, 'Room number should be 3 digits long'),
-			})
-			.when('dataType', {
-				is: 'phoneNumber',
-				then: (schema) =>
-					schema.matches(
-						/^[0-9]{10}$/,
-						'Phone number should be 10 digits long and not contain any letters or spaces',
-					),
-			}),
+			.matches(/^[0-9]{10}$/, 'Phone number should be 10 digits long'),
 	})
 
 	const handleSubmit = (values: FormValues) => {
-		console.log('form values', values)
+		console.log('new form values', values)
 	}
 
 	return (
 		<View>
-			<H4 style={styles.heading}>Edit info</H4>
+			<H4 style={styles.heading}>Add new guardian contact</H4>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={validationSchema}
@@ -53,16 +42,28 @@ export const EditInfoModal = () => {
 				{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 					<View>
 						<Fieldset>
-							<Label>{payload?.title}</Label>
+							<Label>Phone number</Label>
 							<BottomSheetTextInput
-								value={values.userData}
+								value={values.phoneNumber}
 								style={styles.textInput}
-								onChangeText={handleChange('userData')}
-								onBlur={handleBlur('userData')}
-								keyboardType={payload.keyboardType}
+								onChangeText={handleChange('phoneNumber')}
+								onBlur={handleBlur('phoneNumber')}
+								keyboardType='numeric'
 							/>
-							{errors.userData && touched.userData && (
-								<Text style={styles.errorText}>{errors.userData}</Text>
+							{errors.phoneNumber && touched.phoneNumber && (
+								<Text style={styles.errorText}>{errors.phoneNumber}</Text>
+							)}
+						</Fieldset>
+						<Fieldset>
+							<Label>Relation</Label>
+							<BottomSheetTextInput
+								value={values.relation}
+								style={styles.textInput}
+								onChangeText={handleChange('relation')}
+								onBlur={handleBlur('relation')}
+							/>
+							{errors.relation && touched.relation && (
+								<Text style={styles.errorText}>{errors.relation}</Text>
 							)}
 						</Fieldset>
 						<View style={styles.buttonsContainer}>
@@ -80,7 +81,7 @@ export const EditInfoModal = () => {
 									handleSubmit()
 								}}
 							>
-								Update
+								Add
 							</Button>
 						</View>
 					</View>

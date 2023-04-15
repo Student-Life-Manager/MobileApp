@@ -10,7 +10,7 @@ interface ModalProps {
 	defaultHeight: string
 }
 
-// TODO: Add a prop for initial snap point and get it working properly
+// TODO: Add a prop for initial snap point and get it working properly or even better, check how to change the height based on the content inside, that's the best solution
 // TODO: Add a slight background behind the modal
 
 export const Modal = (props: ModalProps) => {
