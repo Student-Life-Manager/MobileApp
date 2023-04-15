@@ -1,11 +1,11 @@
-// import { FC } from 'react'
 import { Separator, YStack } from 'tamagui'
 
+import { MyStack } from '@app/components/MyStack'
+
+import { UserDetails } from './@components/detail'
 import { DialogDemo } from './@components/dialog'
 import { InputDemo } from './@components/input'
 import { SelectDemo } from './@components/select'
-import { UserDetails } from './@components/detail'
-import { MyStack } from '@app/components/MyStack'
 
 export const UserProfile = ({ route }: any) => {
 	const { id } = route.params

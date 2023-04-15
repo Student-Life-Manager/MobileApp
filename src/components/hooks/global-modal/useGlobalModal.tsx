@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import { GlobalModalContext } from './global-modal-provider'
 
 export const useGlobalModal = () => {

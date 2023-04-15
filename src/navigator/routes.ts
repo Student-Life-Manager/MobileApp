@@ -1,24 +1,25 @@
 import { Login } from '@app/pages/login'
 import { PageIndex } from '@app/pages/page-index'
-import { UserProfile } from '@app/pages/user-profile'
-import { PersonalDetails } from '@app/pages/student/onboarding'
-import { HostelDetails } from '@app/pages/student/onboarding'
-import { AcademicDetails } from '@app/pages/student/onboarding'
-import { CreateAccountPage } from '@app/pages/student/onboarding'
-import { OutpassDetails } from '@app/pages/student/get-outpass'
-import { ContactDetails } from '@app/pages/student/get-outpass'
-import { WardenAccount } from '@app/pages/warden/warden-account'
-import { WardenHome } from '@app/pages/warden/warden-home'
-import { StudentHome } from '@app/pages/student/student-home'
-import { FeedbackForm } from '@app/pages/student/feedback-form'
-import { FeedbackSent } from '@app/pages/student/feedback-sent'
-import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
-import { OutpassWaiting } from '@app/pages/student/outpass/outpass-waiting'
-import { Outpass } from '@app/pages/student/outpass/outpass-approved'
-import { VerifyOTP } from '@app/pages/verify-otp'
 import { PageTemplate } from '@app/pages/page-template'
 import { ScanQRCode } from '@app/pages/scan-qrcode'
+import { FeedbackForm } from '@app/pages/student/feedback-form'
+import { FeedbackSent } from '@app/pages/student/feedback-sent'
+import { OutpassDetails, ContactDetails } from '@app/pages/student/get-outpass'
+import {
+	PersonalDetails,
+	HostelDetails,
+	AcademicDetails,
+	CreateAccountPage,
+} from '@app/pages/student/onboarding'
+import { Outpass } from '@app/pages/student/outpass/outpass-approved'
+import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
+import { OutpassWaiting } from '@app/pages/student/outpass/outpass-waiting'
+import { StudentHome } from '@app/pages/student/student-home'
 import { StudentProfile } from '@app/pages/student/student-profile'
+import { UserProfile } from '@app/pages/user-profile'
+import { VerifyOTP } from '@app/pages/verify-otp'
+import { WardenAccount } from '@app/pages/warden/warden-account'
+import { WardenHome } from '@app/pages/warden/warden-home'
 
 export const routes = [
 	{

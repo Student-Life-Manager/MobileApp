@@ -1,10 +1,12 @@
-import { H3, YStack } from 'tamagui'
-import { Button } from '@app/components/ui/button'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
-import { InputOTP } from '@app/components/ui/input-otp'
-import { Text } from 'react-native'
 import { useState, useEffect } from 'react'
+import { Text } from 'react-native'
 import { useTimer } from 'react-timer-hook'
+import { H3, YStack } from 'tamagui'
+
+import { Button } from '@app/components/ui/button'
+import { InputOTP } from '@app/components/ui/input-otp'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
+
 import { styles } from './styles'
 
 export const VerifyOTP = ({ navigation }) => {

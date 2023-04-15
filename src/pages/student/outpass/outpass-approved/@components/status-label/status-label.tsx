@@ -1,8 +1,12 @@
 import { View, Text } from 'react-native'
+
 import ExitedCampusIcon from '@app/assets/icons/exited-campus.svg'
 import InCampusIcon from '@app/assets/icons/in-campus.svg'
 import ReturnedCampusIcon from '@app/assets/icons/returned-campus.svg'
+
 import { styles, iconProps } from './styles'
+
+//  TODO: see if this can be turned into an enum
 
 interface statusLabelProps {
 	status: 'exitedCampus' | 'inCampus' | 'returnedCampus'

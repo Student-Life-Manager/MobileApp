@@ -1,17 +1,19 @@
-import { H3 } from 'tamagui'
-import { Button } from '@app/components/ui/button'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Text, View, Alert } from 'react-native'
-import { InfoList } from '@app/components/ui/info-list'
+import { H3 } from 'tamagui'
+
 import AddPhone from '@app/assets/icons/add-phone.svg'
-import InfoVerified from '@app/assets/icons/info-verified.svg'
-import EditPencil from '@app/assets/icons/edit-pencil.svg'
 import Delete from '@app/assets/icons/delete.svg'
-import { EditInfoModal } from './@components/edit-info-modal'
+import EditPencil from '@app/assets/icons/edit-pencil.svg'
+import InfoVerified from '@app/assets/icons/info-verified.svg'
 import { useGlobalModal } from '@app/components/hooks/global-modal'
-import { AddGuardianModal } from './@components/add-guardian-modal'
+import { Button } from '@app/components/ui/button'
+import { InfoList } from '@app/components/ui/info-list'
 import { InfoListItemProps } from '@app/components/ui/info-list/info-list'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { KeyboardType } from '@app/constants/enums'
+
+import { AddGuardianModal } from './@components/add-guardian-modal'
+import { EditInfoModal } from './@components/edit-info-modal'
 import { styles } from './styles'
 
 // TODO: Add new select component inside the edit info form

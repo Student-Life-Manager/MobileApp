@@ -1,11 +1,12 @@
+import { Formik } from 'formik'
+import { Text } from 'react-native'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
+import * as Yup from 'yup'
+
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
-import { Text } from 'react-native'
-import { globalStyles } from '@app/constants/styles'
 import { Select } from '@app/components/ui/select'
+import { globalStyles } from '@app/constants/styles'
 
 interface FormValues {
 	guardian: string

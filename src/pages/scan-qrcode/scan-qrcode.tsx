@@ -1,13 +1,15 @@
-import { PageWrapper } from '@app/components/ui/page-wrapper'
-import { Text, View } from 'react-native'
+import { MD5 } from 'crypto-js'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect } from 'react'
-import { outpassList } from '@app/constants/outpass'
+import { Text, View } from 'react-native'
+
 import { outpassType } from '@app/@types'
-import { MD5 } from 'crypto-js'
-import { outpassScanMessages } from '@app/constants/messages'
-import { styles } from './styles'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { OutpassStatus } from '@app/constants/enums'
+import { outpassScanMessages } from '@app/constants/messages'
+import { outpassList } from '@app/constants/outpass'
+
+import { styles } from './styles'
 
 export const ScanQRCode = ({ navigation }) => {
 	const [hasPermission, setHasPermission] = useState<boolean>(false)

@@ -1,5 +1,6 @@
 import { View, Text, ViewStyle } from 'react-native'
 import { SvgProps } from 'react-native-svg'
+
 import { styles, listIconStyles, adornmentIconStyles, headerIconStyles } from './styles'
 
 export interface InfoListItemProps {

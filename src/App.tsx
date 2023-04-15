@@ -1,8 +1,8 @@
 import 'expo-dev-client'
 
 import { useFonts } from 'expo-font'
-import { NativeNavigator } from './navigator'
 
+import { NativeNavigator } from './navigator'
 import { Provider } from './provider'
 
 const App = () => {

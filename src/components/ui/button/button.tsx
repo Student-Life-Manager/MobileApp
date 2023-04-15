@@ -1,4 +1,5 @@
 import { ButtonProps } from 'tamagui'
+
 import { ButtonPrimary, ButtonSecondary } from './styles'
 
 interface CustomButtonProps extends ButtonProps {

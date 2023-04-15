@@ -1,7 +1,10 @@
 import { YStack, Text } from 'tamagui'
+
 import WaitingIcon from '@app/assets/images/waiting-icon.svg'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
+
+//  TODO: remove color literals and store them ik global token
 
 export const OutpassWaiting = ({ navigation }) => {
 	return (

@@ -1,10 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { Suspense } from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { TamaguiProvider } from 'tamagui'
 
-import config from '../tamagui.config'
 import { GlobalModalProvider } from '@app/components/hooks/global-modal'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import config from '../tamagui.config'
 
 export const Provider = ({ children }) => {
 	return (

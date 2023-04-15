@@ -1,6 +1,5 @@
 {
 	"parser": "@typescript-eslint/parser",
-	"extends": ["universe/shared/typescript-analysis", "prettier"],
 	"parserOptions": {
 		"project": "./tsconfig.json",
 		"ecmaFeatures": {
@@ -8,10 +7,51 @@
 		}
 	},
 	"plugins": ["@typescript-eslint", "react", "react-native", "prettier", "eslint-plugin-tsdoc"],
+	"extends": [
+		"universe/shared/typescript-analysis",
+		"prettier",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript"
+	],
 	"rules": {
+		"no-redeclare": "off",
+		"@typescript-eslint/no-redeclare": [
+			"error",
+			{
+				"builtinGlobals": false
+			}
+		],
 		"react/prop-types": "off",
 		"@typescript-eslint/no-unused-vars": "warn",
 		"prettier/prettier": "warn",
-		"tsdoc/syntax": "error"
+		"tsdoc/syntax": "error",
+		"no-irregular-whitespace": "error",
+		"import/order": [
+			"warn",
+			{
+				"newlines-between": "always",
+				"groups": [
+					"builtin",
+					"external",
+					"internal",
+					"parent",
+					"sibling",
+					"index",
+					"object",
+					"type"
+				],
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		]
+	},
+	"settings": {
+		"import/ignore": ["node_modules/react-native/index\\.js$"],
+		"import/resolver": {
+			"typescript": {}
+		}
 	}
 }

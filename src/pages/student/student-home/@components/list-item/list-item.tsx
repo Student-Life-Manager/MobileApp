@@ -1,10 +1,12 @@
 import { View, Text } from 'react-native'
+
 import { studentOutpassListItem } from '@app/@types'
 import ChevronRight from '@app/assets/icons/chevron-right.svg'
-import StatusPending from '@app/assets/icons/status-pending.svg'
 import StatusApproved from '@app/assets/icons/status-approved.svg'
+import StatusPending from '@app/assets/icons/status-pending.svg'
 import StatusRejected from '@app/assets/icons/status-rejected.svg'
 import { OutpassStatus } from '@app/constants/enums'
+
 import { styles, iconStyle } from './styles'
 
 interface ListItemProps extends studentOutpassListItem {}

@@ -1,11 +1,11 @@
+import { useHeaderHeight } from '@react-navigation/elements'
+import { Dimensions, SafeAreaView } from 'react-native'
 import {
 	KeyboardAwareScrollView,
 	KeyboardAwareScrollViewProps,
 } from 'react-native-keyboard-aware-scroll-view'
-import { Dimensions } from 'react-native'
-import { SafeAreaView } from 'react-native'
-import { useHeaderHeight } from '@react-navigation/elements'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 import { styles } from './styles'
 
 interface PageWrapperProps extends KeyboardAwareScrollViewProps {

@@ -2,6 +2,7 @@ import BottomSheet from '@gorhom/bottom-sheet'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Keyboard, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
 import { styles } from './styles'
 
 interface ModalProps {

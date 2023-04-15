@@ -21,3 +21,4 @@ format: ## Format code using eslint and prettier
 .PHONY: check
 check: ## Checks code format issues
 	yarn prettier --check $(PRETTIER_FILES_PATTERN)
+	yarn eslint --fix $(SCRIPTS_PATTERN)

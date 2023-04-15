@@ -1,4 +1,5 @@
 import OTPInputView, { InputProps } from '@twotalltotems/react-native-otp-input'
+
 import { styles } from './styles'
 
 export const InputOTP = (props: InputProps) => {

@@ -1,8 +1,9 @@
 import { Github, Twitter } from '@tamagui/lucide-icons'
 import { Anchor, H1, ListItem, Paragraph, Separator, YGroup, YStack } from 'tamagui'
 
-import { LinkToUser } from './link-to-user'
 import { MyStack } from '../../components/MyStack'
+
+import { LinkToUser } from './link-to-user'
 
 export const Home = ({ navigation }) => {
 	return (

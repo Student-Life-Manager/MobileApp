@@ -1,6 +1,7 @@
-import { TOKEN } from '@app/constants/styles'
 import { StyleSheet } from 'react-native'
 import { SvgProps } from 'react-native-svg'
+
+import { TOKEN } from '@app/constants/styles'
 
 export const iconProps: SvgProps = {
 	height: 25,

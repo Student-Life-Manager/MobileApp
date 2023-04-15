@@ -1,7 +1,8 @@
 import { YStack, Text } from 'tamagui'
+
 import CancelledIcon from '@app/assets/images/cancelled-icon.svg'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
 
 export const OutpassCancelled = ({ navigation }) => {
 	return (

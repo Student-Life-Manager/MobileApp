@@ -1,12 +1,14 @@
-import { useGlobalModal } from '@app/components/hooks/global-modal'
-import { Button } from '@app/components/ui/button'
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet'
+import { Formik } from 'formik'
 import { View, Text } from 'react-native'
 import { Fieldset, H4, Label } from 'tamagui'
-import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { styles } from './styles'
+
+import { useGlobalModal } from '@app/components/hooks/global-modal'
+import { Button } from '@app/components/ui/button'
 import { globalStyles } from '@app/constants/styles'
+
+import { styles } from './styles'
 
 interface FormValues {
 	dataType: string

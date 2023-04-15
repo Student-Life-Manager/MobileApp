@@ -1,7 +1,8 @@
-import { routes } from '@app/navigator/routes'
 import { H3, YStack } from 'tamagui'
+
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
+import { routes } from '@app/navigator/routes'
 
 export const PageIndex = ({ navigation }) => {
 	const goToUser = (pageName) =>

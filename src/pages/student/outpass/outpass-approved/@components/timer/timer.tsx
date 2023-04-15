@@ -1,6 +1,7 @@
-import { TOKEN } from '@app/constants/styles'
-import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator'
 import { useRef } from 'react'
+import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator'
+
+import { TOKEN } from '@app/constants/styles'
 
 const timerLimit = 20
 

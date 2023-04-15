@@ -1,10 +1,11 @@
-import { YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { Formik } from 'formik'
-import * as Yup from 'yup'
 import { Text } from 'react-native'
-import { globalStyles } from '@app/constants/styles'
+import { YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
+import * as Yup from 'yup'
+
 import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
+import { globalStyles } from '@app/constants/styles'
 
 type FormValues = {
 	type: string

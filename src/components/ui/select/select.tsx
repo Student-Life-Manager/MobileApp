@@ -1,15 +1,5 @@
-import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { useState } from 'react'
+import { Check, ChevronDown } from '@tamagui/lucide-icons'
 import { Adapt, Select as TamaguiSelect, Sheet, SelectProps } from 'tamagui'
-import { LinearGradient } from 'tamagui/linear-gradient'
-
-const items = [
-	{ reason: 'Leisure' },
-	{ reason: 'Home' },
-	{ reason: 'Medical' },
-	{ reason: 'Academic' },
-	{ reason: 'Other' },
-]
 
 interface CustomSelectProps extends SelectProps {
 	data: {
@@ -19,8 +9,6 @@ interface CustomSelectProps extends SelectProps {
 }
 
 export const Select = ({ data, name, id, ...props }: CustomSelectProps) => {
-	// const [val, setVal] = useState('apple')
-
 	return (
 		<TamaguiSelect {...props}>
 			<TamaguiSelect.Trigger

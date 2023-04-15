@@ -1,12 +1,14 @@
-import { H3 } from 'tamagui'
-import WardenPage from '@app/assets/images/warden-page.svg'
-import { PageWrapper } from '@app/components/ui/page-wrapper'
-import ProfileIcon from '@app/assets/images/profile-icon.svg'
-import { Button } from '@app/components/ui/button'
-import { ListItem } from './@components/list-item'
-import { OutpassStatus } from '@app/constants/enums'
-import { studentOutpassListItem } from '@app/@types'
 import { View } from 'react-native'
+import { H3 } from 'tamagui'
+
+import { studentOutpassListItem } from '@app/@types'
+import ProfileIcon from '@app/assets/images/profile-icon.svg'
+import WardenPage from '@app/assets/images/warden-page.svg'
+import { Button } from '@app/components/ui/button'
+import { PageWrapper } from '@app/components/ui/page-wrapper'
+import { OutpassStatus } from '@app/constants/enums'
+
+import { ListItem } from './@components/list-item'
 import { styles } from './styles'
 
 const outpassList: studentOutpassListItem[] = [
