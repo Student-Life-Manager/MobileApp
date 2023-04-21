@@ -13,7 +13,7 @@ import {
 } from '@app/pages/student/onboarding'
 import { Outpass } from '@app/pages/student/outpass/outpass-approved'
 import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
-import { OutpassWaiting } from '@app/pages/student/outpass/outpass-waiting'
+import { OutpassPending } from '@app/pages/student/outpass/outpass-waiting'
 import { StudentHome } from '@app/pages/student/student-home'
 import { StudentProfile } from '@app/pages/student/student-profile'
 import { UserProfile } from '@app/pages/user-profile'
@@ -122,7 +122,7 @@ export const routes = [
 	},
 	{
 		name: 'outpass-waiting',
-		component: OutpassWaiting,
+		component: OutpassPending,
 		options: {
 			title: 'Oupass waiting',
 		},

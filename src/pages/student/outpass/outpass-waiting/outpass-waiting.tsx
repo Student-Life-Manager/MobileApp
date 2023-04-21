@@ -1,37 +1,34 @@
-import { YStack, Text } from 'tamagui'
+import { View, Text } from 'react-native'
 
 import WaitingIcon from '@app/assets/images/waiting-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 
-//  TODO: remove color literals and store them ik global token
+import { styles } from './styles'
 
-export const OutpassWaiting = ({ navigation }) => {
+export const OutpassPending = ({ navigation }) => {
+	const navigateToHome = () => {
+		navigation.navigate('student-home')
+	}
+
 	return (
 		<PageWrapper>
-			<YStack
-				space='$4'
-				maxWidth={600}
-			>
-				<YStack
-					marginTop={'50%'}
-					alignItems='center'
-				>
+			<View style={styles.pageContainer}>
+				<View>{/* Required for verticle center */}</View>
+				<View style={styles.contentContainer}>
 					<WaitingIcon />
-				</YStack>
-				<YStack>
-					<Text
-						color='#6F6F6F'
-						textAlign='center'
-					>
+					<Text style={styles.messageText}>
 						Your outpass request has been sent to your warden, please wait for 1-2 hours to get
 						approval. Meanwhile, contact your tower’s warden in-person to receive instant feedback.
 					</Text>
-				</YStack>
-				<YStack marginTop='$20'>
-					<Button variant='secondary'>Get new outpass</Button>
-				</YStack>
-			</YStack>
+				</View>
+				<Button
+					variant='secondary'
+					onPress={navigateToHome}
+				>
+					Back
+				</Button>
+			</View>
 		</PageWrapper>
 	)
 }

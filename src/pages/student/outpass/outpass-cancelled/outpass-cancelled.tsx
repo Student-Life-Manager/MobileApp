@@ -1,57 +1,41 @@
-import { YStack, Text } from 'tamagui'
+import { View, Text } from 'react-native'
 
 import CancelledIcon from '@app/assets/images/cancelled-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 
+import { styles } from './styles'
+
 export const OutpassCancelled = ({ navigation }) => {
+	const navigateToHome = () => {
+		navigation.navigate('outpass-details')
+	}
+
 	return (
 		<PageWrapper>
-			<YStack
-				space='$4'
-				maxWidth={600}
-			>
-				<YStack
-					marginTop={'40%'}
-					alignItems='center'
-				>
+			<View style={styles.pageContainer}>
+				<View>{/* Required for verticle center */}</View>
+				<View style={styles.contentContainer}>
 					<CancelledIcon />
-				</YStack>
-				<YStack>
-					<Text
-						color='#6F6F6F'
-						textAlign='center'
-						margin={20}
-					>
+					<Text style={styles.subHeading}>
 						Your ourpass has been rejected by Revathi for the following reason
 					</Text>
-				</YStack>
-				<YStack
-					margin={20}
-					minHeight={150}
-					borderRadius={'16%'}
-					backgroundColor={'#FAE3E3'}
-				>
-					<Text
-						color='#6F6F6F'
-						textAlign='justify'
-						padding='$4'
-					>
-						<Text fontWeight={'700'}>Message</Text>
+					<View style={styles.messageWrapper}>
+						<Text style={styles.messageHeading}>Message</Text>
 						<Text>
-							{'\n\n'}
 							Your outpass has been rejected because as it is a weekday we can't allow you for an
 							outing.
 						</Text>
-					</Text>
-				</YStack>
-				<YStack
-					marginTop={'$4'}
-					marginBottom={'$4'}
+					</View>
+				</View>
+
+				<Button
+					variant='secondary'
+					onPress={navigateToHome}
 				>
-					<Button variant='secondary'>Get new outpass</Button>
-				</YStack>
-			</YStack>
+					Back
+				</Button>
+			</View>
 		</PageWrapper>
 	)
 }

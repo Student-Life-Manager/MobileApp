@@ -1,13 +1,15 @@
 import { Formik } from 'formik'
-import { Text } from 'react-native'
-import { YStack, Fieldset, Input, Label, TextArea } from 'tamagui'
+import { Text, View } from 'react-native'
+import { Fieldset, Input, Label, TextArea } from 'tamagui'
 import * as Yup from 'yup'
 
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { globalStyles } from '@app/constants/styles'
 
-type FormValues = {
+import { styles } from './styles'
+
+interface FormValues {
 	type: string
 	message: string
 }
@@ -17,6 +19,7 @@ export const FeedbackForm = ({ navigation }) => {
 		type: '',
 		message: '',
 	}
+
 	const validationSchema = Yup.object({
 		type: Yup.string()
 			.required('Type of message is required')
@@ -36,46 +39,49 @@ export const FeedbackForm = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
+		navigation.navigate('feedback-sent')
 	}
+
 	return (
-		<PageWrapper>
-			<YStack maxWidth={600}>
+		<PageWrapper bounces={false}>
+			<View style={styles.pageContainer}>
 				<Formik
 					initialValues={initialValues}
 					onSubmit={onSubmit}
 					validationSchema={validationSchema}
 				>
 					{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
-						<YStack space='$4'>
-							<Fieldset>
-								<Label>Type of message</Label>
-								<Input
-									id='type'
-									fontSize={16}
-									height={50}
-									onChangeText={handleChange('type')}
-									onBlur={handleBlur('type')}
-									value={values.type}
-								/>
-								{errors.type && touched.type ? (
-									<Text style={globalStyles.errorText}>{errors.type}</Text>
-								) : null}
-							</Fieldset>
-							<Fieldset>
-								<Label>Message</Label>
-								<TextArea
-									id='message'
-									minHeight={240}
-									numberOfLines={4}
-									onChangeText={handleChange('message')}
-									onBlur={handleBlur('message')}
-									value={values.message}
-								/>
-								{errors.message && touched.message ? (
-									<Text style={globalStyles.errorText}>{errors.message}</Text>
-								) : null}
-							</Fieldset>
+						<View style={styles.formContainer}>
+							<View>
+								<Fieldset>
+									<Label>Type of message</Label>
+									<Input
+										id='type'
+										fontSize={16}
+										height={50}
+										onChangeText={handleChange('type')}
+										onBlur={handleBlur('type')}
+										value={values.type}
+									/>
+									{errors.type && touched.type ? (
+										<Text style={globalStyles.errorText}>{errors.type}</Text>
+									) : null}
+								</Fieldset>
+								<Fieldset>
+									<Label>Message</Label>
+									<TextArea
+										id='message'
+										minHeight={240}
+										numberOfLines={4}
+										onChangeText={handleChange('message')}
+										onBlur={handleBlur('message')}
+										value={values.message}
+									/>
+									{errors.message && touched.message ? (
+										<Text style={globalStyles.errorText}>{errors.message}</Text>
+									) : null}
+								</Fieldset>
+							</View>
 							<Button
 								style={{ marginTop: 24 }}
 								variant='secondary'
@@ -85,10 +91,10 @@ export const FeedbackForm = ({ navigation }) => {
 							>
 								Submit
 							</Button>
-						</YStack>
+						</View>
 					)}
 				</Formik>
-			</YStack>
+			</View>
 		</PageWrapper>
 	)
 }
