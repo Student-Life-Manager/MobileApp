@@ -5,7 +5,7 @@
 		"version": "2.2.5",
 		"assetBundlePatterns": ["**/*"],
 		"orientation": "portrait",
-		"userInterfaceStyle": "light",
+		"userInterfaceStyle": "automatic",
 		"jsEngine": "hermes",
 		"splash": {
 			"backgroundColor": "#ddffe2",
