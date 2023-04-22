@@ -33,18 +33,35 @@ const outpassList: studentOutpassListItem[] = [
 ]
 
 export const StudentHome = ({ navigation }) => {
+	const navigateToProfile = () => {
+		navigation.navigate('student-profile')
+	}
+
+	const navigateToGetNewOutpass = () => {
+		navigation.navigate('outpass-details')
+	}
+
+	const navigateToFeedback = () => {
+		navigation.navigate('feedback-form')
+	}
+
 	return (
 		<PageWrapper bounces={false}>
 			<View style={styles.pageContainer}>
 				<View>
 					<View style={styles.headerContainer}>
 						<H3>Welcome, {'\n'} Student name</H3>
-						<ProfileIcon />
+						<ProfileIcon onPress={navigateToProfile} />
 					</View>
 					<View style={styles.listContainer}>
 						{outpassList.length > 0 ? (
 							outpassList.map((item) => {
-								return <ListItem {...item} />
+								return (
+									<ListItem
+										{...item}
+										navigation={navigation}
+									/>
+								)
 							})
 						) : (
 							<WardenPage />
@@ -55,10 +72,16 @@ export const StudentHome = ({ navigation }) => {
 					<Button
 						style={styles.primaryButton}
 						variant='primary'
+						onPress={navigateToGetNewOutpass}
 					>
 						Get new outpass
 					</Button>
-					<Button variant='secondary'>Send feedback</Button>
+					<Button
+						variant='secondary'
+						onPress={navigateToFeedback}
+					>
+						Send feedback
+					</Button>
 				</View>
 			</View>
 		</PageWrapper>

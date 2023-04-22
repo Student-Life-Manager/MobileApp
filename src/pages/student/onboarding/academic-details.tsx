@@ -21,6 +21,7 @@ export const AcademicDetails = ({ navigation }) => {
 		branch: '',
 		section: '',
 	}
+
 	const validationSchema = Yup.object({
 		year: Yup.string()
 			.required('Year of study is required')
@@ -41,8 +42,9 @@ export const AcademicDetails = ({ navigation }) => {
 	})
 
 	const handleFormSubmit = (values: FormValues) => {
-		console.log(values)
+		navigation.navigate('student-home')
 	}
+
 	return (
 		<PageWrapper>
 			<YStack maxWidth={600}>

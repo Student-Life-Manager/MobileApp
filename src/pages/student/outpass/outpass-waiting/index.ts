@@ -1,1 +1,1 @@
-export { OutpassWaiting } from './outpass-waiting'
+export { OutpassPending } from './outpass-waiting'

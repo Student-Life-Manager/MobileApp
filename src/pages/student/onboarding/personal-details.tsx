@@ -37,13 +37,11 @@ export const PersonalDetails = ({ navigation }) => {
 			.max(15, 'Last name cannot be longer than 15 characters')
 			.matches(/^[A-Za-z\s]+$/, 'Last name should only contain letters and spaces'),
 
-		rollNo: Yup.string()
-			.required('Roll number is required')
-			.matches(/^AP\d{11}$/, 'Roll number should match the format AP###########'),
+		rollNo: Yup.string().required('Roll number is required'),
+		// .matches(/^AP\d{11}$/, 'Roll number should match the format AP###########'),
 
-		phoneNumber: Yup.string()
-			.required('Phone number is required')
-			.matches(/^[0-9]{10}$/, 'Phone number should be 10 digits long'),
+		phoneNumber: Yup.string().required('Phone number is required'),
+		// .matches(/^[0-9]{10}$/, 'Phone number should be 10 digits long'),
 
 		emergencyPhoneNumber: Yup.string().matches(
 			/^[0-9]{10}$/,
@@ -52,7 +50,7 @@ export const PersonalDetails = ({ navigation }) => {
 	})
 
 	const handleFormSubmit = (values: FormValues) => {
-		console.log(values)
+		navigation.navigate('verifyOtp')
 	}
 
 	return (

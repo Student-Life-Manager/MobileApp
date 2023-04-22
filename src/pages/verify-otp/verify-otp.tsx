@@ -35,8 +35,8 @@ export const VerifyOTP = ({ navigation }) => {
 	}
 
 	const handleVerify = () => {
-		console.log('verify')
-		setIsOtpSent('wrongCode')
+		navigation.navigate('hostel-details')
+		// setIsOtpSent('wrongCode')
 	}
 
 	useEffect(() => {

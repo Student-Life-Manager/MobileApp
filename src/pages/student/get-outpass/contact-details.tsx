@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import { Text } from 'react-native'
+import { Text, Alert } from 'react-native'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
 import * as Yup from 'yup'
 
@@ -28,7 +28,11 @@ export const ContactDetails = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
+		Alert.alert(
+			'Request sent',
+			"Your outpass request has been sent. You will receive a notification when it's approved",
+			[{ text: 'Continue', onPress: () => navigation.navigate('student-home') }],
+		)
 	}
 
 	return (
@@ -103,7 +107,7 @@ export const ContactDetails = ({ navigation }) => {
 									handleSubmit()
 								}}
 							>
-								Continue
+								Submit request
 							</Button>
 						</YStack>
 					)}

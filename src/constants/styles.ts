@@ -8,7 +8,7 @@ export const TOKEN = {
 		PRIMARY_DARK: '#000FB8',
 		RED: '#E65252',
 		GREEN: '#0BBB71',
-		BORDER_COLOR: '#C1C4D2',
+		BORDER_COLOR: '#e0e0e0',
 		DARK_TEXT: '#5B5B5B',
 		LIGHT_TEXT: '#9A9A9A',
 		SHADOW: '#DBCFE7',

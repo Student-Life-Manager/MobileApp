@@ -18,17 +18,17 @@ export const Login = ({ navigation }) => {
 	}
 
 	const validationSchema = Yup.object({
-		email: Yup.string()
-			.required('Email is required')
-			.email('Invalid email address')
-			.matches(
-				/^[a-zA-Z0-9._%+-]+@srmap\.edu\.in$/,
-				'You can only use the official SRM AP email address',
-			),
+		email: Yup.string(),
+		// .required('Email is required')
+		// .email('Invalid email address')
+		// .matches(
+		// 	/^[a-zA-Z0-9._%+-]+@srmap\.edu\.in$/,
+		// 	'You can only use the official SRM AP email address',
+		// ),
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
+		navigation.navigate('create-account')
 	}
 
 	return (

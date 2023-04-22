@@ -5,6 +5,10 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 
 export const CreateAccountPage = ({ navigation }) => {
+	const navigateToPersonalDetails = () => {
+		navigation.navigate('personal-details')
+	}
+
 	return (
 		<PageWrapper>
 			<YStack
@@ -32,7 +36,12 @@ export const CreateAccountPage = ({ navigation }) => {
 					</Text>
 				</YStack>
 				<YStack marginTop='$20'>
-					<Button variant='primary'>Create Account</Button>
+					<Button
+						variant='primary'
+						onPress={navigateToPersonalDetails}
+					>
+						Create Account
+					</Button>
 				</YStack>
 			</YStack>
 		</PageWrapper>

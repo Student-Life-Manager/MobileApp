@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { View, Text } from 'react-native'
 
 import { studentOutpassListItem } from '@app/@types'
@@ -9,7 +10,9 @@ import { OutpassStatus } from '@app/constants/enums'
 
 import { styles, iconStyle } from './styles'
 
-interface ListItemProps extends studentOutpassListItem {}
+interface ListItemProps extends studentOutpassListItem {
+	navigation: any
+}
 
 const renderStatusIcon = (status: OutpassStatus) => {
 	switch (status) {
@@ -23,9 +26,19 @@ const renderStatusIcon = (status: OutpassStatus) => {
 }
 
 export const ListItem = (props: ListItemProps) => {
-	const { date, outTime, outpassId, status } = props
+	const { date, outTime, outpassId, status, navigation } = props
+
+	const navigateToOutpass = () => {
+		if (outTime === '12:30 PM') navigation.navigate('outpass-waiting')
+		else if (outTime === '8:20 AM') navigation.navigate('outpass')
+		else if (outTime === '2:00 PM') navigation.navigate('outpass-cancelled')
+	}
+
 	return (
-		<View style={styles.itemContainer}>
+		<View
+			style={styles.itemContainer}
+			onTouchEnd={navigateToOutpass}
+		>
 			<View style={styles.itemWrapper}>
 				<Text style={styles.dateText}>Today</Text>
 				<Text style={styles.timeText}>{outTime}</Text>
@@ -33,7 +46,7 @@ export const ListItem = (props: ListItemProps) => {
 			<View style={styles.itemWrapper}>
 				<View style={styles.statusWrapper}>
 					{renderStatusIcon(status)}
-					<Text style={styles.statusText}>Waiting</Text>
+					<Text style={styles.statusText}>{status}</Text>
 				</View>
 				<ChevronRight />
 			</View>

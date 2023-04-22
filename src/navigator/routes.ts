@@ -4,7 +4,7 @@ import { PageTemplate } from '@app/pages/page-template'
 import { ScanQRCode } from '@app/pages/scan-qrcode'
 import { FeedbackForm } from '@app/pages/student/feedback-form'
 import { FeedbackSent } from '@app/pages/student/feedback-sent'
-import { OutpassDetails, ContactDetails } from '@app/pages/student/get-outpass'
+import { ContactDetails } from '@app/pages/student/get-outpass/contact-details'
 import {
 	PersonalDetails,
 	HostelDetails,
@@ -14,6 +14,7 @@ import {
 import { Outpass } from '@app/pages/student/outpass/outpass-approved'
 import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
 import { OutpassPending } from '@app/pages/student/outpass/outpass-waiting'
+import { OutpassDetails } from '@app/pages/student/outpass-details'
 import { StudentHome } from '@app/pages/student/student-home'
 import { StudentProfile } from '@app/pages/student/student-profile'
 import { UserProfile } from '@app/pages/user-profile'

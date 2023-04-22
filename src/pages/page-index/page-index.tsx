@@ -4,6 +4,16 @@ import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { routes } from '@app/navigator/routes'
 
+const pagesToDisplay = [
+	'student-home',
+	'scanQrCode',
+	'outpass-details',
+	'login',
+	'warden-account',
+	'warden-home',
+	'outpass-waiting',
+]
+
 export const PageIndex = ({ navigation }) => {
 	const goToUser = (pageName) =>
 		navigation.navigate(pageName, {
@@ -17,20 +27,20 @@ export const PageIndex = ({ navigation }) => {
 				maxWidth={600}
 			>
 				<H3>Index</H3>
-				{routes.map((item) => {
-					if (item.name === 'pageIndex') return null
-
-					return (
-						<Button
-							key={item.name}
-							variant='primary'
-							onPress={() => {
-								goToUser(item.name)
-							}}
-						>
-							{item.options.title}
-						</Button>
-					)
+				{routes.map((route) => {
+					if (pagesToDisplay.find((item) => item === route.name)) {
+						return (
+							<Button
+								key={route.name}
+								variant='primary'
+								onPress={() => {
+									goToUser(route.name)
+								}}
+							>
+								{route.options.title}
+							</Button>
+						)
+					}
 				})}
 			</YStack>
 		</PageWrapper>

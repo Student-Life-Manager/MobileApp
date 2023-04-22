@@ -18,10 +18,8 @@ import { styles } from './styles'
 
 // TODO: Add new select component inside the edit info form
 // TODO: Refactor otp input component to include the resend functionality and then add it in modal
-// TODO: Styling refactor
 // TODO: Update react native version based on expo warning
 // TODO: Replace types with interfaces
-// TODO: Format all code using eslint
 // TODO: Divide outpass-approved page into components and also in other pages
 
 export const StudentProfile = ({ navigation }) => {
@@ -34,7 +32,7 @@ export const StudentProfile = ({ navigation }) => {
 	}
 
 	const handleDeleteGuardianContact = () => {
-		Alert.alert('Cancel outpass', 'Are you sure you want to cancel this outpass', [
+		Alert.alert('Delete contact', "Are you sure you want to delete this guardian's contact info", [
 			{
 				text: 'No',
 				onPress: () => console.log('no pressed'),

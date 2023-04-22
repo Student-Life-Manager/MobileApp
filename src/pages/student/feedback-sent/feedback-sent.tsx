@@ -15,7 +15,7 @@ export const FeedbackSent = ({ navigation }) => {
 	return (
 		<PageWrapper bounces={false}>
 			<View style={styles.pageContainer}>
-				<View></View>
+				<View>{/* Required for verticle center */}</View>
 				<View style={styles.checkContainer}>
 					<View style={styles.iconContainer}>
 						<SubmitSuccess />
