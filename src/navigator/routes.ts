@@ -21,6 +21,7 @@ import { UserProfile } from '@app/pages/user-profile'
 import { VerifyOTP } from '@app/pages/verify-otp'
 import { WardenAccount } from '@app/pages/warden/warden-account'
 import { WardenHome } from '@app/pages/warden/warden-home'
+import { WardenOutpassDetails } from '@app/pages/warden/warden-outpass-details'
 import { WardenOutpassList } from '@app/pages/warden/warden-outpass-list'
 
 export const routes = [
@@ -78,6 +79,13 @@ export const routes = [
 		component: Login,
 		options: {
 			title: 'Login',
+		},
+	},
+	{
+		name: 'warden-outpass-details',
+		component: WardenOutpassDetails,
+		options: {
+			title: 'Warden outpass details',
 		},
 	},
 	{

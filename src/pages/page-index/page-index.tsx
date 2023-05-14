@@ -6,9 +6,9 @@ import { routes } from '@app/navigator/routes'
 
 const pagesToDisplay = [
 	'student-home',
+	'warden-outpass-details',
 	'warden-outpass-list',
 	'scanQrCode',
-	'outpass-details',
 	'login',
 	'warden-account',
 	'warden-home',

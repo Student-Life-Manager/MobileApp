@@ -1,1 +1,1 @@
-export { InfoList } from './info-list'
+export { InfoList, InfoListItemProps } from './info-list'

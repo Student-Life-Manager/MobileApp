@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		borderRadius: 16,
 		paddingHorizontal: 20,
-		paddingBottom: 16,
+		paddingBottom: 12,
 	},
 	headingContainer: {
 		marginVertical: 4,
@@ -22,11 +22,15 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		height: 50,
+		paddingVertical: 12,
 	},
 	headingText: {
 		fontSize: 18,
 		fontWeight: '600',
+	},
+	subHeadingText: {
+		fontSize: 14,
+		color: '#9A9A9A',
 	},
 	line: {
 		borderBottomWidth: 1,
@@ -43,6 +47,13 @@ export const styles = StyleSheet.create({
 	listContainerIconRight: {
 		flexDirection: 'row-reverse',
 		justifyContent: 'space-between',
+	},
+	listItemWrapper: {
+		flex: 1,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
 	},
 	listItemHeadingWrapper: {
 		display: 'flex',

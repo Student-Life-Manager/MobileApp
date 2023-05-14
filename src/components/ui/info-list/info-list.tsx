@@ -10,6 +10,7 @@ export interface InfoListItemProps {
 	isAdornmentVisible?: boolean
 	isListIconVisible?: boolean
 	onClick?: () => void
+	customAdornment?: React.ReactNode
 }
 
 export interface InfoListProps {
@@ -18,6 +19,7 @@ export interface InfoListProps {
 	listIconDirection: 'left' | 'right'
 	listIconWrapperStyle?: ViewStyle
 	heading?: string
+	subHeading?: string
 	headerIcon?: React.ComponentType<SvgProps>
 	headerIconWrapperStyle?: ViewStyle
 	headerIconOnClick?: () => void
@@ -72,6 +74,7 @@ export const InfoList = (props: InfoListProps) => {
 		listIconDirection,
 		listIconWrapperStyle,
 		heading,
+		subHeading,
 		headerIcon,
 		headerIconWrapperStyle,
 		headerIconOnClick = () => 0,
@@ -80,11 +83,16 @@ export const InfoList = (props: InfoListProps) => {
 	} = props
 
 	return (
-		<View style={styles.infoListContainer}>
+		<View style={[styles.infoListContainer, heading ? null : { paddingVertical: 12 }]}>
 			{heading ? (
 				<View style={styles.headingContainer}>
 					<View style={styles.headingWrapper}>
-						<Text style={styles.headingText}>{heading}</Text>
+						<View>
+							<Text style={[styles.headingText, subHeading ? { marginBottom: 8 } : null]}>
+								{heading}
+							</Text>
+							{subHeading ? <Text style={styles.subHeadingText}>{subHeading}</Text> : null}
+						</View>
 						{headerIcon
 							? renderHeaderIcon(headerIcon, headerIconOnClick, headerIconWrapperStyle)
 							: null}
@@ -108,14 +116,17 @@ export const InfoList = (props: InfoListProps) => {
 							: listIconCommon
 							? renderListIcon(listIconCommon, listIconDirection, item, listIconWrapperStyle)
 							: null}
-						<View>
-							<View style={[styles.listItemHeadingWrapper]}>
-								<Text style={styles.listItemHeading}>{item.title}</Text>
-								{item.isAdornmentVisible && itemAdornmentIcon
-									? renderAdornmentIcon(itemAdornmentIcon)
-									: null}
+						<View style={styles.listItemWrapper}>
+							<View>
+								<View style={[styles.listItemHeadingWrapper]}>
+									<Text style={styles.listItemHeading}>{item.title}</Text>
+									{item.isAdornmentVisible && itemAdornmentIcon
+										? renderAdornmentIcon(itemAdornmentIcon)
+										: null}
+								</View>
+								<Text style={styles.listItemText}>{item.value}</Text>
 							</View>
-							<Text style={styles.listItemText}>{item.value}</Text>
+							{item.customAdornment ? item.customAdornment : null}
 						</View>
 					</View>
 				))
