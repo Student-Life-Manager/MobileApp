@@ -2,7 +2,6 @@ import 'expo-dev-client'
 
 import { useFonts } from 'expo-font'
 
-import { NativeNavigator } from './navigator'
 import { Provider } from './provider'
 
 const App = () => {
@@ -15,11 +14,7 @@ const App = () => {
 		return null
 	}
 
-	return (
-		<Provider>
-			<NativeNavigator />
-		</Provider>
-	)
+	return <Provider />
 }
 
 export default App

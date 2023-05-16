@@ -1,22 +1,11 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useAuthentication } from '@app/components/hooks/authentication'
 
-import { routes } from './routes'
+import AppStack from './app-stack'
+import AuthStack from './auth-stack'
 
 export const NativeNavigator = () => {
-	const Stack = createNativeStackNavigator()
+	const { isAuthenticated } = useAuthentication()
 
-	return (
-		<Stack.Navigator>
-			{routes.map((route) => {
-				return (
-					<Stack.Screen
-						key={route.name}
-						options={route.options}
-						name={route.name}
-						component={route.component}
-					/>
-				)
-			})}
-		</Stack.Navigator>
-	)
+	if (isAuthenticated) return <AppStack />
+	else return <AuthStack />
 }
