@@ -3,8 +3,9 @@ import { BASE_URL } from '@env'
 import axios from 'axios'
 
 export const SlmApi = axios.create({
-	baseURL: BASE_URL,
-	// baseURL: 'https://jsonplaceholder.typicode.com',
+	// baseURL: BASE_URL,
+	baseURL: 'https://000a-103-217-237-2.ngrok-free.app',
+	// baseURL: 'https://api-slm.up.railway.app',
 })
 
 SlmApi.interceptors.request.use((config) => {

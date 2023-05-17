@@ -7,11 +7,15 @@ export interface loginUserProps {
 	password: string
 }
 
+export interface loginUserResponse {
+	access_token: string
+	refresh_token: string
+}
+
 export const loginUser = async ({ email, password }: loginUserProps) => {
-	// return SlmApi.get('/todos/1')
-	// console.log('api call functiion', email, password)
-	return SlmApi.post<loginUserProps>('/auth_users/login', {
-		email: 'test@srmap.edu.in',
-		password: 'password',
+	console.log('axios dhbewhfbwejhbwejhf', SlmApi.defaults.baseURL)
+	return SlmApi.post<loginUserResponse>('/auth_users/login', {
+		email,
+		password,
 	})
 }

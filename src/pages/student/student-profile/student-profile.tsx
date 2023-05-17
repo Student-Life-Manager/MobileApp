@@ -5,6 +5,7 @@ import AddPhone from '@app/assets/icons/add-phone.svg'
 import Delete from '@app/assets/icons/delete.svg'
 import EditPencil from '@app/assets/icons/edit-pencil.svg'
 import InfoVerified from '@app/assets/icons/info-verified.svg'
+import { useAuthentication } from '@app/components/hooks/authentication'
 import { useGlobalModal } from '@app/components/hooks/global-modal'
 import { Button } from '@app/components/ui/button'
 import { InfoList, InfoListItemProps } from '@app/components/ui/info-list'
@@ -23,6 +24,7 @@ import { styles } from './styles'
 
 export const StudentProfile = ({ navigation }) => {
 	const { renderModal } = useGlobalModal()
+	const { logout } = useAuthentication()
 
 	const handleAddGuardian = () => {
 		renderModal({
@@ -63,7 +65,13 @@ export const StudentProfile = ({ navigation }) => {
 				text: 'No',
 				onPress: () => console.log('no logout'),
 			},
-			{ text: 'Yes', onPress: () => console.log('yes logout') },
+			{
+				text: 'Yes',
+				onPress: () => {
+					logout()
+					// navigation.navigate('AuthStack')
+				},
+			},
 		])
 	}
 

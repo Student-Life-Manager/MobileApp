@@ -29,7 +29,7 @@ import { WardenOutpassList } from '@app/pages/warden/warden-outpass-list'
 interface route {
 	name: string
 	component: ({ navigation }: { navigation: any }) => JSX.Element
-	authProtected: boolean
+	isAuthProtected: boolean
 	options: {
 		title: string
 	}
@@ -40,7 +40,7 @@ export const routes: route[] = [
 	// {
 	// 	name: 'page-index',
 	// 	component: PageIndex,
-	// 	authProtected: false,
+	// 	isAuthProtected: false,
 	// 	options: {
 	// 		title: 'Page index',
 	// 	},
@@ -48,7 +48,7 @@ export const routes: route[] = [
 	{
 		name: 'pageTemplate',
 		component: PageTemplate,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Page template',
 		},
@@ -56,7 +56,7 @@ export const routes: route[] = [
 	{
 		name: 'create-account',
 		component: CreateAccountPage,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Create Account',
 		},
@@ -64,7 +64,7 @@ export const routes: route[] = [
 	{
 		name: 'login',
 		component: Login,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Login',
 		},
@@ -74,7 +74,7 @@ export const routes: route[] = [
 	{
 		name: 'student-profile',
 		component: StudentProfile,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Student Profile',
 		},
@@ -82,7 +82,7 @@ export const routes: route[] = [
 	{
 		name: 'student-home',
 		component: StudentHome,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Student home',
 		},
@@ -90,7 +90,7 @@ export const routes: route[] = [
 	{
 		name: 'outpass',
 		component: Outpass,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Outpass status',
 		},
@@ -98,7 +98,7 @@ export const routes: route[] = [
 	{
 		name: 'verifyOtp',
 		component: VerifyOTP,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Verify OTP',
 		},
@@ -106,7 +106,7 @@ export const routes: route[] = [
 	{
 		name: 'user-profile',
 		component: UserProfile,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Profile',
 		},
@@ -114,7 +114,7 @@ export const routes: route[] = [
 	{
 		name: 'personal-details',
 		component: PersonalDetails,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Personal details',
 		},
@@ -122,7 +122,7 @@ export const routes: route[] = [
 	{
 		name: 'academic-details',
 		component: AcademicDetails,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Academic details',
 		},
@@ -130,7 +130,7 @@ export const routes: route[] = [
 	{
 		name: 'hostel-details',
 		component: HostelDetails,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Hostel details',
 		},
@@ -138,7 +138,7 @@ export const routes: route[] = [
 	{
 		name: 'outpass-details',
 		component: OutpassDetails,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Outpass details',
 		},
@@ -146,7 +146,7 @@ export const routes: route[] = [
 	{
 		name: 'contact-details',
 		component: ContactDetails,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Contact details',
 		},
@@ -154,7 +154,7 @@ export const routes: route[] = [
 	{
 		name: 'outpass-waiting',
 		component: OutpassPending,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Oupass waiting',
 		},
@@ -162,7 +162,7 @@ export const routes: route[] = [
 	{
 		name: 'outpass-cancelled',
 		component: OutpassCancelled,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Oupass cancelled',
 		},
@@ -170,7 +170,7 @@ export const routes: route[] = [
 	{
 		name: 'feedback-form',
 		component: FeedbackForm,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Feedback form',
 		},
@@ -178,7 +178,7 @@ export const routes: route[] = [
 	{
 		name: 'feedback-sent',
 		component: FeedbackSent,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Feedback sent',
 		},
@@ -188,7 +188,7 @@ export const routes: route[] = [
 	{
 		name: 'warden-outpass-list',
 		component: WardenOutpassList,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Warden outpass List',
 		},
@@ -196,7 +196,7 @@ export const routes: route[] = [
 	{
 		name: 'warden-account',
 		component: WardenAccount,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Warden account',
 		},
@@ -204,7 +204,7 @@ export const routes: route[] = [
 	{
 		name: 'warden-home',
 		component: WardenHome,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Warden home',
 		},
@@ -212,7 +212,7 @@ export const routes: route[] = [
 	{
 		name: 'warden-outpass-details',
 		component: WardenOutpassDetails,
-		authProtected: true,
+		isAuthProtected: true,
 		options: {
 			title: 'Warden outpass details',
 		},
@@ -224,7 +224,7 @@ export const routes: route[] = [
 	{
 		name: 'scanQrCode',
 		component: ScanQRCode,
-		authProtected: false,
+		isAuthProtected: false,
 		options: {
 			title: 'Scan QR code',
 		},

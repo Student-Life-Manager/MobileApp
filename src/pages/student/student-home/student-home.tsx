@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import { H3 } from 'tamagui'
 
 import { studentOutpassListItem } from '@app/@types'
@@ -51,7 +51,9 @@ export const StudentHome = ({ navigation }) => {
 				<View>
 					<View style={styles.headerContainer}>
 						<H3>Welcome, {'\n'} Student name</H3>
-						<ProfileIcon onPress={navigateToProfile} />
+						<TouchableOpacity onPress={navigateToProfile}>
+							<ProfileIcon />
+						</TouchableOpacity>
 					</View>
 					<View style={styles.listContainer}>
 						{outpassList.length > 0 ? (
@@ -60,6 +62,7 @@ export const StudentHome = ({ navigation }) => {
 									<ListItem
 										{...item}
 										navigation={navigation}
+										key={item.outpassId}
 									/>
 								)
 							})

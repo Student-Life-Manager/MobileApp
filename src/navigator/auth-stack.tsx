@@ -10,7 +10,7 @@ export default function AuthStack() {
 	return (
 		<Stack.Navigator initialRouteName={initialRoute}>
 			{routes
-				.filter((route) => !route.authProtected)
+				.filter((route) => !route.isAuthProtected)
 				.map((route) => {
 					return (
 						<Stack.Screen
