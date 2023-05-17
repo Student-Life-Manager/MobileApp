@@ -51,7 +51,10 @@
 	"settings": {
 		"import/ignore": ["node_modules/react-native/index\\.js$"],
 		"import/resolver": {
-			"typescript": {}
+			"typescript": {},
+			"node": {
+				"paths": ["./"]
+			}
 		}
 	}
 }

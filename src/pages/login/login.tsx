@@ -1,20 +1,25 @@
 import { Formik } from 'formik'
 import { Text } from 'react-native'
+import { Config } from 'react-native-config'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
 import * as Yup from 'yup'
 
 import LoginCover from '@app/assets/images/login-cover.svg'
+import { useAuthentication } from '@app/components/hooks/authentication'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { globalStyles } from '@app/constants/styles'
 
 type FormValues = {
 	email: string
+	password: string
 }
 
 export const Login = ({ navigation }) => {
+	const { login, logout } = useAuthentication()
 	const initialValues: FormValues = {
 		email: '',
+		password: '',
 	}
 
 	const validationSchema = Yup.object({
@@ -25,10 +30,19 @@ export const Login = ({ navigation }) => {
 		// 	/^[a-zA-Z0-9._%+-]+@srmap\.edu\.in$/,
 		// 	'You can only use the official SRM AP email address',
 		// ),
+		password: Yup.string(),
 	})
 
 	const onSubmit = (values: FormValues) => {
-		navigation.navigate('create-account')
+		// navigation.navigate('create-account')
+		console.log('submitted', values)
+
+		login({
+			email: values.email,
+			password: values.password,
+		})
+
+		logout()
 	}
 
 	return (
@@ -56,6 +70,7 @@ export const Login = ({ navigation }) => {
 								<Input
 									id='email'
 									placeholder='student@srmap.edu.in'
+									keyboardType='email-address'
 									size='$5'
 									onChangeText={handleChange('email')}
 									onBlur={handleBlur('email')}
@@ -63,6 +78,20 @@ export const Login = ({ navigation }) => {
 								/>
 								{errors.email && touched.email ? (
 									<Text style={globalStyles.errorText}>{errors.email}</Text>
+								) : null}
+							</Fieldset>
+							<Fieldset>
+								<Label htmlFor='password'>Password</Label>
+								<Input
+									id='password'
+									placeholder='***'
+									size='$5'
+									onChangeText={handleChange('password')}
+									onBlur={handleBlur('password')}
+									value={values.password}
+								/>
+								{errors.password && touched.password ? (
+									<Text style={globalStyles.errorText}>{errors.password}</Text>
 								) : null}
 							</Fieldset>
 							<Fieldset paddingTop='$6'>

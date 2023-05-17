@@ -37,14 +37,14 @@ interface route {
 
 export const routes: route[] = [
 	// General & utils
-	{
-		name: 'page-index',
-		component: PageIndex,
-		authProtected: false,
-		options: {
-			title: 'Page index',
-		},
-	},
+	// {
+	// 	name: 'page-index',
+	// 	component: PageIndex,
+	// 	authProtected: false,
+	// 	options: {
+	// 		title: 'Page index',
+	// 	},
+	// },
 	{
 		name: 'pageTemplate',
 		component: PageTemplate,
@@ -64,7 +64,7 @@ export const routes: route[] = [
 	{
 		name: 'login',
 		component: Login,
-		authProtected: true,
+		authProtected: false,
 		options: {
 			title: 'Login',
 		},

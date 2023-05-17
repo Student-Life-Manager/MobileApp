@@ -15,12 +15,6 @@ module.exports = function (api) {
 				},
 			],
 			[
-				'transform-inline-environment-variables',
-				{
-					include: 'TAMAGUI_TARGET',
-				},
-			],
-			[
 				'module-resolver',
 				{
 					alias: {
@@ -28,7 +22,19 @@ module.exports = function (api) {
 					},
 				},
 			],
-			'react-native-reanimated/plugin',
+			[
+				'module:react-native-dotenv',
+				{
+					envName: 'APP_ENV',
+					moduleName: '@env',
+					path: './.env',
+					blocklist: null,
+					allowlist: null,
+					safe: true,
+					allowUndefined: true,
+					verbose: false,
+				},
+			],
 		],
 	}
 }

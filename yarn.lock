@@ -4713,6 +4713,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.29.7":
+  version: 4.29.7
+  resolution: "@tanstack/query-core@npm:4.29.7"
+  checksum: f28441a1fc17881d770ebacbe3a2fcf58bd065ac0cf58f8dc544d367f00d7f65213e09a1a1280e021eef25a50b307cac6884173b5acf32570e755baf29b741aa
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.29.7":
+  version: 4.29.7
+  resolution: "@tanstack/react-query@npm:4.29.7"
+  dependencies:
+    "@tanstack/query-core": 4.29.7
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 9db2fb78e18f299c0e58f3c177261f6010fdea63a5f950e4c93a7cf7a46da019aa3171c77759fa7b327e35763e3379f0a885c71dafd9aa99bf2ddda9f264de90
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -5574,6 +5600,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "axios@npm:1.4.0"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
+  languageName: node
+  linkType: hard
+
 "babel-core@npm:^7.0.0-bridge.0":
   version: 7.0.0-bridge.0
   resolution: "babel-core@npm:7.0.0-bridge.0"
@@ -5669,13 +5706,6 @@ __metadata:
   version: 7.0.0-beta.0
   resolution: "babel-plugin-syntax-trailing-function-commas@npm:7.0.0-beta.0"
   checksum: e37509156ca945dd9e4b82c66dd74f2d842ad917bd280cb5aa67960942300cd065eeac476d2514bdcdedec071277a358f6d517c31d9f9244d9bbc3619a8ecf8a
-  languageName: node
-  linkType: hard
-
-"babel-plugin-transform-inline-environment-variables@npm:0.4.4":
-  version: 0.4.4
-  resolution: "babel-plugin-transform-inline-environment-variables@npm:0.4.4"
-  checksum: fa361287411301237fd8ce332aff4f8e8ccb8db30e87a2ddc7224c8bf7cd792eda47aca24dc2e09e70bce4c027bc8cbe22f4999056be37a25d2472945df21ef5
   languageName: node
   linkType: hard
 
@@ -7357,6 +7387,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+  languageName: node
+  linkType: hard
+
 "duplexer2@npm:~0.1.0":
   version: 0.1.4
   resolution: "duplexer2@npm:0.1.4"
@@ -8772,6 +8809,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"follow-redirects@npm:^1.15.0":
+  version: 1.15.2
+  resolution: "follow-redirects@npm:1.15.2"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: faa66059b66358ba65c234c2f2a37fcec029dc22775f35d9ad6abac56003268baf41e55f9ee645957b32c7d9f62baf1f0b906e68267276f54ec4b4c597c2b190
+  languageName: node
+  linkType: hard
+
 "fontfaceobserver@npm:^2.1.0":
   version: 2.3.0
   resolution: "fontfaceobserver@npm:2.3.0"
@@ -8803,6 +8850,17 @@ __metadata:
     combined-stream: ^1.0.8
     mime-types: ^2.1.12
   checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -13486,6 +13544,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
+  languageName: node
+  linkType: hard
+
 "pseudomap@npm:^1.0.2":
   version: 1.0.2
   resolution: "pseudomap@npm:1.0.2"
@@ -13706,6 +13771,29 @@ __metadata:
     jscodeshift: ^0.13.1
     nullthrows: ^1.1.1
   checksum: 2a50ad71e09bc8cbb3694057cf47d6e9665c16f3968d1dc2b71e83c8c4e7be3b07b74bea08750ec9c8f6c60e6c746a5f695963c8694e5a76edcbce35a53a6a06
+  languageName: node
+  linkType: hard
+
+"react-native-config@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "react-native-config@npm:1.5.1"
+  peerDependencies:
+    react-native-windows: ">=0.61"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: ae17b750e445310573ce33798db67c9b8c50e55cb2ba136e9a9ef8372dd3f7669ce236bb18bf1fa8a426fd1aa9e6b516fb2f593767bd24688242f6847cd37712
+  languageName: node
+  linkType: hard
+
+"react-native-dotenv@npm:^3.4.8":
+  version: 3.4.8
+  resolution: "react-native-dotenv@npm:3.4.8"
+  dependencies:
+    dotenv: ^16.0.3
+  peerDependencies:
+    "@babel/runtime": ^7.20.6
+  checksum: 8443cec44862d3e110f236b1120d8a1f829cb4545a85c8462e6c01935aa216f50b05eb659661db29939d4d293ce7de6212bf877963e3b37f6c900629f6546d67
   languageName: node
   linkType: hard
 
@@ -15537,14 +15625,15 @@ __metadata:
     "@tamagui/lucide-icons": 1.7.7
     "@tamagui/shorthands": 1.7.7
     "@tamagui/themes": 1.7.7
+    "@tanstack/react-query": ^4.29.7
     "@twotalltotems/react-native-otp-input": ^1.3.11
     "@types/crypto-js": ^4.1.1
     "@types/react": 18.0.25
     "@types/react-native": 0.70.6
     "@typescript-eslint/eslint-plugin": ^5.55.0
     "@typescript-eslint/parser": ^5.55.0
+    axios: ^1.4.0
     babel-plugin-module-resolver: ^5.0.0
-    babel-plugin-transform-inline-environment-variables: 0.4.4
     conventional-changelog-conventionalcommits: 5.0.0
     crypto-js: ^4.1.1
     date-fns: ^2.29.3
@@ -15568,6 +15657,8 @@ __metadata:
     react-dom: 18.1.0
     react-native: 0.70.8
     react-native-circular-progress-indicator: ^4.4.2
+    react-native-config: ^1.5.1
+    react-native-dotenv: ^3.4.8
     react-native-gesture-handler: 2.8.0
     react-native-keyboard-aware-scroll-view: ^0.9.5
     react-native-modal-datetime-picker: ^15.0.0
@@ -16577,7 +16668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
