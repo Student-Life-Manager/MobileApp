@@ -1,6 +1,8 @@
 import { View, Text, ViewStyle } from 'react-native'
 import { SvgProps } from 'react-native-svg'
 
+import { Loader } from '@app/components/ui/loader'
+
 import { styles, listIconStyles, adornmentIconStyles, headerIconStyles } from './styles'
 
 export interface InfoListItemProps {
@@ -25,6 +27,7 @@ export interface InfoListProps {
 	headerIconOnClick?: () => void
 	itemAdornmentIcon?: React.ComponentType<SvgProps>
 	emptyStateText?: string
+	isLoading?: boolean
 }
 
 const renderListIcon = (
@@ -80,6 +83,7 @@ export const InfoList = (props: InfoListProps) => {
 		headerIconOnClick = () => 0,
 		itemAdornmentIcon,
 		emptyStateText,
+		isLoading = false,
 	} = props
 
 	return (
@@ -100,7 +104,9 @@ export const InfoList = (props: InfoListProps) => {
 					<View style={styles.line}></View>
 				</View>
 			) : null}
-			{listData.length > 0 ? (
+			{isLoading ? (
+				<Loader />
+			) : listData.length > 0 ? (
 				listData.map((item) => (
 					<View
 						key={item.title}

@@ -1,7 +1,7 @@
 import { View, TouchableOpacity } from 'react-native'
 import { H3 } from 'tamagui'
 
-import { studentOutpassListItem } from '@app/@types'
+import { studentOutpassListItem } from '@app/types'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import WardenPage from '@app/assets/images/warden-page.svg'
 import { Button } from '@app/components/ui/button'

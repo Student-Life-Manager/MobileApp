@@ -45,6 +45,10 @@ export const Login = ({ navigation }) => {
 		logout()
 	}
 
+	const navigateToCreateAccount = () => {
+		navigation.navigate('create-account')
+	}
+
 	return (
 		<PageWrapper>
 			<YStack
@@ -64,7 +68,7 @@ export const Login = ({ navigation }) => {
 					onSubmit={onSubmit}
 				>
 					{({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
-						<YStack space='$4'>
+						<YStack space='$2'>
 							<Fieldset>
 								<Label htmlFor='emaill'>Email</Label>
 								<Input
@@ -102,9 +106,24 @@ export const Login = ({ navigation }) => {
 										handleSubmit()
 									}}
 								>
-									Get verification code
+									Next
 								</Button>
 							</Fieldset>
+							{/* <Text
+								style={{
+									textAlign: 'center',
+									marginVertical: 16,
+								}}
+							>
+								Or
+							</Text>
+							<Button
+								variant='secondary'
+								size='$5'
+								onPress={navigateToCreateAccount}
+							>
+								Create account
+							</Button> */}
 						</YStack>
 					)}
 				</Formik>

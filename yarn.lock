@@ -6197,6 +6197,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"camelcase-keys@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "camelcase-keys@npm:8.0.2"
+  dependencies:
+    camelcase: ^7.0.0
+    map-obj: ^4.3.0
+    quick-lru: ^6.1.1
+    type-fest: ^2.13.0
+  checksum: 878fdaffa55737486101845232b2bc017fec95e06711d8a4133461cabf2432b55a59b20ff6afafce9b48a5629f25181bac3ecb10023032d3eb7cf3247c6e34f6
+  languageName: node
+  linkType: hard
+
 "camelcase@npm:^5.0.0, camelcase@npm:^5.3.1":
   version: 5.3.1
   resolution: "camelcase@npm:5.3.1"
@@ -6208,6 +6220,13 @@ __metadata:
   version: 6.3.0
   resolution: "camelcase@npm:6.3.0"
   checksum: 8c96818a9076434998511251dcb2761a94817ea17dbdc37f47ac080bd088fc62c7369429a19e2178b993497132c8cbcf5cc1f44ba963e76782ba469c0474938d
+  languageName: node
+  linkType: hard
+
+"camelcase@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "camelcase@npm:7.0.1"
+  checksum: 86ab8f3ebf08bcdbe605a211a242f00ed30d8bfb77dab4ebb744dd36efbc84432d1c4adb28975ba87a1b8be40a80fbd1e60e2f06565315918fa7350011a26d3d
   languageName: node
   linkType: hard
 
@@ -7063,6 +7082,13 @@ __metadata:
   dependencies:
     mimic-response: ^1.0.0
   checksum: 952552ac3bd7de2fc18015086b09468645c9638d98a551305e485230ada278c039c91116e946d07894b39ee53c0f0d5b6473f25a224029344354513b412d7380
+  languageName: node
+  linkType: hard
+
+"dedent@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "dedent@npm:0.6.0"
+  checksum: fe2c0f5adb0b24407988e4adcd22befa0a27259091d4c40574c72da29fa6a6989e15a522ffc0f934ba6bb511b6498b315e7cdcf4a33a310cfaf1a8555a106484
   languageName: node
   linkType: hard
 
@@ -9837,7 +9863,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:^2.2.4":
+"invariant@npm:^2.2.2, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -11155,6 +11181,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie-ios@npm:3.4.0":
+  version: 3.4.0
+  resolution: "lottie-ios@npm:3.4.0"
+  checksum: 1a5becc6b34d258afde38f17104877c74749afd7d21d29813a0a56e7b8dae022deacd2139ea2262cd964bdf18791b63de50f28f6263aba3fcff09b08acabb3ce
+  languageName: node
+  linkType: hard
+
+"lottie-react-native@npm:5.1.4":
+  version: 5.1.4
+  resolution: "lottie-react-native@npm:5.1.4"
+  dependencies:
+    invariant: ^2.2.2
+    react-native-safe-modules: ^1.0.3
+  peerDependencies:
+    lottie-ios: ^3.4.0
+    react: "*"
+    react-native: ">=0.46"
+    react-native-windows: ">=0.63.x"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 2424196c7798ce3f2e9189517bec9892f9864d6732f44ac872a5a8690368c25dd30aae99b83a17c537b3e68bf842934971ac5737b25e585977121a121a7c656a
+  languageName: node
+  linkType: hard
+
 "lowercase-keys@npm:^1.0.0, lowercase-keys@npm:^1.0.1":
   version: 1.0.1
   resolution: "lowercase-keys@npm:1.0.1"
@@ -11270,7 +11321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"map-obj@npm:^4.0.0":
+"map-obj@npm:^4.0.0, map-obj@npm:^4.3.0":
   version: 4.3.0
   resolution: "map-obj@npm:4.3.0"
   checksum: fbc554934d1a27a1910e842bc87b177b1a556609dd803747c85ece420692380827c6ae94a95cce4407c054fa0964be3bf8226f7f2cb2e9eeee432c7c1985684e
@@ -13656,6 +13707,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"quick-lru@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "quick-lru@npm:6.1.1"
+  checksum: a9c75bf1d208c1d207590e10403a75d037f9faf7857f2e0d38c294d92b40d8b400776bcb5d4dd516baa84e6f5e3baf2a16cf405e6fedc18107922f46aeae83ee
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -13919,6 +13977,17 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: ef7c41ea59a34b114c6481fb130e66ef85e8d5b88acb46279131367761ca9fbf22cd310fe613f49b6c9b56dbd83e044be640f0532eda1d3856bf708e96335a35
+  languageName: node
+  linkType: hard
+
+"react-native-safe-modules@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "react-native-safe-modules@npm:1.0.3"
+  dependencies:
+    dedent: ^0.6.0
+  peerDependencies:
+    react-native: "*"
+  checksum: df30e1935dfb32ece9be57cd21ccbbecd058a68942536ff6c543f591e5488cc22f17093131eaabf490b6e187caa78e802a4b2e55c890af1c48a3f012dd57c9f2
   languageName: node
   linkType: hard
 
@@ -15634,6 +15703,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.55.0
     axios: ^1.4.0
     babel-plugin-module-resolver: ^5.0.0
+    camelcase-keys: ^8.0.2
     conventional-changelog-conventionalcommits: 5.0.0
     crypto-js: ^4.1.1
     date-fns: ^2.29.3
@@ -15652,6 +15722,8 @@ __metadata:
     expo-linear-gradient: 12.0.1
     expo-updates: ~0.15.6
     formik: ^2.2.9
+    lottie-ios: 3.4.0
+    lottie-react-native: 5.1.4
     prettier: ^2.8.4
     react: 18.1.0
     react-dom: 18.1.0
@@ -16307,7 +16379,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^2.19.0":
+"type-fest@npm:^2.13.0, type-fest@npm:^2.19.0":
   version: 2.19.0
   resolution: "type-fest@npm:2.19.0"
   checksum: a4ef07ece297c9fba78fc1bd6d85dff4472fe043ede98bd4710d2615d15776902b595abf62bd78339ed6278f021235fb28a96361f8be86ed754f778973a0d278

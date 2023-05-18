@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-import { studentOutpassListItem } from '@app/@types'
+import { studentOutpassListItem } from '@app/types'
 import ChevronRight from '@app/assets/icons/chevron-right.svg'
 import StatusApproved from '@app/assets/icons/status-approved.svg'
 import StatusPending from '@app/assets/icons/status-pending.svg'

@@ -1,6 +1,9 @@
 import { Text, View, Alert } from 'react-native'
 import { H3 } from 'tamagui'
 
+import { useDeleteGuardian } from '@app/api/hooks/useDeleteGuardian'
+import { useFetchGuardians } from '@app/api/hooks/useFetchGuardians'
+import { useFetchUser } from '@app/api/hooks/useFetchUser'
 import AddPhone from '@app/assets/icons/add-phone.svg'
 import Delete from '@app/assets/icons/delete.svg'
 import EditPencil from '@app/assets/icons/edit-pencil.svg'
@@ -25,6 +28,11 @@ import { styles } from './styles'
 export const StudentProfile = ({ navigation }) => {
 	const { renderModal } = useGlobalModal()
 	const { logout } = useAuthentication()
+	const { data: guardiansData, isLoading: fetchGuardiansLoading } = useFetchGuardians()
+	const { deleteGuardian, isLoading: deleteGuardianLoading } = useDeleteGuardian()
+	const { data: userData, isLoading: userDataLoading } = useFetchUser()
+
+	console.log('user data', userData)
 
 	const handleAddGuardian = () => {
 		renderModal({
@@ -32,13 +40,13 @@ export const StudentProfile = ({ navigation }) => {
 		})
 	}
 
-	const handleDeleteGuardianContact = () => {
+	const handleDeleteGuardianContact = (guardianUuid: string) => {
 		Alert.alert('Delete contact', "Are you sure you want to delete this guardian's contact info", [
 			{
 				text: 'No',
-				onPress: () => console.log('no pressed'),
+				onPress: () => {},
 			},
-			{ text: 'Yes', onPress: () => console.log('yes pressed') },
+			{ text: 'Yes', onPress: () => console.log('guardian selected', guardianUuid) },
 		])
 	}
 
@@ -78,12 +86,12 @@ export const StudentProfile = ({ navigation }) => {
 	const personalDetailsData: InfoListItemProps[] = [
 		{
 			title: 'Email',
-			value: 'pulkit_jasti@srmap.edu.in',
+			value: userData?.email ?? '',
 			isAdornmentVisible: true,
 		},
 		{
 			title: 'Phone number',
-			value: '+91 9274738482',
+			value: userData?.phoneNumber ?? '',
 			isAdornmentVisible: true,
 			isListIconVisible: true,
 			onClick: () => {
@@ -92,7 +100,7 @@ export const StudentProfile = ({ navigation }) => {
 		},
 		{
 			title: 'Tower',
-			value: 'Ganga',
+			value: userData?.hostelDetails.bldgName ?? '',
 			isAdornmentVisible: true,
 			isListIconVisible: false,
 			onClick: () => {
@@ -101,7 +109,7 @@ export const StudentProfile = ({ navigation }) => {
 		},
 		{
 			title: 'Room number',
-			value: '504',
+			value: userData?.hostelDetails.roomNo ?? '',
 			isAdornmentVisible: true,
 			isListIconVisible: true,
 			onClick: () => {
@@ -110,7 +118,7 @@ export const StudentProfile = ({ navigation }) => {
 		},
 		{
 			title: 'Emergency phone number',
-			value: '+91 9274738482',
+			value: userData?.phoneNumber ?? '',
 			isListIconVisible: true,
 			onClick: () => {
 				handleEditInfo(
@@ -123,25 +131,17 @@ export const StudentProfile = ({ navigation }) => {
 		},
 	]
 
-	const guardianDetailsData: InfoListItemProps[] = [
-		{
-			title: 'Mother',
-			value: '+91 9876543210',
-			isAdornmentVisible: true,
+	const guardiansList = guardiansData.map((guardian) => {
+		return {
+			title: guardian.relation,
+			value: guardian.phoneNumber,
+			isAdornmentVisible: false,
 			isListIconVisible: true,
 			onClick: () => {
-				handleDeleteGuardianContact()
+				handleDeleteGuardianContact(guardian.uuid)
 			},
-		},
-		{
-			title: 'Father',
-			value: '+91 9876543210',
-			isListIconVisible: true,
-			onClick: () => {
-				handleDeleteGuardianContact()
-			},
-		},
-	]
+		}
+	})
 
 	return (
 		<PageWrapper>
@@ -158,10 +158,11 @@ export const StudentProfile = ({ navigation }) => {
 					itemAdornmentIcon={InfoVerified}
 					listIconWrapperStyle={styles.editIconWrapper}
 					emptyStateText='No data, please contact the admin'
+					isLoading={userDataLoading}
 				/>
 				<InfoList
 					heading='Guardian details'
-					listData={guardianDetailsData}
+					listData={guardiansList}
 					listIconDirection='right'
 					listIconCommon={Delete}
 					listIconWrapperStyle={styles.deleteIconWrapper}
@@ -170,6 +171,7 @@ export const StudentProfile = ({ navigation }) => {
 					headerIconOnClick={handleAddGuardian}
 					headerIconWrapperStyle={styles.headerIconWrapper}
 					emptyStateText='Please add at least 2 guardian contact numbers'
+					isLoading={fetchGuardiansLoading || deleteGuardianLoading}
 				/>
 				<Button
 					variant='secondary'

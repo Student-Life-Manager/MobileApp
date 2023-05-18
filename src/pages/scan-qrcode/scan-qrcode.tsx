@@ -3,7 +3,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
 
-import { outpassType } from '@app/@types'
+import { outpassType } from '@app/types'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { OutpassStatus } from '@app/constants/enums'
 import { outpassScanMessages } from '@app/constants/messages'

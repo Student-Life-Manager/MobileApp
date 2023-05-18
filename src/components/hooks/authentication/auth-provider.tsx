@@ -5,7 +5,7 @@ import { UseMutateFunction } from 'react-query'
 
 import { SlmApi, setBearerToken, revokeAuthorizationToken } from '@app/api'
 import { useLoginUser } from '@app/api/hooks/useLoginUser'
-import { loginUserProps } from '@app/api/mutations/loginUser'
+import { loginUserProps } from '@app/api/mutations/login-user'
 
 interface authenticationProps {
 	isAuthenticated: boolean | null
@@ -16,12 +16,8 @@ interface authenticationProps {
 
 const initialAuthState: authenticationProps = {
 	isAuthenticated: false,
-	login: ({ email, password }: loginUserProps) => {
-		console.log('default login')
-	},
-	logout: () => {
-		console.log('default logout')
-	},
+	login: ({ email, password }: loginUserProps) => {},
+	logout: () => {},
 	isLoading: false,
 }
 
@@ -36,10 +32,10 @@ export const AuthProvider = (props) => {
 
 	console.log('response data from mutation in provider', data)
 
-	SlmApi.interceptors.request.use((config) => {
-		console.log('endpoint url', config.baseURL)
-		return config
-	})
+	// SlmApi.interceptors.request.use((config) => {
+	// 	console.log('endpoint url', config.baseURL)
+	// 	return config
+	// })
 
 	useEffect(() => {
 		AsyncStorage.getItem(LOCAL_TOKEN).then((token) => {

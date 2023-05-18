@@ -13,7 +13,6 @@ export interface loginUserResponse {
 }
 
 export const loginUser = async ({ email, password }: loginUserProps) => {
-	console.log('axios dhbewhfbwejhbwejhf', SlmApi.defaults.baseURL)
 	return SlmApi.post<loginUserResponse>('/auth_users/login', {
 		email,
 		password,

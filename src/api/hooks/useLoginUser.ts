@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query'
 
-import { loginUser } from '../mutations/loginUser'
+import { loginUser } from '../mutations/login-user'
 
 export const useLoginUser = () => {
 	const mutation = useMutation({

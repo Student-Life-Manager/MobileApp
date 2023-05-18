@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native'
 import { Button as CustomButton, styled } from 'tamagui'
 
 export const ButtonPrimary = styled(CustomButton, {
@@ -16,5 +17,15 @@ export const ButtonSecondary = styled(CustomButton, {
 
 	pressStyle: {
 		backgroundColor: '#C7D2FF',
+	},
+})
+
+export const styles = StyleSheet.create({
+	lottieAnimation: {
+		transform: [{ scale: 1.5 }],
+	},
+	animationWrapper: {
+		width: 50,
+		height: 50,
 	},
 })
