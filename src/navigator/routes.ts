@@ -13,7 +13,7 @@ import {
 	AcademicDetails,
 	CreateAccountPage,
 } from '@app/pages/student/onboarding'
-import { Outpass } from '@app/pages/student/outpass/outpass-approved'
+import { OutpassApproved } from '@app/pages/student/outpass/outpass-approved'
 import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
 import { OutpassPending } from '@app/pages/student/outpass/outpass-waiting'
 import { OutpassDetails } from '@app/pages/student/outpass-details'
@@ -89,10 +89,10 @@ export const routes: route[] = [
 	},
 	{
 		name: 'outpass',
-		component: Outpass,
+		component: OutpassApproved,
 		isAuthProtected: true,
 		options: {
-			title: 'Outpass status',
+			title: 'Outpass details',
 		},
 	},
 	{
@@ -156,7 +156,7 @@ export const routes: route[] = [
 		component: OutpassPending,
 		isAuthProtected: true,
 		options: {
-			title: 'Oupass waiting',
+			title: 'Outpass',
 		},
 	},
 	{
@@ -164,7 +164,7 @@ export const routes: route[] = [
 		component: OutpassCancelled,
 		isAuthProtected: true,
 		options: {
-			title: 'Oupass cancelled',
+			title: 'Outpass',
 		},
 	},
 	{

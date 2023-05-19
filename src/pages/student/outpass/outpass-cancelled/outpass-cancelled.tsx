@@ -1,14 +1,21 @@
 import { View, Text } from 'react-native'
 
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
 import CancelledIcon from '@app/assets/images/cancelled-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 
 import { styles } from './styles'
 
-export const OutpassCancelled = ({ navigation }) => {
+export const OutpassCancelled = ({ navigation, route }) => {
+	const uuid = route.params?.uuid
+
+	const { data: outpassList } = useFetchUserOutpasses()
+
+	const outpass = outpassList.find((item) => item.uuid === uuid)
+
 	const navigateToHome = () => {
-		navigation.navigate('outpass-details')
+		navigation.navigate('student-home')
 	}
 
 	return (
@@ -22,10 +29,7 @@ export const OutpassCancelled = ({ navigation }) => {
 					</Text>
 					<View style={styles.messageWrapper}>
 						<Text style={styles.messageHeading}>Message</Text>
-						<Text>
-							Your outpass has been rejected because as it is a weekday we can't allow you for an
-							outing.
-						</Text>
+						<Text>{outpass?.wardenMessage}</Text>
 					</View>
 				</View>
 

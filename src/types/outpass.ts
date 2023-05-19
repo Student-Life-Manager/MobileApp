@@ -1,4 +1,5 @@
 import { sanitizeOutpass, sanitizeOutpassCreateProps } from '@app/api/sanitizers/outpass'
+import { OutpassStatus } from '@app/constants/enums'
 
 export type CreateOutpassRaw = {
 	guardian_uuid: string
@@ -21,7 +22,7 @@ export type OutpassRaw = {
 	location: string
 	reason: string
 	alternate_phone_number?: string
-	status: string
+	status: OutpassStatus
 	approved_at?: string
 	exited_at?: string
 	returned_at?: string

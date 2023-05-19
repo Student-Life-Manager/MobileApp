@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native'
+import { format } from 'date-fns'
+import { View, Text, TouchableOpacity } from 'react-native'
 
-import { studentOutpassListItem } from '@app/types'
 import ChevronRight from '@app/assets/icons/chevron-right.svg'
 import StatusApproved from '@app/assets/icons/status-approved.svg'
 import StatusPending from '@app/assets/icons/status-pending.svg'
@@ -9,8 +9,12 @@ import { OutpassStatus } from '@app/constants/enums'
 
 import { styles, iconStyle } from './styles'
 
-interface ListItemProps extends studentOutpassListItem {
-	navigation: any
+interface ListItemProps {
+	date: string
+	time: string
+	uuid: string
+	status: OutpassStatus
+	onPress: () => void
 }
 
 const renderStatusIcon = (status: OutpassStatus) => {
@@ -24,31 +28,36 @@ const renderStatusIcon = (status: OutpassStatus) => {
 	}
 }
 
-export const ListItem = (props: ListItemProps) => {
-	const { date, outTime, outpassId, status, navigation } = props
-
-	const navigateToOutpass = () => {
-		if (outTime === '12:30 PM') navigation.navigate('outpass-waiting')
-		else if (outTime === '8:20 AM') navigation.navigate('outpass')
-		else if (outTime === '2:00 PM') navigation.navigate('outpass-cancelled')
+const renderStatusText = (status: OutpassStatus) => {
+	switch (status) {
+		case OutpassStatus.Pending:
+			return 'Pending'
+		case OutpassStatus.Approved:
+			return 'Approved'
+		case OutpassStatus.Rejected:
+			return 'Rejected'
 	}
+}
+
+export const ListItem = (props: ListItemProps) => {
+	const { date, time, status, onPress } = props
 
 	return (
-		<View
+		<TouchableOpacity
 			style={styles.itemContainer}
-			onTouchEnd={navigateToOutpass}
+			onPress={onPress}
 		>
 			<View style={styles.itemWrapper}>
-				<Text style={styles.dateText}>Today</Text>
-				<Text style={styles.timeText}>{outTime}</Text>
+				<Text style={styles.dateText}>{format(new Date(date), 'dd-LL-yyyy')}</Text>
+				<Text style={styles.timeText}>{format(new Date(time), 'hh:mm a')}</Text>
 			</View>
 			<View style={styles.itemWrapper}>
 				<View style={styles.statusWrapper}>
 					{renderStatusIcon(status)}
-					<Text style={styles.statusText}>{status}</Text>
+					<Text style={styles.statusText}>{renderStatusText(status)}</Text>
 				</View>
 				<ChevronRight />
 			</View>
-		</View>
+		</TouchableOpacity>
 	)
 }

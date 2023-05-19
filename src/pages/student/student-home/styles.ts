@@ -13,9 +13,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginBottom: 16,
 	},
-	listContainer: {
-		alignItems: 'center',
-	},
 	primaryButton: {
 		marginBottom: 12,
 	},

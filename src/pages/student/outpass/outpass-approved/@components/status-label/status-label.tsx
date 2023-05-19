@@ -3,29 +3,25 @@ import { View, Text } from 'react-native'
 import ExitedCampusIcon from '@app/assets/icons/exited-campus.svg'
 import InCampusIcon from '@app/assets/icons/in-campus.svg'
 import ReturnedCampusIcon from '@app/assets/icons/returned-campus.svg'
+import { OutpassStatus } from '@app/constants/enums'
 
 import { styles, iconProps } from './styles'
 
-//  TODO: see if this can be turned into an enum
-
-interface statusLabelProps {
-	status: 'exitedCampus' | 'inCampus' | 'returnedCampus'
-}
-
-export const StatusLabel = ({ status }: statusLabelProps) => {
+export const StatusLabel = ({ status }: { status: OutpassStatus }) => {
+	if (status === undefined) status = OutpassStatus.Pending
 	return (
 		<View style={styles.labelWrapper}>
-			{status === 'exitedCampus' ? (
+			{status === OutpassStatus.Exited ? (
 				<>
 					<ExitedCampusIcon {...iconProps} />
 					<Text style={styles.statusText}>Exited campus</Text>
 				</>
-			) : status === 'inCampus' ? (
+			) : status === OutpassStatus.Approved ? (
 				<>
 					<InCampusIcon {...iconProps} />
 					<Text style={styles.statusText}>In campus</Text>
 				</>
-			) : status === 'returnedCampus' ? (
+			) : status === OutpassStatus.Returned ? (
 				<>
 					<ReturnedCampusIcon {...iconProps} />
 					<Text style={styles.statusText}>Returned to campus</Text>

@@ -1,1 +1,1 @@
-export { Outpass } from './outpass'
+export { OutpassApproved } from './outpass-approved'

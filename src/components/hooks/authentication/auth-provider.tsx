@@ -41,8 +41,6 @@ export const AuthProvider = (props) => {
 	// 	return config
 	// })
 
-	console.log('provide user data', userData?.checklist, isAuthenticated, userData?.email)
-
 	useEffect(() => {
 		AsyncStorage.getItem(LOCAL_TOKEN).then((token) => {
 			if (token) {

@@ -38,6 +38,7 @@ export const styles = StyleSheet.create({
 	statusText: {
 		fontSize: 14,
 		color: TOKEN.COLOR.LIGHT_TEXT,
+		marginLeft: 4,
 	},
 	timeText: {
 		fontSize: 12,
