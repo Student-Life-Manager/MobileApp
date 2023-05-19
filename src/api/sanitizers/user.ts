@@ -1,7 +1,7 @@
 import camelcaseKeys from 'camelcase-keys'
 
-import { StudentUserRaw } from '@app/types/user'
+import { UserRaw } from '@app/types/user'
 
-export const sanitizeStudentUser = (user: StudentUserRaw) => {
+export const sanitizeUser = (user: UserRaw) => {
 	return camelcaseKeys(user, { deep: true })
 }

@@ -1,8 +1,7 @@
 import { useQuery } from 'react-query'
 
-import { fetchGuardians } from '../queries/fetch-guardians'
 import { fetchUser } from '../queries/fetch-user'
-import { sanitizeStudentUser } from '../sanitizers/user'
+import { sanitizeUser } from '../sanitizers/user'
 
 export const useFetchUser = () => {
 	const query = useQuery({
@@ -12,6 +11,6 @@ export const useFetchUser = () => {
 
 	return {
 		...query,
-		data: query.data ? sanitizeStudentUser(query.data.data) : null,
+		data: query.data ? sanitizeUser(query.data.data) : null,
 	}
 }

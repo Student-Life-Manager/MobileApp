@@ -1,7 +1,7 @@
-import { StudentUserRaw } from '@app/types/user'
+import { UserRaw } from '@app/types/user'
 
 import { SlmApi } from '../api'
 
 export const fetchUser = async () => {
-	return SlmApi.get<StudentUserRaw>('/students/me')
+	return SlmApi.get<UserRaw>('/students/me')
 }

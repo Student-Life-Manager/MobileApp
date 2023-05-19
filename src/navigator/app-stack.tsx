@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 
+import { RootStackParamList } from '@app/types/navigation'
+
 import { routes } from './routes'
 
 export default function AppStack() {

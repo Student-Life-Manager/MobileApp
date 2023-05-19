@@ -18,7 +18,6 @@ export const NativeSelect = (props: NativeSelectProps) => {
 	const { id, onChange, options } = props
 
 	const handleValueChange = (value: string) => {
-		console.log('select value', value)
 		onChange(id, value)
 	}
 

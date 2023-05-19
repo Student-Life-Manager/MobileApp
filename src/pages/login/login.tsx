@@ -42,9 +42,6 @@ export const Login = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		// navigation.navigate('create-account')
-		console.log('submitted', values)
-
 		login({
 			email: values.email,
 			password: values.password,

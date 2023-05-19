@@ -30,8 +30,6 @@ export const NativeNavigator = () => {
 	// }
 	// AsyncStorage.clear()
 
-	console.log('statusssssssss', isAuthenticated)
-
 	if (isLoading) {
 		return <ActivityIndicator />
 	} else if (isAuthenticated) {

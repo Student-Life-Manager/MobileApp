@@ -11,7 +11,6 @@ export const SlmApi = axios.create({
 })
 
 export const setBearerToken = (token: string) => {
-	console.log('setting tokken', token)
 	SlmApi.defaults.headers.common['x-authorization'] = `Bearer ${token}`
 	SlmApi.defaults.headers.common['authorization'] = `Bearer ${token}`
 }

@@ -1,4 +1,4 @@
-import { isAfter, isEqual } from 'date-fns'
+import { isAfter, isEqual, format } from 'date-fns'
 import { Formik } from 'formik'
 import { Text, View } from 'react-native'
 import { H3, Input, Label, TextArea } from 'tamagui'
@@ -13,7 +13,7 @@ import { globalStyles } from '@app/constants/styles'
 
 import { styles } from './styles'
 
-type FormValues = {
+export interface OutpassDetailsFormValues {
 	outDate: string
 	returnDate: string
 	outTime: string
@@ -22,36 +22,37 @@ type FormValues = {
 }
 
 export const OutpassDetails = ({ navigation }) => {
-	const initialValues: FormValues = {
-		outDate: new Date().toISOString(),
-		returnDate: '',
-		outTime: '',
+	const initialValues: OutpassDetailsFormValues = {
+		outDate: format(new Date(), DateTimeFormat.DATE.OUTPASS),
+		returnDate: format(new Date(), DateTimeFormat.DATE.OUTPASS),
+		outTime: '04:00:00',
 		location: '',
 		reason: '',
 	}
 
 	const validationSchema = Yup.object({
-		outDate: Yup.date().required('Return date is required'),
-		returnDate: Yup.date()
-			.required('Return date is required')
-			.test({
-				name: 'return-date',
-				message: 'You can not return before you leave',
-				test: function (value) {
-					return isAfter(value, this.parent.outDate) || isEqual(value, this.parent.outDate)
-				},
-			}),
-		location: Yup.string()
-			.required('Location is required')
-			.min(3, 'Location has to be atleast 3 characters long')
-			.max(25, 'Location cannot be longer than 25 characters')
-			.matches(/^[A-Za-z\s]+$/, 'Location should only contain letters and spaces'),
-		reason: Yup.string().required('Reason is required'),
+		outDate: Yup.date(),
+		// .required('Return date is required'),
+		returnDate: Yup.date(),
+		// .required('Return date is required')
+		// .test({
+		// 	name: 'return-date',
+		// 	message: 'You can not return before you leave',
+		// 	test: function (value) {
+		// 		return isAfter(value, this.parent.outDate) || isEqual(value, this.parent.outDate)
+		// 	},
+		// }),
+		location: Yup.string(),
+		// .required('Location is required')
+		// .min(3, 'Location has to be atleast 3 characters long')
+		// .max(25, 'Location cannot be longer than 25 characters')
+		// .matches(/^[A-Za-z\s]+$/, 'Location should only contain letters and spaces'),
+		reason: Yup.string(),
+		// .required('Reason is required'),
 	})
 
-	const onSubmit = (values: FormValues) => {
-		console.log('form values', values)
-		navigation.navigate('contact-details')
+	const onSubmit = (values: OutpassDetailsFormValues) => {
+		navigation.navigate('contact-details', { outpassDetails: values })
 	}
 
 	const maxDate = new Date()
@@ -73,7 +74,8 @@ export const OutpassDetails = ({ navigation }) => {
 									<Label>Out date</Label>
 									<DateTimePicker
 										id='outDate'
-										dateFormat={DateTimeFormat.DATE.LONG}
+										dateDisplayFormat={DateTimeFormat.DATE.LONG}
+										dateReturnFormat={DateTimeFormat.DATE.OUTPASS}
 										type='date'
 										onChange={setFieldValue}
 										maxDate={maxDate}
@@ -88,7 +90,8 @@ export const OutpassDetails = ({ navigation }) => {
 									<Label>Expected return date</Label>
 									<DateTimePicker
 										id='returnDate'
-										dateFormat={DateTimeFormat.DATE.LONG}
+										dateDisplayFormat={DateTimeFormat.DATE.LONG}
+										dateReturnFormat={DateTimeFormat.DATE.OUTPASS}
 										type='date'
 										onChange={setFieldValue}
 										minDate={new Date()}

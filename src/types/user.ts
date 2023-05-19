@@ -1,4 +1,4 @@
-import { sanitizeStudentUser } from '@app/api/sanitizers/user'
+import { sanitizeUser } from '@app/api/sanitizers/user'
 
 export enum UserType {
 	Student = 'student',
@@ -6,7 +6,7 @@ export enum UserType {
 	Admin = 'admin',
 }
 
-export type StudentUserRaw = {
+export type UserRaw = {
 	created_at: string
 	updated_at: string
 	uuid: string
@@ -34,4 +34,4 @@ export type StudentUserRaw = {
 	}
 }
 
-export type StudentUser = ReturnType<typeof sanitizeStudentUser>
+export type StudentUser = ReturnType<typeof sanitizeUser>

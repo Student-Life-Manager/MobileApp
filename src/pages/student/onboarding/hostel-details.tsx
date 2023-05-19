@@ -28,7 +28,6 @@ export const HostelDetails = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
 		navigation.navigate('academic-details')
 	}
 

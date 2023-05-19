@@ -44,7 +44,6 @@ export const AddGuardianModal = () => {
 	})
 
 	const handleSubmit = (values: FormValues) => {
-		console.log('new form values', values)
 		createGuardian({
 			phone_number: values.phoneNumber,
 			relation: values.relation,

@@ -10,7 +10,8 @@ import { styles } from './styles'
 interface DateTimePickerProps {
 	id: string
 	onChange: (field: string, value: any, shouldValidate?: boolean | undefined) => void
-	dateFormat?: string
+	dateDisplayFormat?: string
+	dateReturnFormat?: string
 	type: 'date' | 'datetime' | 'time'
 	minDate?: Date
 	maxDate?: Date
@@ -21,7 +22,8 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 	const {
 		id,
 		onChange,
-		dateFormat = DateTimeFormat.DATE.SHORT,
+		dateDisplayFormat = DateTimeFormat.DATE.SHORT,
+		dateReturnFormat = DateTimeFormat.DATE.SHORT,
 		type,
 		maxDate,
 		minDate,
@@ -38,9 +40,10 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 		setDatePickerVisibility(false)
 	}
 
-	const handleConfirm = (date) => {
+	const handleConfirm = (date: Date) => {
+		const dateString = format(date, dateReturnFormat)
 		setDateTimeValue(date)
-		onChange(id, date)
+		onChange(id, dateString)
 		hideDatePicker()
 	}
 
@@ -61,7 +64,7 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 				onTouchEnd={showDatePicker}
 			>
 				<Text style={styles.inputText}>
-					{dateTimeValue ? format(dateTimeValue, dateFormat) : ''}
+					{dateTimeValue ? format(dateTimeValue, dateDisplayFormat) : ''}
 				</Text>
 			</View>
 		</View>

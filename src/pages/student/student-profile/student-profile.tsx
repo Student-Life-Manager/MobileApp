@@ -37,8 +37,6 @@ export const StudentProfile = ({ navigation }) => {
 	} = useDeleteGuardian()
 	const { data: userData, isLoading: userDataLoading } = useFetchUser()
 
-	console.log('user data', userData)
-
 	const handleAddGuardian = () => {
 		renderModal({
 			modalContent: <AddGuardianModal />,
@@ -87,7 +85,6 @@ export const StudentProfile = ({ navigation }) => {
 		Alert.alert('Logout', 'Are you sure you want to log out of this application', [
 			{
 				text: 'No',
-				onPress: () => console.log('no logout'),
 			},
 			{
 				text: 'Yes',
