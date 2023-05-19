@@ -7,11 +7,66 @@ import AppStack from './app-stack'
 import AuthStack from './auth-stack'
 
 export const NativeNavigator = () => {
-	const { isAuthenticated, isLoading } = useAuthentication()
+	const { isAuthenticated, isLoading, userData } = useAuthentication()
 
+	// if (isLoading) {
+	// 	return <ActivityIndicator />
+	// } else if (!isAuthenticated) {
+	// 	return <AuthStack initialRoute='login' />
+	// } else if (isAuthenticated && userData && !userData?.checklist.personalDetails) {
+	// 	return <AuthStack initialRoute='personal-details' />
+	// } else if (isAuthenticated && userData && !userData?.checklist.academicDetails) {
+	// 	return <AuthStack initialRoute='academic-details' />
+	// } else if (isAuthenticated && userData && !userData?.checklist.hostelDetails) {
+	// 	return <AuthStack initialRoute='hostel-details' />
+	// } else if (
+	// 	isAuthenticated &&
+	// 	userData &&
+	// 	userData?.checklist.personalDetails &&
+	// 	userData?.checklist.academicDetails &&
+	// 	userData?.checklist.hostelDetails
+	// ) {
+	// 	return <AppStack />
+	// }
 	// AsyncStorage.clear()
 
-	if (isLoading) return <ActivityIndicator />
-	if (isAuthenticated) return <AppStack />
-	else return <AuthStack />
+	console.log('statusssssssss', isAuthenticated)
+
+	if (isLoading) {
+		return <ActivityIndicator />
+	} else if (isAuthenticated) {
+		return <AppStack />
+	} else {
+		return <AuthStack initialRoute='login' />
+	}
+
+	// if (isLoading) {
+	// 	return <ActivityIndicator />
+	// } else if (!isAuthenticated) {
+	// 	return <AuthStack initialRoute='login' />
+	// } else if (isAuthenticated && userData && !userData?.checklist.personalDetails) {
+	// 	return <AuthStack initialRoute='personal-details' />
+	// } else if (
+	// 	isAuthenticated &&
+	// 	userData &&
+	// 	userData?.checklist.personalDetails &&
+	// 	userData?.checklist.academicDetails &&
+	// 	userData?.checklist.hostelDetails
+	// ) {
+	// 	return <AuthStack initialRoute='login' />
+	// }
+
+	// if (isLoading) {
+	// 	return <ActivityIndicator />
+	// } else if (
+	// 	isAuthenticated &&
+	// 	userData &&
+	// 	userData?.checklist.personalDetails &&
+	// 	userData?.checklist.academicDetails &&
+	// 	userData?.checklist.hostelDetails
+	// ) {
+	// 	return <AppStack />
+	// } else {
+	// 	return <AuthStack />
+	// }
 }

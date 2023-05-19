@@ -1,4 +1,5 @@
 import { Formik } from 'formik'
+import { useEffect } from 'react'
 import { Text } from 'react-native'
 import { Config } from 'react-native-config'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
@@ -16,7 +17,14 @@ type FormValues = {
 }
 
 export const Login = ({ navigation }) => {
-	const { login, logout } = useAuthentication()
+	const { login, logout, userData, isLoading } = useAuthentication()
+
+	useEffect(() => {
+		if (userData && !userData.checklist.personalDetails) {
+			navigation.navigate('personal-details')
+		}
+	}, [userData])
+
 	const initialValues: FormValues = {
 		email: '',
 		password: '',
@@ -41,8 +49,6 @@ export const Login = ({ navigation }) => {
 			email: values.email,
 			password: values.password,
 		})
-
-		logout()
 	}
 
 	const navigateToCreateAccount = () => {
@@ -102,6 +108,7 @@ export const Login = ({ navigation }) => {
 								<Button
 									variant='primary'
 									size='$5'
+									isLoading={isLoading}
 									onPress={() => {
 										handleSubmit()
 									}}

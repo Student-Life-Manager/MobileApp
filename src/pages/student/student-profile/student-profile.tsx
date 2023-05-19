@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Text, View, Alert } from 'react-native'
 import { H3 } from 'tamagui'
 
@@ -28,8 +29,12 @@ import { styles } from './styles'
 export const StudentProfile = ({ navigation }) => {
 	const { renderModal } = useGlobalModal()
 	const { logout } = useAuthentication()
-	const { data: guardiansData, isLoading: fetchGuardiansLoading } = useFetchGuardians()
-	const { deleteGuardian, isLoading: deleteGuardianLoading } = useDeleteGuardian()
+	const { data: guardiansData, isLoading: fetchGuardiansLoading, refetch } = useFetchGuardians()
+	const {
+		deleteGuardian,
+		isLoading: deleteGuardianLoading,
+		isSuccess: isDeleteSuccess,
+	} = useDeleteGuardian()
 	const { data: userData, isLoading: userDataLoading } = useFetchUser()
 
 	console.log('user data', userData)
@@ -40,13 +45,24 @@ export const StudentProfile = ({ navigation }) => {
 		})
 	}
 
+	useEffect(() => {
+		if (isDeleteSuccess) {
+			refetch()
+		}
+	}, [isDeleteSuccess])
+
 	const handleDeleteGuardianContact = (guardianUuid: string) => {
 		Alert.alert('Delete contact', "Are you sure you want to delete this guardian's contact info", [
 			{
 				text: 'No',
 				onPress: () => {},
 			},
-			{ text: 'Yes', onPress: () => console.log('guardian selected', guardianUuid) },
+			{
+				text: 'Yes',
+				onPress: () => {
+					deleteGuardian({ uuid: guardianUuid })
+				},
+			},
 		])
 	}
 
@@ -77,7 +93,6 @@ export const StudentProfile = ({ navigation }) => {
 				text: 'Yes',
 				onPress: () => {
 					logout()
-					// navigation.navigate('AuthStack')
 				},
 			},
 		])
@@ -116,19 +131,19 @@ export const StudentProfile = ({ navigation }) => {
 				handleEditInfo('Room number', '504', KeyboardType.NUMERIC, 'roomNumber')
 			},
 		},
-		{
-			title: 'Emergency phone number',
-			value: userData?.phoneNumber ?? '',
-			isListIconVisible: true,
-			onClick: () => {
-				handleEditInfo(
-					'Emergency phone number',
-					'+91 9274738482',
-					KeyboardType.NUMERIC,
-					'phoneNumber',
-				)
-			},
-		},
+		// {
+		// 	title: 'Emergency phone number',
+		// 	value: userData?.phoneNumber ?? '',
+		// 	isListIconVisible: true,
+		// 	onClick: () => {
+		// 		handleEditInfo(
+		// 			'Emergency phone number',
+		// 			'+91 9274738482',
+		// 			KeyboardType.NUMERIC,
+		// 			'phoneNumber',
+		// 		)
+		// 	},
+		// },
 	]
 
 	const guardiansList = guardiansData.map((guardian) => {
@@ -146,8 +161,8 @@ export const StudentProfile = ({ navigation }) => {
 	return (
 		<PageWrapper>
 			<View>
-				<H3 style={styles.studentName}>Pulkit Jasti</H3>
-				<Text style={styles.rollNumber}>AP19110010491</Text>
+				<H3 style={styles.studentName}>{`${userData?.firstName} ${userData?.lastName}`}</H3>
+				<Text style={styles.rollNumber}>{userData?.rollNumber}</Text>
 			</View>
 			<View>
 				<InfoList

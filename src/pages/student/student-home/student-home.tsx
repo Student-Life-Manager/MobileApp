@@ -1,12 +1,13 @@
 import { View, TouchableOpacity } from 'react-native'
 import { H3 } from 'tamagui'
 
-import { studentOutpassListItem } from '@app/types'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import WardenPage from '@app/assets/images/warden-page.svg'
+import { useAuthentication } from '@app/components/hooks/authentication'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { OutpassStatus } from '@app/constants/enums'
+import { studentOutpassListItem } from '@app/types'
 
 import { ListItem } from './@components/list-item'
 import { styles } from './styles'
@@ -33,6 +34,7 @@ const outpassList: studentOutpassListItem[] = [
 ]
 
 export const StudentHome = ({ navigation }) => {
+	const { userData } = useAuthentication()
 	const navigateToProfile = () => {
 		navigation.navigate('student-profile')
 	}
@@ -50,7 +52,9 @@ export const StudentHome = ({ navigation }) => {
 			<View style={styles.pageContainer}>
 				<View>
 					<View style={styles.headerContainer}>
-						<H3>Welcome, {'\n'} Student name</H3>
+						<H3>
+							Welcome, {'\n'} {`${userData?.firstName} ${userData?.lastName}`}
+						</H3>
 						<TouchableOpacity onPress={navigateToProfile}>
 							<ProfileIcon />
 						</TouchableOpacity>

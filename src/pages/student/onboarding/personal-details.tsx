@@ -3,6 +3,7 @@ import { Text } from 'react-native'
 import { H3, YStack, Fieldset, Input, Label } from 'tamagui'
 import * as Yup from 'yup'
 
+import { useAuthentication } from '@app/components/hooks/authentication'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { globalStyles } from '@app/constants/styles'
@@ -16,6 +17,7 @@ type FormValues = {
 }
 
 export const PersonalDetails = ({ navigation }) => {
+	const { logout } = useAuthentication()
 	const initialValues: FormValues = {
 		firstName: '',
 		lastName: '',
@@ -25,29 +27,31 @@ export const PersonalDetails = ({ navigation }) => {
 	}
 
 	const validationSchema = Yup.object({
-		firstName: Yup.string()
-			.required('First name is required')
-			.min(3, 'First name has to be at least 3 characters long')
-			.max(15, 'First name cannot be longer than 15 characters')
-			.matches(/^[A-Za-z\s]+$/, 'First name should only contain letters and spaces'),
+		firstName: Yup.string(),
+		// .required('First name is required')
+		// .min(3, 'First name has to be at least 3 characters long')
+		// .max(15, 'First name cannot be longer than 15 characters')
+		// .matches(/^[A-Za-z\s]+$/, 'First name should only contain letters and spaces'),
 
-		lastName: Yup.string()
-			.required('Last name is required')
-			.min(3, 'Last name has to be at least 3 characters long')
-			.max(15, 'Last name cannot be longer than 15 characters')
-			.matches(/^[A-Za-z\s]+$/, 'Last name should only contain letters and spaces'),
+		lastName: Yup.string(),
+		// .required('Last name is required')
+		// .min(3, 'Last name has to be at least 3 characters long')
+		// .max(15, 'Last name cannot be longer than 15 characters')
+		// .matches(/^[A-Za-z\s]+$/, 'Last name should only contain letters and spaces'),
 
-		rollNo: Yup.string()
-			.required('Roll number is required')
-			.matches(/^AP\d{11}$/, 'Roll number should start with AP'),
+		rollNo: Yup.string(),
+		// .required('Roll number is required')
+		// .matches(/^AP\d{11}$/, 'Roll number should start with AP'),
 
-		phoneNumber: Yup.string()
-			.required('Phone number is required')
-			.matches(/^[0-9]{10}$/, 'Phone number should be 10 digits long'),
-		emergencyPhoneNumber: Yup.string().matches(
-			/^[0-9]{10}$/,
-			'Phone number should be 10 digits long',
-		),
+		phoneNumber: Yup.string(),
+		// .required('Phone number is required')
+		// .matches(/^[0-9]{10}$/, 'Phone number should be 10 digits long'),
+
+		emergencyPhoneNumber: Yup.string(),
+		// .matches(
+		// 	/^[0-9]{10}$/,
+		// 	'Phone number should be 10 digits long',
+		// ),
 	})
 
 	const handleFormSubmit = (values: FormValues) => {
@@ -145,6 +149,16 @@ export const PersonalDetails = ({ navigation }) => {
 								}}
 							>
 								Continue
+							</Button>
+							<Button
+								style={{ marginTop: 12 }}
+								variant='secondary'
+								onPress={() => {
+									// logout()
+									navigation.navigate('login')
+								}}
+							>
+								Logout
 							</Button>
 						</YStack>
 					)}

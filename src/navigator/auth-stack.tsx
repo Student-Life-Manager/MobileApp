@@ -3,9 +3,8 @@ import React from 'react'
 
 import { routes } from './routes'
 
-export default function AuthStack() {
+export default function AuthStack({ initialRoute }: { initialRoute: string }) {
 	const Stack = createNativeStackNavigator()
-	const initialRoute = 'login'
 
 	return (
 		<Stack.Navigator initialRouteName={initialRoute}>

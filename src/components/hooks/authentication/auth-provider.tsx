@@ -4,14 +4,17 @@ import { createContext, useState, useEffect } from 'react'
 import { UseMutateFunction } from 'react-query'
 
 import { SlmApi, setBearerToken, revokeAuthorizationToken } from '@app/api'
+import { useFetchUser } from '@app/api/hooks/useFetchUser'
 import { useLoginUser } from '@app/api/hooks/useLoginUser'
 import { loginUserProps } from '@app/api/mutations/login-user'
+import { StudentUser } from '@app/types/user'
 
 interface authenticationProps {
 	isAuthenticated: boolean | null
 	login: ({ email, password }: loginUserProps) => void
 	logout: () => void
 	isLoading: boolean
+	userData: StudentUser | null
 }
 
 const initialAuthState: authenticationProps = {
@@ -19,23 +22,26 @@ const initialAuthState: authenticationProps = {
 	login: ({ email, password }: loginUserProps) => {},
 	logout: () => {},
 	isLoading: false,
+	userData: null,
 }
 
 export const AuthContext = /*#__PURE__*/ createContext<authenticationProps>(initialAuthState)
 
 export const AuthProvider = (props) => {
-	const { loginUser, data, isLoading, isSuccess } = useLoginUser()
+	const { loginUser, data: loginData, isLoading, isSuccess } = useLoginUser()
 	const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
 	const [authToken, setAuthToken] = useState<string>('')
+	const { data: userData, refetch: refetchUserData } = useFetchUser()
+	const [initialRoute, setInitialRoute] = useState<string>('')
 
 	const LOCAL_TOKEN = 'authToken'
-
-	console.log('response data from mutation in provider', data)
 
 	// SlmApi.interceptors.request.use((config) => {
 	// 	console.log('endpoint url', config.baseURL)
 	// 	return config
 	// })
+
+	console.log('provide user data', userData?.checklist, isAuthenticated, userData?.email)
 
 	useEffect(() => {
 		AsyncStorage.getItem(LOCAL_TOKEN).then((token) => {
@@ -48,16 +54,20 @@ export const AuthProvider = (props) => {
 	}, [])
 
 	useEffect(() => {
-		if (isSuccess && data) {
-			AsyncStorage.setItem(LOCAL_TOKEN, data.data.access_token)
-			setBearerToken(data.data.access_token)
+		if (isAuthenticated) {
+			refetchUserData()
+		}
+	}, [isAuthenticated])
+
+	useEffect(() => {
+		if (isSuccess && loginData) {
+			AsyncStorage.setItem(LOCAL_TOKEN, loginData.data.access_token)
+			setBearerToken(loginData.data.access_token)
 			setIsAuthenticated(true)
-			console.log('data', data)
 		}
 	}, [isSuccess])
 
 	const login = ({ email, password }: loginUserProps) => {
-		// console.log('creds', email, password)
 		loginUser({
 			email,
 			password,
@@ -68,7 +78,7 @@ export const AuthProvider = (props) => {
 		revokeAuthorizationToken()
 		AsyncStorage.removeItem(LOCAL_TOKEN)
 		setIsAuthenticated(false)
-		console.log('logout')
+		console.log('logoutttttt')
 	}
 
 	return (
@@ -78,6 +88,7 @@ export const AuthProvider = (props) => {
 				login,
 				logout,
 				isLoading,
+				userData,
 			}}
 		>
 			{props.children}
