@@ -1,10 +1,11 @@
 import MD5 from 'crypto-js/md5'
 import { format } from 'date-fns'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { View, Alert, Vibration } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import { YStack } from 'tamagui'
 
+import { useDeleteOutpass } from '@app/api/hooks/useDeleteOutpass'
 import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
 import CalendarIcon from '@app/assets/icons/calendar.svg'
 import LocationIcon from '@app/assets/icons/location.svg'
@@ -19,9 +20,17 @@ import { Timer } from './@components/timer'
 import { styles } from './styles'
 
 export const OutpassApproved = ({ navigation, route }) => {
-	const { data: outpassList } = useFetchUserOutpasses()
+	const { data: outpassList, refetch } = useFetchUserOutpasses()
 	const uuid = route.params?.uuid
 	const outpass = outpassList.find((item) => item.uuid === uuid)
+	const { cancelOutpass, isLoading, isSuccess } = useDeleteOutpass()
+
+	useEffect(() => {
+		if (isSuccess) {
+			refetch()
+			navigation.navigate('student-home')
+		}
+	}, [isSuccess])
 
 	const generateQrValue = (outpass?: Outpass) => {
 		let currentTime = new Date().getTime()
@@ -40,13 +49,17 @@ export const OutpassApproved = ({ navigation, route }) => {
 		setQrCodeValue(hashValue)
 	}
 
-	const cancelOutpass = () => {
+	const handleCancelOutpass = () => {
 		Alert.alert('Cancel outpass', 'Are you sure you want to cancel this outpass', [
 			{
 				text: 'No',
-				onPress: () => console.log('no pressed'),
 			},
-			{ text: 'Yes', onPress: () => console.log('yes pressed') },
+			{
+				text: 'Yes',
+				onPress: () => {
+					outpass?.uuid && cancelOutpass(outpass?.uuid)
+				},
+			},
 		])
 	}
 
@@ -93,8 +106,9 @@ export const OutpassApproved = ({ navigation, route }) => {
 				]}
 			/>
 			<Button
-				variant='primary'
-				onPress={cancelOutpass}
+				variant='secondary'
+				isLoading={isLoading}
+				onPress={handleCancelOutpass}
 			>
 				Cancel outpass
 			</Button>

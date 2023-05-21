@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 
 import { useCreateOutpass } from '@app/api/hooks/useCreateOutpass'
 import { useFetchGuardians } from '@app/api/hooks/useFetchGuardians'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
 import { useFetchWardens } from '@app/api/hooks/useFetchWardens'
 import { Button } from '@app/components/ui/button'
 import { Loader } from '@app/components/ui/loader'
@@ -21,6 +22,7 @@ interface FormValues {
 }
 
 export const ContactDetails = ({ route, navigation }) => {
+	const { refetch } = useFetchUserOutpasses()
 	const { data: wardensData, isLoading: isWardensLoading } = useFetchWardens()
 	const { data: guardiansData, isLoading: isGuardiansLoading } = useFetchGuardians()
 	const outpassDetails = route.params.outpassDetails
@@ -28,6 +30,7 @@ export const ContactDetails = ({ route, navigation }) => {
 
 	useEffect(() => {
 		if (isSuccess) {
+			refetch()
 			Alert.alert(
 				'Request sent',
 				"Your outpass request has been sent. You will receive a notification when it's approved",

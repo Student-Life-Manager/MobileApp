@@ -29,7 +29,7 @@ export const StudentHome = ({ navigation }) => {
 		const clicked = outpassList.find((item) => item.uuid === uuid)
 
 		if (clicked?.status === OutpassStatus.Pending) {
-			navigation.navigate('outpass-waiting')
+			navigation.navigate('outpass-waiting', { uuid: uuid })
 		} else if (
 			clicked?.status === OutpassStatus.Approved ||
 			clicked?.status === OutpassStatus.Exited ||

@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
 		width: '83%',
 		textAlign: 'center',
 	},
+	cancelButton: {
+		marginBottom: 20,
+	},
 })
