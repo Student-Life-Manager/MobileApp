@@ -1,13 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 
-import { RootStackParamList } from '@app/types/navigation'
+import { LoaderPage } from '@app/pages/loader-page'
 
 import { routes } from './routes'
 
-export default function AppStack({ initialRoute }: { initialRoute: string }) {
+export default function LoaderStack() {
 	const Stack = createNativeStackNavigator()
-	// const initialRoute = 'student-home'
+	const initialRoute = 'student-home'
 
 	return (
 		<Stack.Navigator initialRouteName={initialRoute}>
@@ -16,10 +16,9 @@ export default function AppStack({ initialRoute }: { initialRoute: string }) {
 				.map((route) => {
 					return (
 						<Stack.Screen
-							key={route.name}
-							options={route.options}
-							name={route.name}
-							component={route.component}
+							key={'loader'}
+							name={'loader-page'}
+							component={LoaderPage}
 						/>
 					)
 				})}

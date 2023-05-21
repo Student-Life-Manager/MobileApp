@@ -5,7 +5,12 @@ import BlueLoader from '@app/assets/lottie/loading-blue.json'
 
 import { styles } from './styles'
 
-export const Loader = () => {
+interface LoaderProps {
+	displayText?: boolean
+}
+
+export const Loader = (props: LoaderProps) => {
+	const { displayText = true } = props
 	return (
 		<View style={styles.container}>
 			<Lottie
@@ -13,7 +18,7 @@ export const Loader = () => {
 				autoPlay={true}
 				style={styles.lottieAnimation}
 			/>
-			<Text>Loading...</Text>
+			{displayText ? <Text>Loading...</Text> : null}
 		</View>
 	)
 }

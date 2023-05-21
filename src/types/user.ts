@@ -4,6 +4,7 @@ export enum UserType {
 	Student = 'student',
 	Guardian = 'guardian',
 	Admin = 'admin',
+	Warden = 'warden',
 }
 
 export type UserRaw = {

@@ -42,7 +42,7 @@ export const EditInfoModal = () => {
 	})
 
 	const handleSubmit = (values: FormValues) => {
-		console.log('form values', values)
+		// console.log('form values', values)
 	}
 
 	return (

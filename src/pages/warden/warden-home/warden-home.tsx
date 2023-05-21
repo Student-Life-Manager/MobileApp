@@ -1,41 +1,61 @@
+import { TouchableOpacity, View } from 'react-native'
 import { H3, YStack, Fieldset, XStack } from 'tamagui'
 
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import WardenPage from '@app/assets/images/warden-page.svg'
+import { useAuthentication } from '@app/components/hooks/authentication'
 import { Button } from '@app/components/ui/button'
+import { Loader } from '@app/components/ui/loader'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 
+import { styles } from './styles'
+
 export const WardenHome = ({ navigation }) => {
+	const { isLoading, userData } = useAuthentication()
+
+	const navigateToProfile = () => {
+		navigation.navigate('student-profile')
+	}
+
+	const navigateToOutpassList = () => {
+		navigation.navigate('student-profile')
+	}
+
 	return (
-		<PageWrapper>
-			<YStack
-				space='$4'
-				maxWidth={600}
-			>
-				<XStack>
-					<YStack>
-						<H3>Welcome, {'\n'} Warden name</H3>
-					</YStack>
-					<YStack
-						alignSelf='flex-end'
-						paddingLeft={'45%'}
+		<PageWrapper bounces={false}>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<View style={styles.pageContainer}>
+					<View>
+						<View style={styles.headerContainer}>
+							<H3>
+								Welcome, {'\n'}
+								{`${userData?.firstName} ${userData?.lastName}`}
+							</H3>
+							<TouchableOpacity onPress={navigateToProfile}>
+								<ProfileIcon />
+							</TouchableOpacity>
+						</View>
+						<WardenPage />
+					</View>
+					<View>
+						<Button
+							style={styles.primaryButton}
+							variant='primary'
+							onPress={navigateToOutpassList}
+						>
+							View outpasses
+						</Button>
+						{/* <Button
+						variant='secondary'
+						onPress={navigateToFeedback}
 					>
-						<ProfileIcon />
-					</YStack>
-				</XStack>
-				<Fieldset
-					paddingTop='$7'
-					alignItems='center'
-				>
-					<WardenPage />
-				</Fieldset>
-				<Fieldset paddingTop='$8'>
-					<Button variant='secondary'>View outpass list</Button>
-				</Fieldset>
-				<Fieldset>
-					<Button variant='secondary'>Scan QR code</Button>
-				</Fieldset>
-			</YStack>
+						Send feedback
+					</Button> */}
+					</View>
+				</View>
+			)}
 		</PageWrapper>
 	)
 }

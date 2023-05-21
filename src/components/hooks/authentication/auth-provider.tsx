@@ -1,12 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createContext, useState, useEffect } from 'react'
 
-import { SlmApi, setBearerToken, revokeAuthorizationToken } from '@app/api'
+import { setBearerToken, revokeAuthorizationToken } from '@app/api'
 import { useFetchUser } from '@app/api/hooks/useFetchUser'
 import { useLoginUser } from '@app/api/hooks/useLoginUser'
 import { useRegisterUser } from '@app/api/hooks/useRegisterUser'
 import { loginUserProps } from '@app/api/mutations/login-user'
 import { registerUserProps } from '@app/api/mutations/register-user'
+import { LOCAL_TOKEN, useFetchAuthTokenFromLocalStorage } from '@app/components/hooks/auth-token'
 import { User } from '@app/types/user'
 
 interface authenticationProps {
@@ -15,6 +16,7 @@ interface authenticationProps {
 	// register: ({ email, password }: registerUserProps) => void
 	logout: () => void
 	isLoading: boolean
+	// isSuccess: boolean
 	userData: User | null
 }
 
@@ -24,18 +26,18 @@ const initialAuthState: authenticationProps = {
 	// register: ({ email, password }: registerUserProps) => {},
 	logout: () => {},
 	isLoading: false,
+	// isSuccess: false,
 	userData: null,
 }
 
 export const AuthContext = /*#__PURE__*/ createContext<authenticationProps>(initialAuthState)
 
 export const AuthProvider = (props) => {
-	const { loginUser, data: loginData, isLoading, isSuccess: loginUserSuccess } = useLoginUser()
+	const { loginUser, data: loginData, isLoading: isLoginLoading, isSuccess } = useLoginUser()
+	const { data: userData, isLoading: isUserLoading } = useFetchUser()
 	const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
-	const { data: userData, refetch: refetchUserData, isSuccess: isUserDataSuccess } = useFetchUser()
+	const { data: authToken } = useFetchAuthTokenFromLocalStorage()
 	// const { registerUser, data: registerData, isSuccess: registerUserSuccess } = useRegisterUser()
-
-	const LOCAL_TOKEN = 'authToken'
 
 	// Set up expiried token i
 	// SlmApi.interceptors.request.use((config) => {
@@ -44,27 +46,27 @@ export const AuthProvider = (props) => {
 	// })
 
 	useEffect(() => {
-		AsyncStorage.getItem(LOCAL_TOKEN).then((token) => {
-			if (token) {
-				setIsAuthenticated(true)
-				setBearerToken(token)
-			}
-		})
-	}, [])
-
-	useEffect(() => {
-		if (loginUserSuccess) {
-			refetchUserData()
+		if (authToken) {
+			console.log('local storage login')
+			setIsAuthenticated(true)
+			setBearerToken(authToken)
 		}
-	}, [loginUserSuccess])
+	}, [authToken])
 
 	useEffect(() => {
-		if (loginUserSuccess && loginData) {
-			AsyncStorage.setItem(LOCAL_TOKEN, loginData.data.access_token)
-			setBearerToken(loginData.data.access_token)
+		if (isSuccess && loginData.jwt_token) {
+			AsyncStorage.setItem(LOCAL_TOKEN, loginData.jwt_token.access_token)
+			setBearerToken(loginData.jwt_token.access_token)
 			setIsAuthenticated(true)
 		}
-	}, [loginUserSuccess])
+	}, [isSuccess])
+
+	const login = ({ email, password }: loginUserProps) => {
+		loginUser({
+			email,
+			password,
+		})
+	}
 
 	// useEffect(() => {
 	// 	if (registerUserSuccess && registerData) {
@@ -73,13 +75,6 @@ export const AuthProvider = (props) => {
 	// 		setIsAuthenticated(true)
 	// 	}
 	// }, [registerUserSuccess])
-
-	const login = ({ email, password }: loginUserProps) => {
-		loginUser({
-			email,
-			password,
-		})
-	}
 
 	// const register = ({ email, password }: registerUserProps) => {
 	// 	registerUser({
@@ -92,7 +87,6 @@ export const AuthProvider = (props) => {
 		revokeAuthorizationToken()
 		AsyncStorage.removeItem(LOCAL_TOKEN)
 		setIsAuthenticated(false)
-		console.log('logoutttttt')
 	}
 
 	return (
@@ -102,8 +96,9 @@ export const AuthProvider = (props) => {
 				login,
 				// register,
 				logout,
-				isLoading,
-				userData,
+				isLoading: isLoginLoading || isUserLoading,
+				// isSuccess,
+				userData: loginData.auth_user ?? userData,
 			}}
 		>
 			{props.children}

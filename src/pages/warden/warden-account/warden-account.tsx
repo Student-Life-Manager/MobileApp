@@ -43,7 +43,7 @@ export const WardenAccount = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
+		// console.log(values)
 	}
 
 	return (

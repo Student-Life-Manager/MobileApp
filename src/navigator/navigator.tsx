@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ActivityIndicator } from 'react-native'
 
 import { useAuthentication } from '@app/components/hooks/authentication'
@@ -9,64 +8,18 @@ import AuthStack from './auth-stack'
 export const NativeNavigator = () => {
 	const { isAuthenticated, isLoading, userData } = useAuthentication()
 
-	// if (isLoading) {
-	// 	return <ActivityIndicator />
-	// } else if (!isAuthenticated) {
-	// 	return <AuthStack initialRoute='login' />
-	// } else if (isAuthenticated && userData && !userData?.checklist.personalDetails) {
-	// 	return <AuthStack initialRoute='personal-details' />
-	// } else if (isAuthenticated && userData && !userData?.checklist.academicDetails) {
-	// 	return <AuthStack initialRoute='academic-details' />
-	// } else if (isAuthenticated && userData && !userData?.checklist.hostelDetails) {
-	// 	return <AuthStack initialRoute='hostel-details' />
-	// } else if (
-	// 	isAuthenticated &&
-	// 	userData &&
-	// 	userData?.checklist.personalDetails &&
-	// 	userData?.checklist.academicDetails &&
-	// 	userData?.checklist.hostelDetails
-	// ) {
-	// 	return <AppStack />
-	// }
 	// AsyncStorage.clear()
+	// console.log('AUTH_PROVIDER----- ', isAuthenticated, userData, isLoading)
 
-	console.log('user type', userData?.accountType)
-
-	if (isLoading) {
-		return <ActivityIndicator />
-	} else if (isAuthenticated) {
-		return <AppStack />
-	} else {
+	if (isLoading || !userData) {
+		return <AuthStack initialRoute='loader-page' />
+	} else if (!isAuthenticated && !isLoading) {
 		return <AuthStack initialRoute='login' />
+	} else if (isAuthenticated && userData?.accountType === 'student') {
+		return <AppStack initialRoute='student-home' />
+	} else if (isAuthenticated && userData?.accountType === 'warden') {
+		return <AppStack initialRoute='warden-home' />
+	} else {
+		return <AuthStack initialRoute='loader-page' />
 	}
-
-	// if (isLoading) {
-	// 	return <ActivityIndicator />
-	// } else if (!isAuthenticated) {
-	// 	return <AuthStack initialRoute='login' />
-	// } else if (isAuthenticated && userData && !userData?.checklist.personalDetails) {
-	// 	return <AuthStack initialRoute='personal-details' />
-	// } else if (
-	// 	isAuthenticated &&
-	// 	userData &&
-	// 	userData?.checklist.personalDetails &&
-	// 	userData?.checklist.academicDetails &&
-	// 	userData?.checklist.hostelDetails
-	// ) {
-	// 	return <AuthStack initialRoute='login' />
-	// }
-
-	// if (isLoading) {
-	// 	return <ActivityIndicator />
-	// } else if (
-	// 	isAuthenticated &&
-	// 	userData &&
-	// 	userData?.checklist.personalDetails &&
-	// 	userData?.checklist.academicDetails &&
-	// 	userData?.checklist.hostelDetails
-	// ) {
-	// 	return <AppStack />
-	// } else {
-	// 	return <AuthStack />
-	// }
 }

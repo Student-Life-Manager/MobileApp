@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 
+import { LoaderPage } from '@app/pages/loader-page'
 import { Login } from '@app/pages/login'
 import { PageIndex } from '@app/pages/page-index'
 import { PageTemplate } from '@app/pages/page-template'
@@ -31,7 +32,7 @@ interface route {
 	component: ({ navigation }: { navigation: any }) => JSX.Element
 	isAuthProtected: boolean
 	options: {
-		title: string
+		title?: string
 	}
 }
 
@@ -51,6 +52,14 @@ export const routes: route[] = [
 		isAuthProtected: false,
 		options: {
 			title: 'Page template',
+		},
+	},
+	{
+		name: 'loader-page',
+		component: LoaderPage,
+		isAuthProtected: false,
+		options: {
+			title: '',
 		},
 	},
 	{

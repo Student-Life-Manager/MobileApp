@@ -3,11 +3,11 @@ import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
 
-import { outpassType } from '@app/types'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { OutpassStatus } from '@app/constants/enums'
 import { outpassScanMessages } from '@app/constants/messages'
 import { outpassList } from '@app/constants/outpass'
+import { outpassType } from '@app/types'
 
 import { styles } from './styles'
 
@@ -35,7 +35,6 @@ export const ScanQRCode = ({ navigation }) => {
 				const newHash = MD5(outpass.outpassId + scannedOutpass.timeStamp).toString()
 				return newHash === scannedOutpass.hashValue
 			})
-			console.log('final outpass', finalOutpass)
 
 			setOutpassApprovalStatus(OutpassStatus.Approved)
 
@@ -58,7 +57,7 @@ export const ScanQRCode = ({ navigation }) => {
 	}
 
 	useEffect(() => {
-		console.log('Please allow camera access to scan QR code')
+		// console.log('Please allow camera access to scan QR code')
 	}, [hasPermission])
 
 	useEffect(() => {

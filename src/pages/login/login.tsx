@@ -42,9 +42,13 @@ export const Login = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
+		// login({
+		// 	email: values.email,
+		// 	password: values.password,
+		// })
 		login({
-			email: values.email,
-			password: values.password,
+			email: values.email + '@srmap.edu.in',
+			password: 'password',
 		})
 	}
 

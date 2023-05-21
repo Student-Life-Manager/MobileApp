@@ -24,7 +24,6 @@ export const OutpassPending = ({ navigation, route }) => {
 	}, [isSuccess])
 
 	const handleCancelOutpass = () => {
-		console.log('loggg', outpass?.uuid)
 		Alert.alert('Cancel outpass', 'Are you sure you want to cancel this outpass', [
 			{
 				text: 'No',

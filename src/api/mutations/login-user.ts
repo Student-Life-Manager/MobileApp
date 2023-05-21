@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import { UserRaw } from '@app/types/user'
+
 import { SlmApi } from '../api'
 
 export interface loginUserProps {
@@ -8,8 +10,11 @@ export interface loginUserProps {
 }
 
 export interface loginUserResponse {
-	access_token: string
-	refresh_token: string
+	auth_user: UserRaw
+	jwt_token: {
+		access_token: string
+		refresh_token: string
+	}
 }
 
 export const loginUser = async ({ email, password }: loginUserProps) => {
