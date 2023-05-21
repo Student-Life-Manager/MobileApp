@@ -34,4 +34,4 @@ export type UserRaw = {
 	}
 }
 
-export type StudentUser = ReturnType<typeof sanitizeUser>
+export type User = ReturnType<typeof sanitizeUser>

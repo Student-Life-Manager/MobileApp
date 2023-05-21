@@ -19,11 +19,11 @@ type FormValues = {
 export const Login = ({ navigation }) => {
 	const { login, logout, userData, isLoading } = useAuthentication()
 
-	useEffect(() => {
-		if (userData && !userData.checklist.personalDetails) {
-			navigation.navigate('personal-details')
-		}
-	}, [userData])
+	// useEffect(() => {
+	// 	if (userData && !userData.checklist.personalDetails) {
+	// 		navigation.navigate('personal-details')
+	// 	}
+	// }, [userData])
 
 	const initialValues: FormValues = {
 		email: '',
@@ -91,7 +91,7 @@ export const Login = ({ navigation }) => {
 								<Label htmlFor='password'>Password</Label>
 								<Input
 									id='password'
-									placeholder='***'
+									secureTextEntry={true}
 									size='$5'
 									onChangeText={handleChange('password')}
 									onBlur={handleBlur('password')}
@@ -110,10 +110,10 @@ export const Login = ({ navigation }) => {
 										handleSubmit()
 									}}
 								>
-									Next
+									Login
 								</Button>
 							</Fieldset>
-							{/* <Text
+							<Text
 								style={{
 									textAlign: 'center',
 									marginVertical: 16,
@@ -126,8 +126,8 @@ export const Login = ({ navigation }) => {
 								size='$5'
 								onPress={navigateToCreateAccount}
 							>
-								Create account
-							</Button> */}
+								Sign up
+							</Button>
 						</YStack>
 					)}
 				</Formik>

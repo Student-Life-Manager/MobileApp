@@ -1,25 +1,27 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import axios, { AxiosResponse } from 'axios'
 import { createContext, useState, useEffect } from 'react'
-import { UseMutateFunction } from 'react-query'
 
 import { SlmApi, setBearerToken, revokeAuthorizationToken } from '@app/api'
 import { useFetchUser } from '@app/api/hooks/useFetchUser'
 import { useLoginUser } from '@app/api/hooks/useLoginUser'
+import { useRegisterUser } from '@app/api/hooks/useRegisterUser'
 import { loginUserProps } from '@app/api/mutations/login-user'
-import { StudentUser } from '@app/types/user'
+import { registerUserProps } from '@app/api/mutations/register-user'
+import { User } from '@app/types/user'
 
 interface authenticationProps {
 	isAuthenticated: boolean | null
 	login: ({ email, password }: loginUserProps) => void
+	// register: ({ email, password }: registerUserProps) => void
 	logout: () => void
 	isLoading: boolean
-	userData: StudentUser | null
+	userData: User | null
 }
 
 const initialAuthState: authenticationProps = {
 	isAuthenticated: false,
 	login: ({ email, password }: loginUserProps) => {},
+	// register: ({ email, password }: registerUserProps) => {},
 	logout: () => {},
 	isLoading: false,
 	userData: null,
@@ -28,14 +30,14 @@ const initialAuthState: authenticationProps = {
 export const AuthContext = /*#__PURE__*/ createContext<authenticationProps>(initialAuthState)
 
 export const AuthProvider = (props) => {
-	const { loginUser, data: loginData, isLoading, isSuccess } = useLoginUser()
+	const { loginUser, data: loginData, isLoading, isSuccess: loginUserSuccess } = useLoginUser()
 	const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
-	const [authToken, setAuthToken] = useState<string>('')
-	const { data: userData, refetch: refetchUserData } = useFetchUser()
-	const [initialRoute, setInitialRoute] = useState<string>('')
+	const { data: userData, refetch: refetchUserData, isSuccess: isUserDataSuccess } = useFetchUser()
+	// const { registerUser, data: registerData, isSuccess: registerUserSuccess } = useRegisterUser()
 
 	const LOCAL_TOKEN = 'authToken'
 
+	// Set up expiried token i
 	// SlmApi.interceptors.request.use((config) => {
 	// 	console.log('endpoint url', config.baseURL)
 	// 	return config
@@ -44,7 +46,6 @@ export const AuthProvider = (props) => {
 	useEffect(() => {
 		AsyncStorage.getItem(LOCAL_TOKEN).then((token) => {
 			if (token) {
-				setAuthToken(token)
 				setIsAuthenticated(true)
 				setBearerToken(token)
 			}
@@ -52,18 +53,26 @@ export const AuthProvider = (props) => {
 	}, [])
 
 	useEffect(() => {
-		if (isAuthenticated) {
+		if (loginUserSuccess) {
 			refetchUserData()
 		}
-	}, [isAuthenticated])
+	}, [loginUserSuccess])
 
 	useEffect(() => {
-		if (isSuccess && loginData) {
+		if (loginUserSuccess && loginData) {
 			AsyncStorage.setItem(LOCAL_TOKEN, loginData.data.access_token)
 			setBearerToken(loginData.data.access_token)
 			setIsAuthenticated(true)
 		}
-	}, [isSuccess])
+	}, [loginUserSuccess])
+
+	// useEffect(() => {
+	// 	if (registerUserSuccess && registerData) {
+	// 		AsyncStorage.setItem(LOCAL_TOKEN, registerData.data.access_token)
+	// 		setBearerToken(registerData.data.access_token)
+	// 		setIsAuthenticated(true)
+	// 	}
+	// }, [registerUserSuccess])
 
 	const login = ({ email, password }: loginUserProps) => {
 		loginUser({
@@ -71,6 +80,13 @@ export const AuthProvider = (props) => {
 			password,
 		})
 	}
+
+	// const register = ({ email, password }: registerUserProps) => {
+	// 	registerUser({
+	// 		email,
+	// 		password,
+	// 	})
+	// }
 
 	const logout = () => {
 		revokeAuthorizationToken()
@@ -84,6 +100,7 @@ export const AuthProvider = (props) => {
 			value={{
 				isAuthenticated,
 				login,
+				// register,
 				logout,
 				isLoading,
 				userData,
