@@ -1,5 +1,7 @@
+import { format, addDays } from 'date-fns'
 import { useState } from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { onChange } from 'react-native-reanimated'
 
 import { styles } from './styles'
 
@@ -8,69 +10,45 @@ interface calendarSliderItem {
 	date: string
 	day: string
 	isSelected: boolean
+	fullDate: Date
 }
 
-const calendarData: calendarSliderItem[] = [
-	{
-		id: 1,
-		date: '15',
-		day: 'Mon',
-		isSelected: false,
-	},
-	{
-		id: 2,
-		date: '16',
-		day: 'Tue',
-		isSelected: true,
-	},
-	{
-		id: 3,
-		date: '17',
-		day: 'Wed',
-		isSelected: false,
-	},
-	{
-		id: 4,
-		date: '18',
-		day: 'Thu',
-		isSelected: false,
-	},
-	{
-		id: 5,
-		date: '19',
-		day: 'Fri',
-		isSelected: false,
-	},
-	{
-		id: 6,
-		date: '20',
-		day: 'Sat',
-		isSelected: false,
-	},
-	{
-		id: 7,
-		date: '21',
-		day: 'Sun',
-		isSelected: false,
-	},
-]
+interface calendarSliderProps {
+	onChange: (date: Date) => void
+}
 
-export const CalendarSlider = () => {
-	const [listItems, setListItems] = useState<calendarSliderItem[]>(calendarData)
+const calendarListData = Array.from({ length: 14 }, (_, index) => {
+	const date = addDays(new Date(), index)
+	const calendarItem: calendarSliderItem = {
+		id: index,
+		date: format(date, 'dd'),
+		day: format(date, 'EEE'),
+		isSelected: index === 0,
+		fullDate: date,
+	}
+	return calendarItem
+})
+
+export const CalendarSlider = (props: calendarSliderProps) => {
+	const { onChange } = props
+	const [listItems, setListItems] = useState<calendarSliderItem[]>(calendarListData)
 
 	const handleItemSelect = (id: number) => {
 		const selectedIndex = listItems.findIndex((item) => {
 			return item.id === id
 		})
-
 		const updatedList: calendarSliderItem[] = listItems.map((item) => {
 			return {
 				...item,
 				isSelected: false,
 			}
 		})
+
 		updatedList[selectedIndex].isSelected = true
 		setListItems(updatedList)
+
+		const selectedItem = listItems.find((item, _) => item.id === id)
+		selectedItem && onChange(selectedItem.fullDate)
 	}
 
 	return (

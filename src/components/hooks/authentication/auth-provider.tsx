@@ -47,7 +47,6 @@ export const AuthProvider = (props) => {
 
 	useEffect(() => {
 		if (authToken) {
-			console.log('local storage login')
 			setIsAuthenticated(true)
 			setBearerToken(authToken)
 		}

@@ -6,14 +6,13 @@ import * as Yup from 'yup'
 
 import { useCreateOutpass } from '@app/api/hooks/useCreateOutpass'
 import { useFetchGuardians } from '@app/api/hooks/useFetchGuardians'
-import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpass'
 import { useFetchWardens } from '@app/api/hooks/useFetchWardens'
 import { Button } from '@app/components/ui/button'
 import { Loader } from '@app/components/ui/loader'
 import { NativeSelect } from '@app/components/ui/native-select'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
 import { globalStyles } from '@app/constants/styles'
-import { CreateOutpass } from '@app/types/outpass'
 
 interface FormValues {
 	guardian: string

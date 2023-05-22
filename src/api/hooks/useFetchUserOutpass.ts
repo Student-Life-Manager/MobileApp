@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { fetchUserOutpasses } from '../queries/fetch-user-outpasses'
+import { fetchUserOutpasses } from '../queries/fetch-user-outpass'
 import { sanitizeOutpass } from '../sanitizers/outpass'
 
 export const useFetchUserOutpasses = () => {

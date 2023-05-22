@@ -199,7 +199,7 @@ export const routes: route[] = [
 		component: WardenOutpassList,
 		isAuthProtected: true,
 		options: {
-			title: 'Warden outpass List',
+			title: 'Outpass List',
 		},
 	},
 	{
@@ -223,7 +223,7 @@ export const routes: route[] = [
 		component: WardenOutpassDetails,
 		isAuthProtected: true,
 		options: {
-			title: 'Warden outpass details',
+			title: 'Outpass details',
 		},
 	},
 

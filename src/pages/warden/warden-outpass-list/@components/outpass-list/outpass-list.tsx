@@ -1,89 +1,70 @@
+import { format } from 'date-fns'
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
 import ChevronRight from '@app/assets/icons/chevron-right.svg'
+import { Loader } from '@app/components/ui/loader'
 import { OutpassStatus } from '@app/constants/enums'
+import { Outpass } from '@app/types/outpass'
 
 import { styles } from './styles'
 
-const outpassList = [
-	{
-		date: '2021-09-01',
-		createdAt: '12:30 PM',
-		studentName: 'Pulkit',
-		rollNumber: 'AP19110010491',
-		status: OutpassStatus.Pending,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '8:20 AM',
-		studentName: 'Prathyusha',
-		rollNumber: 'AP19110010494',
-		status: OutpassStatus.Approved,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '2:00 PM',
-		studentName: 'Nikita',
-		rollNumber: 'AP19110010460',
-		status: OutpassStatus.Rejected,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '2:00 PM',
-		studentName: 'Adithya',
-		rollNumber: 'AP19110010540',
-		status: OutpassStatus.Rejected,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '12:30 PM',
-		studentName: 'Pulkit',
-		rollNumber: 'AP19110010491',
-		status: OutpassStatus.Pending,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '8:20 AM',
-		studentName: 'Prathyusha',
-		rollNumber: 'AP19110010494',
-		status: OutpassStatus.Approved,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '2:00 PM',
-		studentName: 'Nikita',
-		rollNumber: 'AP19110010460',
-		status: OutpassStatus.Rejected,
-	},
-	{
-		date: '2021-09-01',
-		createdAt: '2:00 PM',
-		studentName: 'Adithya',
-		rollNumber: 'AP19110010540',
-		status: OutpassStatus.Rejected,
-	},
-]
+export interface outpassListItemProps {
+	uuid: string
+	date: string
+	createdAt: string
+	studentName: string
+	rollNumber: string
+	status: OutpassStatus
+}
 
-export const OutpassList = () => {
+interface outpassListProps {
+	data: outpassListItemProps[]
+	isLoading: boolean
+	onPress: (outpassUuid: string) => void
+}
+
+export const OutpassList = (props: outpassListProps) => {
+	const { data, isLoading, onPress } = props
+
+	// const onCardPress = ()=>{
+
+	// }
+
 	return (
 		<View>
-			{outpassList.map((item) => {
-				return (
-					<TouchableOpacity key={item.studentName}>
-						<View style={styles.itemContainer}>
-							<View style={styles.itemWrapper}>
-								<Text style={styles.dateText}>{item.studentName}</Text>
-								<Text style={styles.timeText}>{item.createdAt}</Text>
+			{isLoading ? (
+				<Loader />
+			) : data.length === 0 ? (
+				<View style={styles.emptyStateContainer}>
+					<Text style={styles.emptyStateText}>No outpasses found</Text>
+					<Text style={styles.emptyStateText}>Please change the filter and try again</Text>
+				</View>
+			) : (
+				data.map((item) => {
+					return (
+						<TouchableOpacity
+							key={item.uuid}
+							onPress={() => {
+								onPress(item.uuid)
+							}}
+						>
+							<View style={styles.itemContainer}>
+								<View style={styles.itemWrapper}>
+									<Text style={styles.dateText}>{item.studentName}</Text>
+									<Text style={styles.timeText}>
+										{format(new Date(item.createdAt), 'hh:mm aa')}
+									</Text>
+								</View>
+								<View style={styles.itemWrapper}>
+									<Text style={styles.rollNumber}>{item.rollNumber}</Text>
+									<ChevronRight />
+								</View>
 							</View>
-							<View style={styles.itemWrapper}>
-								<Text style={styles.rollNumber}>{item.rollNumber}</Text>
-								<ChevronRight />
-							</View>
-						</View>
-					</TouchableOpacity>
-				)
-			})}
+						</TouchableOpacity>
+					)
+				})
+			)}
 		</View>
 	)
 }

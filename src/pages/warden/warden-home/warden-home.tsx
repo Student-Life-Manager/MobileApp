@@ -18,7 +18,7 @@ export const WardenHome = ({ navigation }) => {
 	}
 
 	const navigateToOutpassList = () => {
-		navigation.navigate('student-profile')
+		navigation.navigate('warden-outpass-list')
 	}
 
 	return (

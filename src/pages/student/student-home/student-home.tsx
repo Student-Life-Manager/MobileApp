@@ -2,7 +2,7 @@ import { View, TouchableOpacity } from 'react-native'
 import { H3 } from 'tamagui'
 
 import { useFetchUser } from '@app/api/hooks/useFetchUser'
-import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpass'
 import ProfileIcon from '@app/assets/images/profile-icon.svg'
 import WardenPage from '@app/assets/images/warden-page.svg'
 import { Button } from '@app/components/ui/button'
@@ -42,7 +42,7 @@ export const StudentHome = ({ navigation }) => {
 	}
 
 	return (
-		<PageWrapper bounces={false}>
+		<PageWrapper>
 			{isUserLoading || isUserOutpassLoading ? (
 				<Loader />
 			) : (

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
 	View,
 	TextInputProps,
@@ -23,10 +23,13 @@ interface InputProps extends TextInputProps {
 export const Input = (props: InputProps) => {
 	const { Icon, eraseButton = false, inputStyle, wrapperStyle, onChangeText } = props
 
-	const [inputValue, setInputValue] = useState<string | undefined>(undefined)
+	const [inputValue, setInputValue] = useState<string>('')
 
 	const handleChange = (value: string) => {
 		setInputValue(value)
+		if (inputValue && onChangeText) {
+			onChangeText(inputValue)
+		}
 	}
 
 	const handleClearInput = () => {

@@ -7,44 +7,55 @@ import { OutpassStatus } from '@app/constants/enums'
 
 import { styles } from './styles'
 
-interface calendarSliderItem {
+interface statusSliderProps {
+	onSearchChange: (searchTerm: string) => void
+	onStatusFilterChange: (statusFilter: OutpassStatus) => void
+}
+
+interface statusSliderItem {
 	id: number
 	label: string
+	value: OutpassStatus
 	isSelected: boolean
 }
 
-const calendarData: calendarSliderItem[] = [
+const statusItems: statusSliderItem[] = [
 	{
 		id: 1,
-		label: OutpassStatus.Pending,
+		label: 'Pending',
+		value: OutpassStatus.Pending,
 		isSelected: true,
 	},
 	{
 		id: 2,
-		label: OutpassStatus.Rejected,
+		label: 'Approved',
+		value: OutpassStatus.Approved,
 		isSelected: false,
 	},
 	{
 		id: 3,
-		label: OutpassStatus.Approved,
+		label: 'Returned',
+		value: OutpassStatus.Returned,
 		isSelected: false,
 	},
 	{
 		id: 4,
-		label: OutpassStatus.Returned,
+		label: 'Rejected',
+		value: OutpassStatus.Rejected,
 		isSelected: false,
 	},
 ]
 
-export const Filters = () => {
-	const [listItems, setListItems] = useState<calendarSliderItem[]>(calendarData)
+export const Filters = (props: statusSliderProps) => {
+	const { onSearchChange, onStatusFilterChange } = props
+	const [listItems, setListItems] = useState<statusSliderItem[]>(statusItems)
 
 	const handleItemSelect = (id: number) => {
 		const selectedIndex = listItems.findIndex((item) => {
 			return item.id === id
 		})
 
-		const updatedList: calendarSliderItem[] = listItems.map((item) => {
+		const updatedList: statusSliderItem[] = listItems.map((item) => {
 			return {
 				...item,
 				isSelected: false,
@@ -52,6 +63,9 @@ export const Filters = () => {
 		})
 		updatedList[selectedIndex].isSelected = true
 		setListItems(updatedList)
+
+		const selectedItem = listItems.find((item, _) => item.id === id)
+		selectedItem && onStatusFilterChange(selectedItem.value)
 	}
 
 	return (
@@ -61,6 +75,7 @@ export const Filters = () => {
 				selectTextOnFocus={true}
 				placeholder='Search by name or roll number'
 				Icon={SecrchIcon}
+				onChangeText={onSearchChange}
 				eraseButton
 			/>
 			<FlatList

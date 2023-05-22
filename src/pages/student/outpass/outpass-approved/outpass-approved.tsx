@@ -6,7 +6,7 @@ import QRCode from 'react-native-qrcode-svg'
 import { YStack } from 'tamagui'
 
 import { useDeleteOutpass } from '@app/api/hooks/useDeleteOutpass'
-import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpass'
 import CalendarIcon from '@app/assets/icons/calendar.svg'
 import LocationIcon from '@app/assets/icons/location.svg'
 import { Button } from '@app/components/ui/button'

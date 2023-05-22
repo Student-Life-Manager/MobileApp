@@ -27,6 +27,8 @@ export type OutpassRaw = {
 	exited_at?: string
 	returned_at?: string
 	warden_message?: string
+	student_name?: string
+	roll_number?: string
 	approval: {
 		warden_1: false
 		warden_2: false

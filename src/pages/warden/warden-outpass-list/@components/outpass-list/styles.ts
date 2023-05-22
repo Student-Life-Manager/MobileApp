@@ -32,4 +32,17 @@ export const styles = StyleSheet.create({
 		fontSize: 12,
 		color: TOKEN.COLOR.DARK_TEXT,
 	},
+	emptyStateContainer: {
+		height: 200,
+		// backgroundColor: 'lightblue',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	emptyStateText: {
+		marginBottom: 8,
+		color: TOKEN.COLOR.DARK_TEXT,
+		fontSize: 16,
+		// backgroundColor: 'lightgreen',
+		// color: 'red',
+	},
 })

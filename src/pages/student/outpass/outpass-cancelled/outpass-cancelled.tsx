@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpass'
 import CancelledIcon from '@app/assets/images/cancelled-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'

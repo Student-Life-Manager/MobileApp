@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { View, Text, Alert } from 'react-native'
 
 import { useDeleteOutpass } from '@app/api/hooks/useDeleteOutpass'
-import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpasses'
+import { useFetchUserOutpasses } from '@app/api/hooks/useFetchUserOutpass'
 import WaitingIcon from '@app/assets/images/waiting-icon.svg'
 import { Button } from '@app/components/ui/button'
 import { PageWrapper } from '@app/components/ui/page-wrapper'
