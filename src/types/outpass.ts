@@ -1,6 +1,8 @@
 import { sanitizeOutpass, sanitizeOutpassCreateProps } from '@app/api/sanitizers/outpass'
 import { OutpassStatus } from '@app/constants/enums'
 
+import { StudentBase } from './student'
+
 export type CreateOutpassRaw = {
 	guardian_uuid: string
 	warden_uuid: string
@@ -27,12 +29,15 @@ export type OutpassRaw = {
 	exited_at?: string
 	returned_at?: string
 	warden_message?: string
-	student_name?: string
-	roll_number?: string
 	approval: {
-		warden_1: false
-		warden_2: false
+		warden_1: string
+		warden_2: string
 	}
+	rejection: {
+		warden_1: string
+		warden_2: string
+	}
+	student?: StudentBase
 }
 
 export type Outpass = ReturnType<typeof sanitizeOutpass>

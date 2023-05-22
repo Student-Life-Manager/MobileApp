@@ -15,7 +15,7 @@ import {
 	CreateAccountPage,
 } from '@app/pages/student/onboarding'
 import { OutpassApproved } from '@app/pages/student/outpass/outpass-approved'
-import { OutpassCancelled } from '@app/pages/student/outpass/outpass-cancelled'
+import { OutpassCancelled } from '@app/pages/student/outpass/outpass-rejected'
 import { OutpassPending } from '@app/pages/student/outpass/outpass-waiting'
 import { OutpassDetails } from '@app/pages/student/outpass-details'
 import { StudentHome } from '@app/pages/student/student-home'

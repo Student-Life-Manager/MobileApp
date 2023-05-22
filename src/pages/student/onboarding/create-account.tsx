@@ -37,7 +37,6 @@ export const CreateAccountPage = ({ navigation }) => {
 	})
 
 	const onSubmit = (values: FormValues) => {
-		console.log('create accounut page', values)
 		// register({
 		// 	email: values.email,
 		// 	password: values.password,

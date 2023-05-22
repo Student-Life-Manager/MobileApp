@@ -47,13 +47,19 @@ export const OutpassList = (props: outpassListProps) => {
 						>
 							<View style={styles.itemContainer}>
 								<View style={styles.itemWrapper}>
-									<Text style={styles.dateText}>{item.studentName || 'Pulkit'}</Text>
+									<Text style={styles.dateText}>
+										{item.student
+											? `${item.student?.firstName} ${item.student?.lastName}`
+											: '{student_name}'}
+									</Text>
 									<Text style={styles.timeText}>
 										{format(new Date(item.createdAt), 'hh:mm aa')}
 									</Text>
 								</View>
 								<View style={styles.itemWrapper}>
-									<Text style={styles.rollNumber}>{item.rollNumber || 'AP19110010491'}</Text>
+									<Text style={styles.rollNumber}>
+										{item.student?.rollNumber ?? '{roll_number}'}
+									</Text>
 									<ChevronRight />
 								</View>
 							</View>

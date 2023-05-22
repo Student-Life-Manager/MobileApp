@@ -27,7 +27,6 @@ export const RejectOutpassModal = () => {
 			refetch()
 			closeModal()
 			payload.navigateOnAction()
-			// navigation.navigate('warden-outpass-list')
 		}
 	}, [isSuccess])
 

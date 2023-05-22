@@ -105,13 +105,16 @@ export const OutpassApproved = ({ navigation, route }) => {
 					},
 				]}
 			/>
-			<Button
-				variant='secondary'
-				isLoading={isLoading}
-				onPress={handleCancelOutpass}
-			>
-				Cancel outpass
-			</Button>
+			{outpass?.status === OutpassStatus.Pending ||
+				(outpass?.status === OutpassStatus.Approved && (
+					<Button
+						variant='secondary'
+						isLoading={isLoading}
+						onPress={handleCancelOutpass}
+					>
+						Cancel outpass
+					</Button>
+				))}
 		</PageWrapper>
 	)
 }
