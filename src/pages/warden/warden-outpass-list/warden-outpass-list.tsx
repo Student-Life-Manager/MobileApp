@@ -11,13 +11,12 @@ import { Outpass } from '@app/types/outpass'
 import { CalendarSlider } from './@components/calendar-slider'
 import { Filters } from './@components/filters'
 import { OutpassList } from './@components/outpass-list'
-import { outpassListItemProps } from './@components/outpass-list/outpass-list'
 
 export const WardenOutpassList = ({ navigation }) => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 	const [searchTerm, setSearchTerm] = useState<string | null>(null)
 	const [statusFilter, setStatusFilter] = useState<OutpassStatus>(OutpassStatus.Pending)
-	const { data, isLoading, isSuccess } = useFetchAllOutpass()
+	const { data, isLoading, isSuccess, isRefetching } = useFetchAllOutpass()
 	const [filteredList, setFilteredList] = useState<Outpass[]>(data)
 
 	useEffect(() => {
@@ -33,22 +32,10 @@ export const WardenOutpassList = ({ navigation }) => {
 		})
 
 		setFilteredList(statusFilteredList)
-	}, [selectedDate, searchTerm, statusFilter, isSuccess])
+	}, [selectedDate, searchTerm, statusFilter, isSuccess, isRefetching])
 
-	const outpassListData = filteredList.map((item) => {
-		const outpassListItem: outpassListItemProps = {
-			uuid: item.uuid,
-			createdAt: item.createdAt,
-			date: item.outDate,
-			rollNumber: item.rollNumber ? item.rollNumber : 'AP19110010491',
-			status: item.status,
-			studentName: item.studentName ? item.studentName : 'Pulkit Jasti',
-		}
-		return outpassListItem
-	})
-
-	const navigateToOutpassPage = (outpassUuid: string) => {
-		navigation.navigate('warden-outpass-details', { outpassUuid })
+	const navigateToOutpassPage = (outpass: Outpass) => {
+		navigation.navigate('warden-outpass-details', { outpass })
 	}
 
 	return (
@@ -61,7 +48,7 @@ export const WardenOutpassList = ({ navigation }) => {
 					onStatusFilterChange={setStatusFilter}
 				/>
 				<OutpassList
-					data={outpassListData}
+					data={filteredList}
 					isLoading={isLoading}
 					onPress={navigateToOutpassPage}
 				/>

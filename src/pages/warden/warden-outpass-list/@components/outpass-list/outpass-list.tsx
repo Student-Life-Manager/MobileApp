@@ -19,17 +19,13 @@ export interface outpassListItemProps {
 }
 
 interface outpassListProps {
-	data: outpassListItemProps[]
+	data: Outpass[]
 	isLoading: boolean
-	onPress: (outpassUuid: string) => void
+	onPress: (outpass: Outpass) => void
 }
 
 export const OutpassList = (props: outpassListProps) => {
 	const { data, isLoading, onPress } = props
-
-	// const onCardPress = ()=>{
-
-	// }
 
 	return (
 		<View>
@@ -46,18 +42,18 @@ export const OutpassList = (props: outpassListProps) => {
 						<TouchableOpacity
 							key={item.uuid}
 							onPress={() => {
-								onPress(item.uuid)
+								onPress(item)
 							}}
 						>
 							<View style={styles.itemContainer}>
 								<View style={styles.itemWrapper}>
-									<Text style={styles.dateText}>{item.studentName}</Text>
+									<Text style={styles.dateText}>{item.studentName || 'Pulkit'}</Text>
 									<Text style={styles.timeText}>
 										{format(new Date(item.createdAt), 'hh:mm aa')}
 									</Text>
 								</View>
 								<View style={styles.itemWrapper}>
-									<Text style={styles.rollNumber}>{item.rollNumber}</Text>
+									<Text style={styles.rollNumber}>{item.rollNumber || 'AP19110010491'}</Text>
 									<ChevronRight />
 								</View>
 							</View>

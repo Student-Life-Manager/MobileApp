@@ -1,4 +1,4 @@
-import { isAfter, isEqual, format } from 'date-fns'
+import { format } from 'date-fns'
 import { Formik } from 'formik'
 import { Text, View } from 'react-native'
 import { H3, Input, Label, TextArea } from 'tamagui'
