@@ -1,7 +1,10 @@
 import { format } from 'date-fns'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { useEffect } from 'react'
+import { Text, TouchableOpacity, View, Alert } from 'react-native'
 import { H3 } from 'tamagui'
 
+import { useApproveOutpass } from '@app/api/hooks/useApproveOutpass'
+import { useFetchAllOutpass } from '@app/api/hooks/useFetchAllOutpass'
 import CalendarIcon from '@app/assets/icons/calendar.svg'
 import LocationIcon from '@app/assets/icons/location.svg'
 import MapIcon from '@app/assets/icons/map.svg'
@@ -19,6 +22,22 @@ import { styles } from './styles'
 export const WardenOutpassDetails = ({ navigation, route }) => {
 	const outpass: Outpass = route.params.outpass
 	const { renderModal } = useGlobalModal()
+	const { refetch } = useFetchAllOutpass()
+	const { approveOutpass, isLoading, isSuccess } = useApproveOutpass()
+
+	useEffect(() => {
+		if (isSuccess) {
+			refetch()
+			Alert.alert('Success', 'Outpass approved successfully', [
+				{
+					text: 'Go back',
+					onPress: () => {
+						navigation.navigate('warden-outpass-list')
+					},
+				},
+			])
+		}
+	}, [isSuccess])
 
 	const personalDetailsData: InfoListItemProps[] = [
 		{
@@ -70,6 +89,10 @@ export const WardenOutpassDetails = ({ navigation, route }) => {
 		})
 	}
 
+	const handleApproveOutpass = () => {
+		approveOutpass({ outpassUuid: outpass.uuid })
+	}
+
 	return (
 		<PageWrapper>
 			<View>
@@ -85,6 +108,8 @@ export const WardenOutpassDetails = ({ navigation, route }) => {
 					<Button
 						variant='primary'
 						style={styles.approveButton}
+						onPress={handleApproveOutpass}
+						isLoading={isLoading}
 					>
 						Approve
 					</Button>

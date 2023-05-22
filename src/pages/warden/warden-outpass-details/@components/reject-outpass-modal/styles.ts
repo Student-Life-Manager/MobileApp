@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 12,
 	},
 	textInput: {
-		padding: 16,
+		paddingHorizontal: 12,
 		borderRadius: 10,
 		borderColor: TOKEN.COLOR.BORDER_COLOR,
 		borderWidth: 1,

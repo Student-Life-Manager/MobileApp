@@ -56,9 +56,9 @@ export const RejectOutpassModal = () => {
 					<View>
 						<Fieldset>
 							<Label>{payload?.title}</Label>
-							<TextInput
+							<BottomSheetTextInput
 								multiline={true}
-								numberOfLines={20}
+								numberOfLines={3}
 								value={values.message}
 								style={styles.textInput}
 								onChangeText={handleChange('message')}
