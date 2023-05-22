@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { useEffect } from 'react'
-import { Text, TouchableOpacity, View, Alert } from 'react-native'
+import { Text, TouchableOpacity, View, Alert, Linking } from 'react-native'
 import { H3 } from 'tamagui'
 
 import { useApproveOutpass } from '@app/api/hooks/useApproveOutpass'
@@ -38,6 +38,10 @@ export const WardenOutpassDetails = ({ navigation, route }) => {
 			])
 		}
 	}, [isSuccess])
+
+	const handleCallGuardian = () => {
+		// Linking.openURL(`tel:${outpass.}`)
+	}
 
 	const personalDetailsData: InfoListItemProps[] = [
 		{

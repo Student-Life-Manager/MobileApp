@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		display: 'flex',
 		justifyContent: 'space-between',
+		// backgroundColor: 'lightblue',
+	},
+	topContainer: {
+		backgroundColor: 'lightcoral',
 	},
 	headerContainer: {
 		display: 'flex',
@@ -15,5 +19,6 @@ export const styles = StyleSheet.create({
 	},
 	primaryButton: {
 		marginBottom: 12,
+		marginTop: 60,
 	},
 })

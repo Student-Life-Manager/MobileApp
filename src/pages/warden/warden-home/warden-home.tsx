@@ -27,18 +27,18 @@ export const WardenHome = ({ navigation }) => {
 				<Loader />
 			) : (
 				<View style={styles.pageContainer}>
-					<View>
-						<View style={styles.headerContainer}>
-							<H3>
-								Welcome, {'\n'}
-								{`${userData?.firstName} ${userData?.lastName}`}
-							</H3>
-							<TouchableOpacity onPress={navigateToProfile}>
-								<ProfileIcon />
-							</TouchableOpacity>
-						</View>
-						<WardenPage />
+					{/* <View style={styles.topContainer}> */}
+					<View style={styles.headerContainer}>
+						<H3>
+							Welcome, {'\n'}
+							{`${userData?.firstName} ${userData?.lastName}`}
+						</H3>
+						<TouchableOpacity onPress={navigateToProfile}>
+							<ProfileIcon />
+						</TouchableOpacity>
 					</View>
+					{/* </View> */}
+					<WardenPage />
 					<View>
 						<Button
 							style={styles.primaryButton}

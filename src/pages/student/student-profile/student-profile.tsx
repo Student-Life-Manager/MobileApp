@@ -172,19 +172,21 @@ export const StudentProfile = ({ navigation }) => {
 					emptyStateText='No data, please contact the admin'
 					isLoading={userDataLoading}
 				/>
-				<InfoList
-					heading='Guardian details'
-					listData={guardiansList}
-					listIconDirection='right'
-					listIconCommon={Delete}
-					listIconWrapperStyle={styles.deleteIconWrapper}
-					itemAdornmentIcon={InfoVerified}
-					headerIcon={AddPhone}
-					headerIconOnClick={handleAddGuardian}
-					headerIconWrapperStyle={styles.headerIconWrapper}
-					emptyStateText='Please add at least 2 guardian contact numbers'
-					isLoading={fetchGuardiansLoading || deleteGuardianLoading}
-				/>
+				{userData?.accountType === 'student' && (
+					<InfoList
+						heading='Guardian details'
+						listData={guardiansList}
+						listIconDirection='right'
+						listIconCommon={Delete}
+						listIconWrapperStyle={styles.deleteIconWrapper}
+						itemAdornmentIcon={InfoVerified}
+						headerIcon={AddPhone}
+						headerIconOnClick={handleAddGuardian}
+						headerIconWrapperStyle={styles.headerIconWrapper}
+						emptyStateText='Please add at least 2 guardian contact numbers'
+						isLoading={fetchGuardiansLoading || deleteGuardianLoading}
+					/>
+				)}
 				<Button
 					variant='secondary'
 					onPress={handleLogout}

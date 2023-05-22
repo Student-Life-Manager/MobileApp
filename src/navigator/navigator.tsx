@@ -11,7 +11,7 @@ export const NativeNavigator = () => {
 	// AsyncStorage.clear()
 	// console.log('AUTH_PROVIDER----- ', isAuthenticated, userData, isLoading)
 
-	if (isLoading || !userData) {
+	if (isLoading && !userData) {
 		return <AuthStack initialRoute='loader-page' />
 	} else if (!isAuthenticated && !isLoading) {
 		return <AuthStack initialRoute='login' />

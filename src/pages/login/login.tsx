@@ -47,7 +47,7 @@ export const Login = ({ navigation }) => {
 		// 	password: values.password,
 		// })
 		login({
-			email: values.email + '@srmap.edu.in',
+			email: `${values.email}@srmap.edu.in`.toLowerCase(),
 			password: 'password',
 		})
 	}

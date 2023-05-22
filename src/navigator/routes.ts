@@ -85,7 +85,7 @@ export const routes: route[] = [
 		component: StudentProfile,
 		isAuthProtected: true,
 		options: {
-			title: 'Student Profile',
+			title: 'My Profile',
 		},
 	},
 	{
