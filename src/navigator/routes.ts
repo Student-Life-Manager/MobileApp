@@ -231,9 +231,9 @@ export const routes: route[] = [
 
 	// Guard pages
 	{
-		name: 'scanQrCode',
+		name: 'scan-qr-code',
 		component: ScanQRCode,
-		isAuthProtected: false,
+		isAuthProtected: true,
 		options: {
 			title: 'Scan QR code',
 		},

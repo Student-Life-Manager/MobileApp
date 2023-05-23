@@ -2,7 +2,7 @@ import { sanitizeUser } from '@app/api/sanitizers/user'
 
 export enum UserType {
 	Student = 'student',
-	Guardian = 'guardian',
+	Guard = 'guard',
 	Admin = 'admin',
 	Warden = 'warden',
 }

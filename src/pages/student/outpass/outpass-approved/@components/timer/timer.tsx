@@ -3,7 +3,7 @@ import CircularProgress, { ProgressRef } from 'react-native-circular-progress-in
 
 import { TOKEN } from '@app/constants/styles'
 
-const timerLimit = 20
+const TIMER_LIMIT = 300
 
 interface timerProps {
 	onRefresh: () => void
@@ -20,11 +20,11 @@ export const Timer = ({ onRefresh }: timerProps) => {
 	return (
 		<CircularProgress
 			ref={progressRef}
-			value={timerLimit}
+			value={TIMER_LIMIT}
 			radius={30}
-			duration={timerLimit * 1000}
+			duration={TIMER_LIMIT * 1000}
 			progressValueColor={TOKEN.COLOR.PRIMARY}
-			maxValue={timerLimit}
+			maxValue={TIMER_LIMIT}
 			circleBackgroundColor={TOKEN.COLOR.SECONDARY}
 			activeStrokeColor={TOKEN.COLOR.PRIMARY}
 			inActiveStrokeColor={TOKEN.COLOR.SECONDARY}

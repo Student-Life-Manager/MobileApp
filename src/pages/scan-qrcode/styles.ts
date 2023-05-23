@@ -5,6 +5,7 @@ import { TOKEN } from '@app/constants/styles'
 export const styles = StyleSheet.create({
 	pageContainer: {
 		flex: 1,
+		justifyContent: 'space-between',
 	},
 	cameraOverlay: {
 		height: '100%',
@@ -58,7 +59,14 @@ export const styles = StyleSheet.create({
 	messageText: {
 		color: TOKEN.COLOR.DARK_TEXT,
 	},
-	buttonWrapper: {
+	buttonContainer: {
+		paddingHorizontal: 20,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	button: {
+		width: '48%',
 		paddingHorizontal: 20,
 	},
 })

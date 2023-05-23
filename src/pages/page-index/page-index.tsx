@@ -8,7 +8,7 @@ const pagesToDisplay = [
 	'student-home',
 	'warden-outpass-details',
 	'warden-outpass-list',
-	'scanQrCode',
+	'scan-qr-code',
 	'login',
 	'warden-account',
 	'warden-home',
