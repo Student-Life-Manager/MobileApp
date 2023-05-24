@@ -18,25 +18,47 @@ interface ListItemProps {
 }
 
 const renderStatusIcon = (status: OutpassStatus) => {
-	switch (status) {
-		case OutpassStatus.Pending:
-			return <StatusPending {...iconStyle} />
-		case OutpassStatus.Approved:
-			return <StatusApproved {...iconStyle} />
-		case OutpassStatus.Rejected:
-			return <StatusRejected {...iconStyle} />
+	if (status === OutpassStatus.Pending) {
+		return <StatusPending {...iconStyle} />
+	} else if (status === OutpassStatus.Approved) {
+		return <StatusApproved {...iconStyle} />
+	} else if (status === OutpassStatus.Rejected) {
+		return <StatusRejected {...iconStyle} />
+	} else if (status === OutpassStatus.Exited) {
+		return <StatusApproved {...iconStyle} />
+	} else if (status === OutpassStatus.Returned) {
+		return <StatusApproved {...iconStyle} />
 	}
+	// switch (status) {
+	// 	case OutpassStatus.Pending:
+	// 		return <StatusPending {...iconStyle} />
+	// 	case OutpassStatus.Approved:
+	// 		return <StatusApproved {...iconStyle} />
+	// 	case OutpassStatus.Rejected:
+	// 		return <StatusRejected {...iconStyle} />
+	// }
 }
 
 const renderStatusText = (status: OutpassStatus) => {
-	switch (status) {
-		case OutpassStatus.Pending:
-			return 'Pending'
-		case OutpassStatus.Approved:
-			return 'Approved'
-		case OutpassStatus.Rejected:
-			return 'Rejected'
+	if (status === OutpassStatus.Pending) {
+		return 'Pending'
+	} else if (status === OutpassStatus.Approved) {
+		return 'Approved'
+	} else if (status === OutpassStatus.Rejected) {
+		return 'Rejected'
+	} else if (status === OutpassStatus.Exited) {
+		return 'Exited'
+	} else if (status === OutpassStatus.Returned) {
+		return 'Returned'
 	}
+	// switch (status) {
+	// 	case OutpassStatus.Pending:
+	// 		return 'Pending'
+	// 	case OutpassStatus.Approved:
+	// 		return 'Approved'
+	// 	case OutpassStatus.Rejected:
+	// 		return 'Rejected'
+	// }
 }
 
 export const ListItem = (props: ListItemProps) => {

@@ -4,7 +4,7 @@ import axios from 'axios'
 export const SlmApi = axios.create({
 	// baseURL: BASE_URL,
 	// baseURL: 'https://api-slm.up.railway.app',
-	baseURL: 'https://4a56-103-217-237-2.ngrok-free.app',
+	baseURL: 'https://ec0e-103-217-237-2.ngrok-free.app',
 	headers: {
 		'Content-Type': 'application/json',
 	},

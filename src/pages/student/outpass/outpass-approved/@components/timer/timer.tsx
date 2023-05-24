@@ -3,7 +3,7 @@ import CircularProgress, { ProgressRef } from 'react-native-circular-progress-in
 
 import { TOKEN } from '@app/constants/styles'
 
-const TIMER_LIMIT = 300
+const TIMER_LIMIT = 15
 
 interface timerProps {
 	onRefresh: () => void

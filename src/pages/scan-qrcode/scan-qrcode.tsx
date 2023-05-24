@@ -105,6 +105,20 @@ export const ScanQRCode = ({ navigation }) => {
 		})
 	}
 
+	const handleLogout = () => {
+		Alert.alert('Are you sure?', 'Do you want to logout?', [
+			{
+				text: 'No',
+			},
+			{
+				text: 'Yes',
+				onPress: () => {
+					logout()
+				},
+			},
+		])
+	}
+
 	useEffect(() => {
 		if (!hasPermission) {
 			// Alert.alert('No camera access', 'Please allow camera access to scan QR code')
@@ -137,7 +151,12 @@ export const ScanQRCode = ({ navigation }) => {
 						</View>
 
 						<View style={styles.infoContainer}>
-							{outpassApprovalStatus && (
+							{isUpdateStatusLoading ? (
+								<Loader
+									displayText={false}
+									height={60}
+								/>
+							) : outpassApprovalStatus ? (
 								<View
 									style={[
 										styles.approvalStatusTag,
@@ -166,7 +185,7 @@ export const ScanQRCode = ({ navigation }) => {
 											: null}
 									</Text>
 								</View>
-							)}
+							) : null}
 
 							{outpassMessage && (
 								<View style={styles.messageWrapper}>
@@ -180,9 +199,7 @@ export const ScanQRCode = ({ navigation }) => {
 						<Button
 							variant='secondary'
 							style={styles.button}
-							onPress={() => {
-								logout()
-							}}
+							onPress={handleLogout}
 						>
 							Logout
 						</Button>
